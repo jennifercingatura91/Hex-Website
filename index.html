@@ -38,6 +38,13 @@
       font-weight: 300;
     }
 
+    /* ── SPARKLE ANIMATION ── */
+    @keyframes sparkle {
+      0%   { opacity: 0.2; transform: scale(0.8); filter: drop-shadow(0 0 0px var(--gold)); }
+      50%  { opacity: 1;   transform: scale(1.15); filter: drop-shadow(0 0 8px var(--gold)) drop-shadow(0 0 16px rgba(218,188,119,0.5)); }
+      100% { opacity: 0.2; transform: scale(0.8); filter: drop-shadow(0 0 0px var(--gold)); }
+    }
+
     /* ── NAV ── */
     nav {
       position: fixed;
@@ -67,7 +74,6 @@
       transition: color 0.2s;
     }
 
-    /* Hover: #7C7C7C */
     .nav-links a:hover { color: var(--gray); }
 
     /* ── HERO ── */
@@ -110,16 +116,17 @@
       color: var(--gold);
       line-height: 1;
       pointer-events: none;
+      animation: sparkle var(--dur, 4s) ease-in-out infinite;
+      animation-delay: var(--delay, 0s);
     }
 
-    /* Title block — bottom, subtitle 16px above title */
+    /* Title block */
     .hero-title-area {
       position: relative;
       z-index: 2;
       padding: 0 60px 56px;
     }
 
-    /* "Los Angeles Design Witch" — 24px above name */
     .hero-location {
       font-size: 13px;
       font-weight: 300;
@@ -129,7 +136,6 @@
       margin-bottom: 24px;
     }
 
-    /* 200px Stackwitin */
     .hero-title {
       font-family: 'Stackwitin', serif;
       font-weight: normal;
@@ -138,7 +144,7 @@
       line-height: 0.85;
     }
 
-    /* ── ABOUT  — #212121 bg ── */
+    /* ── ABOUT — #212121 bg ── */
     .about-section {
       background: var(--charcoal);
       display: grid;
@@ -148,17 +154,15 @@
       align-items: start;
     }
 
-    /* 100px Stackwitin, cream */
     .about-headline {
       font-family: 'Stackwitin', serif;
       font-weight: normal;
-      font-size: 100px;
+      font-size: 64px;
       color: var(--cream);
       line-height: 0.9;
       margin-bottom: 48px;
     }
 
-    /* Two-column body copy */
     .about-body {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -174,7 +178,7 @@
     }
 
     .worked-at-label {
-      font-size: 20px;
+      font-size: 17px;
       font-weight: 400;
       letter-spacing: 5px;
       text-transform: uppercase;
@@ -192,6 +196,12 @@
       line-height: 1.8;
     }
 
+    .company-list .sep {
+      color: var(--gold);
+      opacity: 1;
+      margin: 0 8px;
+    }
+
     /* Right — cathedral window */
     .about-right {
       display: flex;
@@ -207,7 +217,6 @@
       flex-shrink: 0;
     }
 
-    /* Clip the image into a gothic pointed arch */
     .arch-image {
       width: 100%;
       height: 100%;
@@ -223,7 +232,6 @@
       display: block;
     }
 
-    /* SVG border drawn over the arch */
     .arch-border {
       position: absolute;
       inset: 0;
@@ -232,12 +240,14 @@
       pointer-events: none;
     }
 
-    /* Gold stars around the arch */
+    /* Gold stars around the arch — with sparkle animation */
     .arch-star {
       position: absolute;
       color: var(--gold);
       line-height: 1;
       pointer-events: none;
+      animation: sparkle var(--dur, 4s) ease-in-out infinite;
+      animation-delay: var(--delay, 0s);
     }
 
     .arch-star.top  { top: -28px; left: 50%; transform: translateX(-50%); font-size: 1.5rem; }
@@ -246,7 +256,7 @@
     .arch-star.ml   { top: 44%;   left: -22px;  font-size: 0.6rem; opacity: 0.7; }
     .arch-star.mr   { top: 44%;   right: -22px; font-size: 0.6rem; opacity: 0.7; }
 
-    /* ── CASE STUDIES  — #212121 bg, cream tarot cards ── */
+    /* ── CASE STUDIES — #212121 bg ── */
     .work-section {
       background: var(--charcoal);
       padding: 80px 60px 100px;
@@ -254,21 +264,20 @@
 
     .tarot-grid {
       display: grid;
-      grid-template-columns: repeat(2, 570px);
-      gap: 36px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
       justify-content: center;
     }
 
     .tarot-card {
-      width: 570px;
-      height: 760px;
       background: var(--cream);
-      border-radius: 24px;
+      border-radius: 50px;
       padding: 20px 20px 28px;
       display: flex;
       flex-direction: column;
       cursor: pointer;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      height: 550px;
     }
 
     .tarot-card:hover {
@@ -276,11 +285,10 @@
       box-shadow: 0 28px 64px rgba(0,0,0,0.5);
     }
 
-    /* Image fills most of the card */
     .tarot-image-wrap {
       flex: 1;
       overflow: hidden;
-      border-radius: 14px;
+      border-radius: 34px;
       background: #e4dfd7;
       margin-bottom: 16px;
     }
@@ -303,18 +311,18 @@
       height: 100%;
       object-fit: cover;
       display: block;
-      border-radius: 14px;
+      border-radius: 34px;
     }
 
-    /* Gold star — larger */
     .tarot-star {
       text-align: center;
       color: var(--gold);
-      font-size: 1.5rem;
-      letter-spacing: 10px;
-      margin-bottom: 10px;
+      font-size: 1.2rem;
+      letter-spacing: 8px;
+      margin-bottom: 8px;
     }
 
+    /* Company name in Stackwitin */
     .tarot-name {
       font-family: 'Stackwitin', serif;
       font-weight: normal;
@@ -322,22 +330,21 @@
       color: var(--charcoal);
       line-height: 1.0;
       text-align: center;
-      margin-bottom: 6px;
+      margin-bottom: 5px;
     }
 
+    /* Project name in DM Sans Light uppercase */
     .tarot-category {
-      font-size: 10px;
+      font-size: 11px;
       font-weight: 300;
-      letter-spacing: 4px;
+      letter-spacing: 3px;
       text-transform: uppercase;
       color: var(--charcoal);
-      opacity: 0.4;
+      opacity: 0.45;
       text-align: center;
     }
 
-    .tarot-card--lone { grid-column: 1; }
-
-    /* ── CONTACT + SERVICES  — #212121 bg ── */
+    /* ── CONTACT + SERVICES — #212121 bg ── */
     .contact-section {
       background: var(--charcoal);
       padding: 80px 60px 100px;
@@ -346,7 +353,7 @@
     .contact-headline {
       font-family: 'Stackwitin', serif;
       font-weight: normal;
-      font-size: clamp(40px, 5vw, 72px);
+      font-size: 48px;
       color: var(--cream);
       line-height: 1.0;
       margin-bottom: 20px;
@@ -368,8 +375,9 @@
       align-items: start;
     }
 
+    /* Services label */
     .services-label {
-      font-size: 20px;
+      font-size: 17px;
       font-weight: 400;
       letter-spacing: 5px;
       text-transform: uppercase;
@@ -378,24 +386,39 @@
       margin-bottom: 24px;
     }
 
-    .services-list {
-      list-style: none;
+    /* 3×2 icon tile grid */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .service-tile {
+      background: var(--cream);
+      border-radius: 25px;
+      width: 100%;
+      aspect-ratio: 136 / 157;
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 16px 12px;
+      text-align: center;
     }
 
-    /* Double-slash prefix */
-    .services-list li {
-      font-size: 14px;
+    .service-tile-icon {
+      font-size: 28px;
+      line-height: 1;
+    }
+
+    .service-tile-label {
+      font-size: 11px;
       font-weight: 300;
-      color: var(--cream);
-      line-height: 1.5;
-    }
-
-    .services-list li::before {
-      content: '// ';
-      color: rgba(245, 240, 234, 0.4);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      line-height: 1.4;
     }
 
     /* Form */
@@ -407,7 +430,6 @@
 
     .form-field { display: flex; flex-direction: column; gap: 10px; }
 
-    /* Label: #FFFFFF */
     .form-field label {
       font-size: 11px;
       font-weight: 300;
@@ -416,7 +438,6 @@
       color: #FFFFFF;
     }
 
-    /* Input: transparent bg, #F5F0EA bottom line */
     .form-field input,
     .form-field textarea {
       background: transparent;
@@ -433,7 +454,6 @@
       resize: none;
     }
 
-    /* Placeholder: #7C7C7C */
     .form-field input::placeholder,
     .form-field textarea::placeholder { color: var(--gray); }
 
@@ -442,7 +462,6 @@
 
     .form-field textarea { min-height: 110px; }
 
-    /* Submit: pill 200×48px, #F5F0EA bg, #212121 text */
     .submit-btn {
       width: 200px;
       height: 48px;
@@ -487,9 +506,8 @@
     }
 
     /* ── RESPONSIVE ── */
-    @media (max-width: 1300px) {
+    @media (max-width: 1200px) {
       .tarot-grid { grid-template-columns: repeat(2, 1fr); }
-      .tarot-card { width: 100%; height: auto; min-height: 600px; }
     }
 
     @media (max-width: 900px) {
@@ -499,17 +517,18 @@
       .hero-title { font-size: 72px; }
 
       .about-section { grid-template-columns: 1fr; padding: 60px 28px; }
-      .about-headline { font-size: 56px; }
+      .about-headline { font-size: 48px; }
       .about-body { grid-template-columns: 1fr; }
 
       .work-section,
       .contact-section,
       footer { padding-left: 28px; padding-right: 28px; }
 
-      .tarot-grid { grid-template-columns: 1fr; gap: 28px; }
-      .tarot-card--lone { grid-column: 1; }
+      .tarot-grid { grid-template-columns: 1fr; gap: 24px; }
+      .tarot-card { height: auto; min-height: 480px; }
 
       .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
       .submit-btn { align-self: flex-start; }
 
       footer { flex-direction: column; gap: 12px; text-align: center; }
@@ -541,12 +560,12 @@
   <section class="hero">
     <div class="hero-bg"></div>
 
-    <!-- Gold stars scattered across hero -->
-    <span class="hero-star" style="top:20%; left:7%;  font-size:1.8rem;">✦</span>
-    <span class="hero-star" style="top:14%; right:26%; font-size:1.1rem; opacity:0.8;">✦</span>
-    <span class="hero-star" style="top:38%; right:10%; font-size:0.85rem; opacity:0.65;">✦</span>
-    <span class="hero-star" style="top:58%; left:22%; font-size:0.6rem;  opacity:0.55;">✦</span>
-    <span class="hero-star" style="top:30%; left:45%; font-size:0.5rem;  opacity:0.4;">✦</span>
+    <!-- Gold stars — each has its own duration + delay for independent sparkle -->
+    <span class="hero-star" style="top:20%; left:7%;  font-size:1.8rem; --dur:3.8s; --delay:0s;">✦</span>
+    <span class="hero-star" style="top:14%; right:26%; font-size:1.1rem; --dur:5.1s; --delay:1.2s;">✦</span>
+    <span class="hero-star" style="top:38%; right:10%; font-size:0.85rem; --dur:4.4s; --delay:0.6s;">✦</span>
+    <span class="hero-star" style="top:58%; left:22%; font-size:0.6rem;  --dur:3.2s; --delay:2.1s;">✦</span>
+    <span class="hero-star" style="top:30%; left:45%; font-size:0.5rem;  --dur:4.8s; --delay:0.3s;">✦</span>
 
     <div class="hero-title-area">
       <p class="hero-location">Los Angeles Design Witch</p>
@@ -554,7 +573,7 @@
     </div>
   </section>
 
-  <!-- ── ABOUT  (#212121 bg) ── -->
+  <!-- ── ABOUT (#212121 bg) ── -->
   <section class="about-section" id="about">
     <div class="about-left">
       <h2 class="about-headline">Casting hex code spells<br>for digital experiences</h2>
@@ -563,17 +582,17 @@
         <p>My early start was in graphic design but I became entranced by product design by accident soon afterwards. From there I polished my craft at start-ups and corporate companies within Chicago and Los Angeles. Interested in working with me? Contact me for more information. I'll even read your future with tarot if you're nice to me.</p>
       </div>
       <p class="worked-at-label">Hexed Designs At</p>
-      <p class="company-list">IBM &nbsp;·&nbsp; Tala &nbsp;·&nbsp; Solo Funds &nbsp;·&nbsp; United Airlines &nbsp;·&nbsp; Super.com &nbsp;·&nbsp; SimplePractice</p>
+      <p class="company-list">IBM <span class="sep">✦</span> Tala <span class="sep">✦</span> Solo Funds <span class="sep">✦</span> United Airlines <span class="sep">✦</span> Super.com <span class="sep">✦</span> SimplePractice</p>
     </div>
 
     <div class="about-right">
-      <!-- Cathedral window with gold stars and arch border -->
       <div class="arch-container">
-        <span class="arch-star top">✦</span>
-        <span class="arch-star tl">✦</span>
-        <span class="arch-star tr">✦</span>
-        <span class="arch-star ml">✦</span>
-        <span class="arch-star mr">✦</span>
+        <!-- Arch stars — each sparkles independently -->
+        <span class="arch-star top" style="--dur:4.2s; --delay:0.5s;">✦</span>
+        <span class="arch-star tl"  style="--dur:3.6s; --delay:1.8s;">✦</span>
+        <span class="arch-star tr"  style="--dur:5.0s; --delay:0.1s;">✦</span>
+        <span class="arch-star ml"  style="--dur:4.7s; --delay:2.4s;">✦</span>
+        <span class="arch-star mr"  style="--dur:3.3s; --delay:0.9s;">✦</span>
 
         <div class="arch-image">
           <img src="images/candles-burning-on-golden-candlestick-in-church-2026-03-24-09-00-04-utc.JPG" alt="Candlelight" />
@@ -588,91 +607,94 @@
     </div>
   </section>
 
-  <!-- ── CASE STUDIES  (#212121 bg) ── -->
+  <!-- ── CASE STUDIES (#212121 bg) ── -->
   <section class="work-section" id="work">
     <div class="tarot-grid">
 
+      <!-- 1 -->
       <div class="tarot-card">
         <div class="tarot-image-wrap"><div class="tarot-image-placeholder">Image</div></div>
         <p class="tarot-star">✦</p>
-        <h3 class="tarot-name">Case Study 01</h3>
-        <p class="tarot-category">Mobile App</p>
+        <h3 class="tarot-name">SimplePractice</h3>
+        <p class="tarot-category">Clinician Documentation</p>
       </div>
 
+      <!-- 2 -->
       <div class="tarot-card">
         <div class="tarot-image-wrap"><div class="tarot-image-placeholder">Image</div></div>
         <p class="tarot-star">✦</p>
-        <h3 class="tarot-name">Case Study 02</h3>
-        <p class="tarot-category">Desktop App</p>
+        <h3 class="tarot-name">Super.com</h3>
+        <p class="tarot-category">Flights MVP</p>
       </div>
 
+      <!-- 3 -->
       <div class="tarot-card">
         <div class="tarot-image-wrap"><div class="tarot-image-placeholder">Image</div></div>
         <p class="tarot-star">✦</p>
-        <h3 class="tarot-name">Case Study 03</h3>
-        <p class="tarot-category">Responsive Web</p>
+        <h3 class="tarot-name">United Airlines</h3>
+        <p class="tarot-category">Mileplay</p>
       </div>
 
+      <!-- 4 -->
       <div class="tarot-card">
         <div class="tarot-image-wrap"><div class="tarot-image-placeholder">Image</div></div>
         <p class="tarot-star">✦</p>
-        <h3 class="tarot-name">Case Study 04</h3>
-        <p class="tarot-category">Mobile App · Responsive Web</p>
+        <h3 class="tarot-name">United Airlines</h3>
+        <p class="tarot-category">Native Mobile Design System</p>
       </div>
 
+      <!-- 5 -->
       <div class="tarot-card">
         <div class="tarot-image-wrap"><div class="tarot-image-placeholder">Image</div></div>
         <p class="tarot-star">✦</p>
-        <h3 class="tarot-name">Case Study 05</h3>
-        <p class="tarot-category">Print</p>
+        <h3 class="tarot-name">Solo Funds</h3>
+        <p class="tarot-category">Debit Card Verification</p>
       </div>
 
+      <!-- 6 -->
       <div class="tarot-card">
         <div class="tarot-image-wrap"><div class="tarot-image-placeholder">Image</div></div>
         <p class="tarot-star">✦</p>
-        <h3 class="tarot-name">Case Study 06</h3>
-        <p class="tarot-category">Desktop App · Responsive Web</p>
+        <h3 class="tarot-name">Tala</h3>
+        <p class="tarot-category">Know Your Customer</p>
       </div>
 
+      <!-- 7 -->
       <div class="tarot-card">
         <div class="tarot-image-wrap"><div class="tarot-image-placeholder">Image</div></div>
         <p class="tarot-star">✦</p>
-        <h3 class="tarot-name">Case Study 07</h3>
-        <p class="tarot-category">Mobile App</p>
+        <h3 class="tarot-name">Tala</h3>
+        <p class="tarot-category">Care Internal Tool</p>
       </div>
 
+      <!-- 8 -->
       <div class="tarot-card">
         <div class="tarot-image-wrap"><div class="tarot-image-placeholder">Image</div></div>
         <p class="tarot-star">✦</p>
-        <h3 class="tarot-name">Case Study 08</h3>
-        <p class="tarot-category">Print · Desktop App</p>
+        <h3 class="tarot-name">IBISWorld</h3>
+        <p class="tarot-category">My IBISworld</p>
       </div>
 
+      <!-- 9 -->
       <div class="tarot-card">
         <div class="tarot-image-wrap"><div class="tarot-image-placeholder">Image</div></div>
         <p class="tarot-star">✦</p>
-        <h3 class="tarot-name">Case Study 09</h3>
-        <p class="tarot-category">Responsive Web</p>
+        <h3 class="tarot-name">Cemex</h3>
+        <p class="tarot-category">Cemex Go</p>
       </div>
 
+      <!-- 10 -->
       <div class="tarot-card">
         <div class="tarot-image-wrap"><div class="tarot-image-placeholder">Image</div></div>
         <p class="tarot-star">✦</p>
-        <h3 class="tarot-name">Case Study 10</h3>
-        <p class="tarot-category">Mobile App · Print</p>
-      </div>
-
-      <div class="tarot-card tarot-card--lone">
-        <div class="tarot-image-wrap"><div class="tarot-image-placeholder">Image</div></div>
-        <p class="tarot-star">✦</p>
-        <h3 class="tarot-name">Case Study 11</h3>
-        <p class="tarot-category">Desktop App · Responsive Web</p>
+        <h3 class="tarot-name">Music Artist Posters</h3>
+        <p class="tarot-category">Print Posters</p>
       </div>
 
     </div>
   </section>
 
-  <!-- ── CONTACT + SERVICES  (#212121 bg) ── -->
+  <!-- ── CONTACT + SERVICES (#212121 bg) ── -->
   <section class="contact-section" id="contact">
     <h2 class="contact-headline">Looking to whip up some magic?</h2>
     <p class="contact-subtext">Have some wicked projects you need help cast some magic onto?<br>Contact me on how I can help bring your designs to life.</p>
@@ -681,15 +703,32 @@
 
       <div>
         <p class="services-label">Services Offered</p>
-        <ul class="services-list">
-          <li>Native iOS and Android app design</li>
-          <li>Responsive web</li>
-          <li>SaaS and B2B design</li>
-          <li>Social media graphics</li>
-          <li>Marketing collateral</li>
-          <li>Print graphics</li>
-          <li>Logos and branding</li>
-        </ul>
+        <div class="services-grid">
+          <div class="service-tile">
+            <span class="service-tile-icon">🌐</span>
+            <span class="service-tile-label">Responsive Websites</span>
+          </div>
+          <div class="service-tile">
+            <span class="service-tile-icon">📱</span>
+            <span class="service-tile-label">Desktop &amp; Mobile Apps</span>
+          </div>
+          <div class="service-tile">
+            <span class="service-tile-icon">🧩</span>
+            <span class="service-tile-label">Design Systems</span>
+          </div>
+          <div class="service-tile">
+            <span class="service-tile-icon">✏️</span>
+            <span class="service-tile-label">Branding &amp; Logos</span>
+          </div>
+          <div class="service-tile">
+            <span class="service-tile-icon">🖨️</span>
+            <span class="service-tile-label">Print Collateral</span>
+          </div>
+          <div class="service-tile">
+            <span class="service-tile-icon">✨</span>
+            <span class="service-tile-label">AI Images</span>
+          </div>
+        </div>
       </div>
 
       <form class="contact-form" onsubmit="handleSubmit(event)">
