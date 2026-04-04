@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jennifer Cingatura — Design Witch</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --pink: #FB72DB;
+      --black: #000000;
+      --white: #ffffff;
+      --gray: #1a1a1a;
+      --border: rgba(251, 114, 219, 0.2);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--black);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.6;
+    }
+
+    /* ── NAVIGATION ── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px 60px;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--pink);
+      letter-spacing: 0.04em;
+      text-decoration: none;
+    }
+
+    .nav-logo span {
+      color: var(--white);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 40px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--white);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 400;
+      letter-spacing: 0.03em;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--pink);
+    }
+
+    /* ── HERO / INTRO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 140px 60px 100px;
+    }
+
+    .hero-inner {
+      max-width: 900px;
+    }
+
+    .hero-intro {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+    }
+
+    .wand-emoji {
+      font-size: 2.8rem;
+      line-height: 1;
+      margin-top: 6px;
+      flex-shrink: 0;
+    }
+
+    .hero-text {
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-weight: 300;
+      color: var(--pink);
+      line-height: 1.55;
+      letter-spacing: 0.01em;
+    }
+
+    .hero-text strong {
+      font-weight: 600;
+    }
+
+    /* ── CASE STUDIES ── */
+    .section {
+      padding: 100px 60px;
+    }
+
+    .section-label {
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--pink);
+      margin-bottom: 48px;
+      opacity: 0.7;
+    }
+
+    .case-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px 32px;
+    }
+
+    .case-card {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      cursor: pointer;
+    }
+
+    .case-card:hover .case-image {
+      transform: scale(1.02);
+    }
+
+    .case-image-wrap {
+      overflow: hidden;
+      border-radius: 6px;
+      background: var(--gray);
+      aspect-ratio: 16 / 10;
+    }
+
+    .case-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+      background: var(--gray);
+    }
+
+    .case-image-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #111 0%, #1e1e1e 100%);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: rgba(251, 114, 219, 0.3);
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: transform 0.4s ease;
+    }
+
+    .case-card:hover .case-image-placeholder {
+      transform: scale(1.02);
+    }
+
+    .case-info {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .case-name {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--white);
+      letter-spacing: 0.02em;
+    }
+
+    .case-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--pink);
+      border: 1px solid rgba(251, 114, 219, 0.4);
+      border-radius: 3px;
+      padding: 3px 10px;
+    }
+
+    /* ── SERVICES & CONTACT ── */
+    .services-contact {
+      padding: 100px 60px;
+      border-top: 1px solid var(--border);
+    }
+
+    .services-title {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 300;
+      color: var(--pink);
+      margin-bottom: 72px;
+      letter-spacing: 0.01em;
+      line-height: 1.2;
+    }
+
+    .services-contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    /* Services */
+    .services-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .services-list li {
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: var(--pink);
+      letter-spacing: 0.02em;
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .services-list li::before {
+      content: '✦';
+      position: absolute;
+      left: 0;
+      font-size: 0.6rem;
+      top: 50%;
+      transform: translateY(-50%);
+      opacity: 0.6;
+    }
+
+    /* Contact form */
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .form-field label {
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .form-field input,
+    .form-field textarea {
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 300;
+      padding: 10px 0;
+      outline: none;
+      width: 100%;
+      transition: border-color 0.2s ease;
+      resize: none;
+    }
+
+    .form-field input:focus,
+    .form-field textarea:focus {
+      border-color: var(--pink);
+    }
+
+    .form-field textarea {
+      min-height: 120px;
+    }
+
+    .submit-btn {
+      align-self: flex-start;
+      margin-top: 8px;
+      background: var(--pink);
+      color: var(--black);
+      border: none;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 14px 36px;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .submit-btn:hover {
+      opacity: 0.85;
+      transform: translateY(-1px);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 40px 60px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    footer p {
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.3);
+      letter-spacing: 0.04em;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav {
+        padding: 20px 30px;
+      }
+
+      .hero,
+      .section,
+      .services-contact {
+        padding-left: 30px;
+        padding-right: 30px;
+      }
+
+      .case-grid {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+
+      .services-contact-grid {
+        grid-template-columns: 1fr;
+        gap: 60px;
+      }
+
+      footer {
+        padding: 30px;
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .nav-links {
+        gap: 20px;
+      }
+
+      .hero-text {
+        font-size: 1.2rem;
+      }
+
+      .services-title {
+        font-size: 1.6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <a href="#" class="nav-logo">Hex<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="#work">Work</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#resume">Resume</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO / INTRO -->
+  <section class="hero" id="about">
+    <div class="hero-inner">
+      <div class="hero-intro">
+        <span class="wand-emoji">🪄</span>
+        <p class="hero-text">
+          <strong>Hi, I'm Jennifer.</strong> A design witch based in Los Angeles casting spells in Hex code.
+          I craft intuitive, visually sharp digital experiences that actually work — no dark arts required.
+          I also read tarot, which honestly explains why my design decisions are always right.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASE STUDIES -->
+  <section class="section" id="work">
+    <p class="section-label">Selected Work</p>
+    <div class="case-grid">
+
+      <!-- Case Study 1 -->
+      <div class="case-card">
+        <div class="case-image-wrap">
+          <div class="case-image-placeholder">Case Study Image</div>
+        </div>
+        <div class="case-info">
+          <p class="case-name">Case Study 01</p>
+          <div class="case-tags">
+            <span class="tag">Mobile App</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Case Study 2 -->
+      <div class="case-card">
+        <div class="case-image-wrap">
+          <div class="case-image-placeholder">Case Study Image</div>
+        </div>
+        <div class="case-info">
+          <p class="case-name">Case Study 02</p>
+          <div class="case-tags">
+            <span class="tag">Desktop App</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Case Study 3 -->
+      <div class="case-card">
+        <div class="case-image-wrap">
+          <div class="case-image-placeholder">Case Study Image</div>
+        </div>
+        <div class="case-info">
+          <p class="case-name">Case Study 03</p>
+          <div class="case-tags">
+            <span class="tag">Responsive Web</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Case Study 4 -->
+      <div class="case-card">
+        <div class="case-image-wrap">
+          <div class="case-image-placeholder">Case Study Image</div>
+        </div>
+        <div class="case-info">
+          <p class="case-name">Case Study 04</p>
+          <div class="case-tags">
+            <span class="tag">Mobile App</span>
+            <span class="tag">Responsive Web</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Case Study 5 -->
+      <div class="case-card">
+        <div class="case-image-wrap">
+          <div class="case-image-placeholder">Case Study Image</div>
+        </div>
+        <div class="case-info">
+          <p class="case-name">Case Study 05</p>
+          <div class="case-tags">
+            <span class="tag">Print</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Case Study 6 -->
+      <div class="case-card">
+        <div class="case-image-wrap">
+          <div class="case-image-placeholder">Case Study Image</div>
+        </div>
+        <div class="case-info">
+          <p class="case-name">Case Study 06</p>
+          <div class="case-tags">
+            <span class="tag">Desktop App</span>
+            <span class="tag">Responsive Web</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Case Study 7 -->
+      <div class="case-card">
+        <div class="case-image-wrap">
+          <div class="case-image-placeholder">Case Study Image</div>
+        </div>
+        <div class="case-info">
+          <p class="case-name">Case Study 07</p>
+          <div class="case-tags">
+            <span class="tag">Mobile App</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Case Study 8 -->
+      <div class="case-card">
+        <div class="case-image-wrap">
+          <div class="case-image-placeholder">Case Study Image</div>
+        </div>
+        <div class="case-info">
+          <p class="case-name">Case Study 08</p>
+          <div class="case-tags">
+            <span class="tag">Print</span>
+            <span class="tag">Desktop App</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Case Study 9 -->
+      <div class="case-card">
+        <div class="case-image-wrap">
+          <div class="case-image-placeholder">Case Study Image</div>
+        </div>
+        <div class="case-info">
+          <p class="case-name">Case Study 09</p>
+          <div class="case-tags">
+            <span class="tag">Responsive Web</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Case Study 10 -->
+      <div class="case-card">
+        <div class="case-image-wrap">
+          <div class="case-image-placeholder">Case Study Image</div>
+        </div>
+        <div class="case-info">
+          <p class="case-name">Case Study 10</p>
+          <div class="case-tags">
+            <span class="tag">Mobile App</span>
+            <span class="tag">Print</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Case Study 11 — spans full width so it doesn't sit lonely -->
+      <div class="case-card" style="grid-column: 1 / -1; max-width: calc(50% - 16px);">
+        <div class="case-image-wrap">
+          <div class="case-image-placeholder">Case Study Image</div>
+        </div>
+        <div class="case-info">
+          <p class="case-name">Case Study 11</p>
+          <div class="case-tags">
+            <span class="tag">Desktop App</span>
+            <span class="tag">Responsive Web</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SERVICES & CONTACT -->
+  <section class="services-contact" id="contact">
+    <h2 class="services-title">Looking to whip up some magic?</h2>
+    <div class="services-contact-grid">
+
+      <!-- Services -->
+      <div>
+        <ul class="services-list">
+          <li>Native iOS and Android app design</li>
+          <li>Responsive web</li>
+          <li>SaaS and B2B design</li>
+          <li>Social media graphics</li>
+          <li>Marketing collateral</li>
+          <li>Print graphics</li>
+          <li>Logos and branding</li>
+        </ul>
+      </div>
+
+      <!-- Contact Form -->
+      <form class="contact-form" onsubmit="handleSubmit(event)">
+        <div class="form-field">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Your name" required />
+        </div>
+        <div class="form-field">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="your@email.com" required />
+        </div>
+        <div class="form-field">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Tell me about your project..." required></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Submit</button>
+      </form>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 Jennifer Cingatura. All rights reserved.</p>
+    <p>Crafted with ✦ in Los Angeles</p>
+  </footer>
+
+  <script>
+    function handleSubmit(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('.submit-btn');
+      btn.textContent = 'Sent ✦';
+      btn.style.opacity = '0.6';
+      btn.disabled = true;
+    }
+  </script>
+
+</body>
+</html>
