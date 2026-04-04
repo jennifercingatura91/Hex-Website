@@ -4,32 +4,49 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Jennifer Cingatura — Design Witch</title>
+
+  <!-- ── Custom font: drop Stackwitin files into fonts/ ── -->
+  <style>
+    @font-face {
+      font-family: 'Stackwitin';
+      src: url('fonts/Stackwitin.woff2') format('woff2'),
+           url('fonts/Stackwitin.woff')  format('woff'),
+           url('fonts/Stackwitin.otf')   format('opentype'),
+           url('fonts/Stackwitin.ttf')   format('truetype');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+  </style>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Cinzel:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400&display=swap" rel="stylesheet" />
+
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --pink: #FB72DB;
-      --black: #000;
-      --gray: #111;
-      --cream: #f0ece4;
-      --white: #fff;
-      --border: rgba(251, 114, 219, 0.18);
+      --cream:      #F5F0EA;
+      --pink:       #FB72DB;
+      --black:      #000000;
+      --charcoal:   #212121;
+      --form-gray:  #7C7C7C;
+      --border-c:   rgba(245, 240, 234, 0.18);
     }
 
     html { scroll-behavior: smooth; }
 
     body {
       background: var(--black);
-      color: var(--white);
+      color: var(--cream);
       font-family: 'DM Sans', sans-serif;
       font-weight: 300;
-      line-height: 1.6;
     }
 
-    /* ── NAV ── */
+    /* ────────────────────────────────────────
+       NAV
+    ──────────────────────────────────────── */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -37,44 +54,44 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 28px 52px;
+      padding: 28px 60px;
       transition: background 0.3s, border-color 0.3s;
     }
 
     nav.scrolled {
-      background: rgba(0, 0, 0, 0.88);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--border);
+      background: rgba(0, 0, 0, 0.9);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-c);
     }
 
     .nav-logo {
-      font-family: 'Cinzel', serif;
-      font-size: 1.05rem;
-      font-weight: 600;
-      color: var(--pink);
+      font-family: 'Stackwitin', serif;
+      font-size: 1.5rem;
+      color: var(--cream);
       text-decoration: none;
-      letter-spacing: 0.12em;
     }
 
     .nav-links {
       display: flex;
-      gap: 36px;
+      gap: 40px;
       list-style: none;
     }
 
     .nav-links a {
-      color: var(--white);
+      color: var(--cream);
       text-decoration: none;
-      font-size: 0.75rem;
-      font-weight: 500;
-      letter-spacing: 0.14em;
+      font-size: 14px;
+      font-weight: 300;
+      letter-spacing: 5px;
       text-transform: uppercase;
       transition: color 0.2s;
     }
 
     .nav-links a:hover { color: var(--pink); }
 
-    /* ── HERO ── */
+    /* ────────────────────────────────────────
+       HERO
+    ──────────────────────────────────────── */
     .hero {
       position: relative;
       height: 100vh;
@@ -88,378 +105,311 @@
     .hero-bg {
       position: absolute;
       inset: 0;
-      /* Swap in your hero image:
-         background-image: url('your-hero.jpg');
-         background-size: cover;
-         background-position: center; */
-      background: linear-gradient(160deg, #090909 0%, #0f0f0f 40%, #030303 100%);
+      /* Ghost photo — swap path if you rename the file */
+      background-image: url('images/hero-ghost.jpg');
+      background-size: cover;
+      background-position: center 25%;
     }
 
-    /* gradient so title always reads over any image */
+    /* gradient so text always reads */
     .hero-bg::after {
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(to bottom,
-        rgba(0,0,0,0.15) 0%,
-        rgba(0,0,0,0.4)  55%,
-        rgba(0,0,0,0.92) 100%);
+      background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.08) 0%,
+        rgba(0,0,0,0.30) 45%,
+        rgba(0,0,0,0.88) 78%,
+        rgba(0,0,0,1.00) 100%
+      );
     }
 
-    /* Small corner labels */
-    .hero-meta {
-      position: absolute;
-      z-index: 2;
-      top: 108px;
-    }
-
-    .hero-meta.left  { left: 52px; }
-    .hero-meta.right { right: 52px; text-align: right; }
-
-    .hero-meta span {
-      display: block;
-      font-size: 0.6rem;
-      font-weight: 500;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.35);
-      line-height: 1.8;
-    }
-
-    /* Floating sparkles */
-    .hero-star {
-      position: absolute;
-      z-index: 2;
-      color: var(--pink);
-    }
-
-    .hero-star.s1 { top: 140px; right: 52px; font-size: 1.1rem; opacity: 0.75; }
-    .hero-star.s2 { top: 44%;   right: 14%;  font-size: 0.7rem; opacity: 0.5; }
-    .hero-star.s3 { top: 38%;   left: 48%;   font-size: 0.55rem; opacity: 0.35; }
-
-    /* The big title */
-    .hero-title-area {
+    .hero-content {
       position: relative;
       z-index: 2;
-      padding: 0 48px 40px;
+      padding: 0 60px 64px;
     }
 
-    .hero-title {
-      font-family: 'UnifrakturMaguntia', cursive;
-      font-size: clamp(4.5rem, 11.5vw, 13.5rem);
-      color: var(--cream);
-      line-height: 0.86;
-      letter-spacing: 0.01em;
-    }
-
-    /* ── INTRO ── */
-    .intro-section {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      background: var(--black);
-      border-top: 1px solid var(--border);
-    }
-
-    .intro-left {
-      padding: 80px 52px;
-      border-right: 1px solid var(--border);
-    }
-
-    .intro-eyebrow {
-      font-size: 0.6rem;
-      font-weight: 500;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.3);
-      margin-bottom: 28px;
-    }
-
-    .intro-heading {
-      font-family: 'Cinzel', serif;
-      font-size: clamp(1.5rem, 3.2vw, 2.6rem);
-      font-weight: 400;
-      line-height: 1.25;
-      color: var(--white);
-      margin-bottom: 44px;
-    }
-
-    /* two-column body text like the reference */
-    .intro-body {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 28px;
-      margin-bottom: 52px;
-    }
-
-    .intro-body p {
-      font-size: 0.88rem;
+    /* DM Sans Light 18px / 5px letter-spacing */
+    .hero-eyebrow {
+      font-size: 18px;
       font-weight: 300;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--cream);
+      opacity: 0.55;
+      margin-bottom: 16px;
+    }
+
+    /* Stackwitin Regular 64px */
+    .hero-title {
+      font-family: 'Stackwitin', serif;
+      font-weight: normal;
+      font-size: 64px;
+      color: var(--cream);
+      line-height: 1.0;
+    }
+
+    /* ────────────────────────────────────────
+       ABOUT
+    ──────────────────────────────────────── */
+    .about-section { background: var(--black); }
+
+    /* Large display text area */
+    .about-display {
+      position: relative;
+      padding: 100px 60px 0;
+      overflow: hidden;
+    }
+
+    /* Stackwitin Regular 200px */
+    .about-display-word {
+      font-family: 'Stackwitin', serif;
+      font-weight: normal;
+      font-size: 200px;
+      color: var(--cream);
+      line-height: 0.85;
+      white-space: nowrap;
+    }
+
+    /* Candles photo — positioned top-right */
+    .about-image {
+      position: absolute;
+      top: 60px;
+      right: 60px;
+      width: 360px;
+      height: 460px;
+      overflow: hidden;
+    }
+
+    .about-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    /* Cream card that slides over the display text */
+    .about-card {
+      background: var(--cream);
+      margin: -40px 60px 0;
+      padding: 64px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* DM Sans Light 16px / 5px letter-spacing */
+    .about-card-eyebrow {
+      font-size: 16px;
+      font-weight: 300;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--black);
+      opacity: 0.4;
+      margin-bottom: 36px;
+    }
+
+    .about-intro {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+    }
+
+    .wand { font-size: 28px; flex-shrink: 0; margin-top: 4px; }
+
+    /* DM Sans Light 18px */
+    .about-card-body {
+      font-size: 18px;
+      font-weight: 300;
+      color: var(--black);
       line-height: 1.75;
-      color: rgba(255,255,255,0.55);
+      max-width: 640px;
     }
 
-    .intro-right {
-      position: relative;
-      padding: 80px 52px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 0;
-      overflow: hidden;
-    }
-
-    /* Sparkle cluster top-right of arch */
-    .arch-stars {
-      position: absolute;
-      top: 64px;
-      right: 52px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .arch-stars span {
-      color: var(--pink);
-      font-size: 1rem;
-      opacity: 0.75;
-      display: block;
-    }
-
-    .arch-stars span.sm { font-size: 0.55rem; opacity: 0.45; }
-
-    /* Gothic arch frame */
-    .arch-wrap {
-      width: 230px;
-      height: 310px;
-      border-radius: 115px 115px 0 0;
-      overflow: hidden;
-      border: 1px solid rgba(251, 114, 219, 0.28);
-      flex-shrink: 0;
-    }
-
-    .arch-placeholder {
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(180deg, #181818 0%, #0a0a0a 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: rgba(251, 114, 219, 0.25);
-      font-size: 0.65rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-
-    /* Rotated side text */
-    .rotated-label {
-      position: absolute;
-      right: -42px;
-      top: 50%;
-      transform: translateY(-50%) rotate(90deg);
-      font-family: 'Cinzel', serif;
-      font-size: 0.65rem;
-      font-weight: 400;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.28);
-      white-space: nowrap;
-    }
-
-    /* ── COLLAGE DIVIDER ── */
-    .collage {
-      position: relative;
-      height: 480px;
-      overflow: hidden;
-      display: grid;
-      grid-template-columns: 1fr 1.3fr 1fr;
-    }
-
-    .collage-cell {
-      overflow: hidden;
-    }
-
-    .collage-cell-inner {
-      width: 100%;
-      height: 100%;
-    }
-
-    /* diagonal cuts to mimic the reference */
-    .collage-cell:nth-child(1) .collage-cell-inner {
-      background: linear-gradient(145deg, #0e0e0e 0%, #1a1a1a 100%);
-      clip-path: polygon(0 0, 82% 0, 100% 100%, 0 100%);
-    }
-
-    .collage-cell:nth-child(2) .collage-cell-inner {
-      background: linear-gradient(180deg, #0a0a0a 0%, #141414 100%);
-    }
-
-    .collage-cell:nth-child(3) .collage-cell-inner {
-      background: linear-gradient(145deg, #1a1a1a 0%, #0e0e0e 100%);
-      clip-path: polygon(18% 0, 100% 0, 100% 100%, 0 100%);
-    }
-
-    /* overlaid center text */
-    .collage-overlay {
-      position: absolute;
-      bottom: 44px;
-      left: 50%;
-      transform: translateX(-50%);
-      text-align: center;
-      z-index: 4;
-      pointer-events: none;
-      white-space: nowrap;
-    }
-
-    .collage-overlay .star {
-      display: block;
-      font-size: 1.4rem;
-      color: var(--pink);
-      opacity: 0.85;
-      margin-bottom: 12px;
-    }
-
-    .collage-overlay p {
-      font-size: 0.6rem;
-      font-weight: 500;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.4);
-    }
-
-    /* ── WORK ── */
+    /* ────────────────────────────────────────
+       CASE STUDIES — tarot card grid
+    ──────────────────────────────────────── */
     .work-section {
-      padding: 100px 52px;
-      border-top: 1px solid var(--border);
+      background: var(--charcoal);
+      padding: 100px 60px;
     }
 
-    .section-eyebrow {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      margin-bottom: 64px;
-    }
-
-    .section-eyebrow span {
-      font-size: 0.6rem;
-      font-weight: 500;
-      letter-spacing: 0.18em;
+    /* DM Sans Light 18px / 5px letter-spacing */
+    .work-eyebrow {
+      font-size: 18px;
+      font-weight: 300;
+      letter-spacing: 5px;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.3);
-      white-space: nowrap;
+      color: var(--cream);
+      opacity: 0.35;
+      margin-bottom: 72px;
     }
 
-    .section-eyebrow::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: var(--border);
-    }
-
-    .case-grid {
+    .tarot-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 52px 36px;
+      gap: 52px 44px;
     }
 
-    .case-card {
+    .tarot-card {
+      position: relative;
+      background: #161616;
+      padding: 18px 18px 24px;
       cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
+      transition: transform 0.35s ease;
     }
 
-    .case-image-wrap {
-      aspect-ratio: 16 / 10;
+    .tarot-card:hover { transform: translateY(-8px); }
+
+    /* outer border */
+    .tarot-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border: 1px solid rgba(245, 240, 234, 0.16);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* inner border */
+    .tarot-card::after {
+      content: '';
+      position: absolute;
+      inset: 10px;
+      border: 1px solid rgba(245, 240, 234, 0.07);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Roman numeral / top label */
+    .tarot-numeral {
+      font-size: 11px;
+      font-weight: 300;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      color: var(--cream);
+      opacity: 0.3;
+      text-align: center;
+      padding: 10px 0 18px;
+    }
+
+    /* Portrait image — tarot proportions */
+    .tarot-image-wrap {
+      aspect-ratio: 3 / 4;
       overflow: hidden;
+      background: #111;
     }
 
-    .case-image-placeholder {
+    .tarot-image-placeholder {
       width: 100%;
       height: 100%;
-      background: linear-gradient(135deg, #0c0c0c 0%, #171717 100%);
-      border: 1px solid rgba(255,255,255,0.05);
+      background: linear-gradient(180deg, #121212 0%, #0a0a0a 100%);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: rgba(255,255,255,0.08);
-      font-size: 0.65rem;
-      letter-spacing: 0.14em;
+      color: rgba(245, 240, 234, 0.07);
+      font-size: 10px;
+      letter-spacing: 5px;
       text-transform: uppercase;
-      transition: border-color 0.3s;
     }
 
-    .case-card:hover .case-image-placeholder {
-      border-color: rgba(251, 114, 219, 0.22);
+    /* Image img tag (when real photos are added) */
+    .tarot-image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
 
-    .case-footer {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 16px;
+    .tarot-footer {
+      padding: 20px 4px 4px;
     }
 
-    .case-name {
-      font-family: 'Cinzel', serif;
-      font-size: 0.9rem;
-      font-weight: 400;
-      color: var(--white);
-      letter-spacing: 0.06em;
+    .tarot-divider {
+      width: 100%;
+      height: 1px;
+      background: rgba(245, 240, 234, 0.1);
+      margin-bottom: 18px;
     }
 
-    .case-tags {
+    /* Stackwitin Regular 48px */
+    .tarot-name {
+      font-family: 'Stackwitin', serif;
+      font-weight: normal;
+      font-size: 48px;
+      color: var(--cream);
+      line-height: 1.0;
+      margin-bottom: 14px;
+    }
+
+    .tarot-tags {
       display: flex;
       flex-wrap: wrap;
       gap: 6px;
-      justify-content: flex-end;
+      margin-top: 10px;
     }
 
     .tag {
-      font-size: 0.58rem;
-      font-weight: 500;
-      letter-spacing: 0.1em;
+      font-size: 10px;
+      font-weight: 300;
+      letter-spacing: 4px;
       text-transform: uppercase;
       color: var(--pink);
-      border: 1px solid rgba(251, 114, 219, 0.28);
-      padding: 3px 8px;
+      border: 1px solid rgba(251, 114, 219, 0.3);
+      padding: 4px 10px;
     }
 
-    /* 11th card anchored to col 1 */
-    .case-card--lone { grid-column: 1; }
+    .tarot-card--lone { grid-column: 1; }
 
-    /* ── SERVICES + CONTACT ── */
-    .services-contact {
-      padding: 100px 52px;
-      border-top: 1px solid var(--border);
+    /* ────────────────────────────────────────
+       CONTACT + SERVICES
+    ──────────────────────────────────────── */
+    .contact-section { background: var(--black); }
+
+    .contact-display {
+      padding: 100px 60px 0;
+      overflow: hidden;
     }
 
-    .services-title {
-      font-family: 'Cinzel', serif;
-      font-size: clamp(1.6rem, 3.5vw, 3rem);
-      font-weight: 400;
-      color: var(--pink);
-      margin-bottom: 72px;
-      line-height: 1.2;
+    /* Stackwitin Regular 200px */
+    .contact-display-word {
+      font-family: 'Stackwitin', serif;
+      font-weight: normal;
+      font-size: 200px;
+      color: var(--cream);
+      line-height: 0.85;
+      white-space: nowrap;
     }
 
-    .sc-grid {
+    /* Cream content card */
+    .contact-card {
+      background: var(--cream);
+      margin: -40px 60px 0;
+      padding: 64px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* DM Sans Light 16px / 5px letter-spacing */
+    .contact-card-eyebrow {
+      font-size: 16px;
+      font-weight: 300;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--black);
+      opacity: 0.4;
+      margin-bottom: 48px;
+    }
+
+    .contact-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 80px;
       align-items: start;
     }
 
-    .sc-label {
-      font-size: 0.6rem;
-      font-weight: 500;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.3);
-      margin-bottom: 24px;
-    }
-
+    /* DM Sans Light 18px */
     .services-list {
       list-style: none;
       display: flex;
@@ -468,22 +418,22 @@
     }
 
     .services-list li {
-      font-size: 1rem;
+      font-size: 18px;
       font-weight: 300;
-      color: var(--pink);
-      letter-spacing: 0.02em;
+      color: var(--black);
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 14px;
     }
 
     .services-list li::before {
       content: '✦';
-      font-size: 0.48rem;
-      opacity: 0.55;
+      color: var(--pink);
+      font-size: 0.42rem;
       flex-shrink: 0;
     }
 
+    /* Form */
     .contact-form {
       display: flex;
       flex-direction: column;
@@ -496,23 +446,26 @@
       gap: 8px;
     }
 
+    /* DM Sans Light 16px / 5px letter-spacing */
     .form-field label {
-      font-size: 0.6rem;
-      font-weight: 500;
-      letter-spacing: 0.14em;
+      font-size: 11px;
+      font-weight: 300;
+      letter-spacing: 5px;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.35);
+      color: var(--black);
+      opacity: 0.45;
     }
 
+    /* DM Sans Light 18px */
     .form-field input,
     .form-field textarea {
       background: transparent;
       border: none;
-      border-bottom: 1px solid rgba(255,255,255,0.12);
-      color: var(--white);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+      color: var(--black);
       font-family: 'DM Sans', sans-serif;
-      font-size: 0.95rem;
       font-weight: 300;
+      font-size: 18px;
       padding: 10px 0;
       outline: none;
       width: 100%;
@@ -520,80 +473,100 @@
       resize: none;
     }
 
-    .form-field input:focus,
-    .form-field textarea:focus { border-color: var(--pink); }
+    .form-field input::placeholder,
+    .form-field textarea::placeholder {
+      color: var(--form-gray);
+    }
 
-    .form-field textarea { min-height: 100px; }
+    .form-field input:focus,
+    .form-field textarea:focus { border-color: rgba(0,0,0,0.5); }
+
+    .form-field textarea { min-height: 110px; }
 
     .submit-btn {
       align-self: flex-start;
       background: var(--pink);
       color: var(--black);
       border: none;
-      font-family: 'Cinzel', serif;
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.18em;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400;
+      font-size: 11px;
+      letter-spacing: 5px;
       text-transform: uppercase;
-      padding: 14px 40px;
+      padding: 16px 44px;
       cursor: pointer;
       transition: opacity 0.2s, transform 0.2s;
     }
 
     .submit-btn:hover { opacity: 0.85; transform: translateY(-1px); }
 
-    /* ── FOOTER ── */
+    /* ────────────────────────────────────────
+       FOOTER
+    ──────────────────────────────────────── */
     footer {
-      padding: 36px 52px;
-      border-top: 1px solid var(--border);
+      background: var(--black);
+      border-top: 1px solid var(--border-c);
+      padding: 40px 60px;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
 
     footer p {
-      font-size: 0.7rem;
-      color: rgba(255,255,255,0.22);
-      letter-spacing: 0.06em;
+      font-size: 12px;
+      font-weight: 300;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: rgba(245, 240, 234, 0.22);
     }
 
-    .footer-mark {
-      font-family: 'Cinzel', serif;
-      color: var(--pink) !important;
-      opacity: 0.45;
+    .footer-logo {
+      font-family: 'Stackwitin', serif;
+      font-size: 1.4rem;
+      color: var(--pink);
+      opacity: 0.4;
     }
 
-    /* ── RESPONSIVE ── */
-    @media (max-width: 900px) {
-      nav,
-      .hero-title-area { padding-left: 28px; padding-right: 28px; }
+    /* ────────────────────────────────────────
+       RESPONSIVE
+    ──────────────────────────────────────── */
+    @media (max-width: 1100px) {
+      .about-display-word,
+      .contact-display-word { font-size: 140px; }
+      .about-image { width: 280px; height: 360px; }
+    }
 
-      .hero-meta { display: none; }
+    @media (max-width: 860px) {
+      nav { padding: 20px 28px; }
+      .nav-links { gap: 20px; }
+      .nav-links a { font-size: 12px; letter-spacing: 3px; }
 
-      .intro-section { grid-template-columns: 1fr; }
-      .intro-left { padding: 64px 28px; border-right: none; border-bottom: 1px solid var(--border); }
-      .intro-body { grid-template-columns: 1fr; }
-      .intro-right { padding: 64px 28px; }
-      .rotated-label { display: none; }
+      .hero-content { padding: 0 28px 48px; }
+      .hero-title { font-size: 44px; }
+      .hero-eyebrow { font-size: 13px; letter-spacing: 3px; }
 
-      .collage { height: 280px; }
+      .about-display,
+      .contact-display { padding: 72px 28px 0; }
+      .about-display-word,
+      .contact-display-word { font-size: 72px; }
+      .about-image { display: none; }
 
-      .work-section,
-      .services-contact,
-      footer { padding-left: 28px; padding-right: 28px; }
+      .about-card,
+      .contact-card { margin: -20px 28px 0; padding: 40px 28px; }
+      .contact-grid { grid-template-columns: 1fr; gap: 48px; }
 
-      .case-grid { grid-template-columns: 1fr; }
-      .case-card--lone { grid-column: 1; }
+      .work-section { padding: 72px 28px; }
+      .tarot-grid { grid-template-columns: 1fr; gap: 40px; }
+      .tarot-card--lone { grid-column: 1; }
+      .tarot-name { font-size: 36px; }
 
-      .sc-grid { grid-template-columns: 1fr; gap: 60px; }
-
-      footer { flex-direction: column; gap: 10px; text-align: center; }
+      footer { padding: 28px; flex-direction: column; gap: 12px; text-align: center; }
     }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
+  <!-- ── NAV ── -->
   <nav id="main-nav">
     <a href="#" class="nav-logo">Hex.</a>
     <ul class="nav-links">
@@ -604,202 +577,223 @@
     </ul>
   </nav>
 
-  <!-- HERO -->
+  <!-- ── HERO ── -->
+  <!-- Image: save ghost photo as images/hero-ghost.jpg -->
   <section class="hero">
     <div class="hero-bg"></div>
-
-    <div class="hero-meta left">
-      <span>Design Witch</span>
-      <span>Los Angeles, CA</span>
-    </div>
-    <div class="hero-meta right">
-      <span>Portfolio</span>
-      <span>MMXXVI</span>
-    </div>
-
-    <span class="hero-star s1">✦</span>
-    <span class="hero-star s2">✦</span>
-    <span class="hero-star s3">✦</span>
-
-    <div class="hero-title-area">
-      <h1 class="hero-title">Jennifer<br>Cingatura</h1>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Design Witch · Los Angeles</p>
+      <h1 class="hero-title">Jennifer Cingatura</h1>
     </div>
   </section>
 
-  <!-- INTRO -->
-  <section class="intro-section" id="about">
-    <div class="intro-left">
-      <p class="intro-eyebrow">About</p>
-      <h2 class="intro-heading">Hi, I'm Jennifer.<br>A design witch<br>based in Los Angeles.</h2>
-      <div class="intro-body">
-        <p>Casting spells in Hex code. I craft intuitive, visually sharp digital experiences that actually work — no dark arts required.</p>
-        <p>I read tarot too, which honestly explains why my design decisions are always right.</p>
+  <!-- ── ABOUT ── -->
+  <!-- Image: save candles photo as images/candles.jpg -->
+  <section class="about-section" id="about">
+    <div class="about-display">
+      <div class="about-display-word">Jennifer.</div>
+      <div class="about-image">
+        <img src="images/candles.jpg" alt="Candlelight" />
       </div>
     </div>
-
-    <div class="intro-right">
-      <div class="arch-stars">
-        <span>✦</span>
-        <span class="sm">✦</span>
-        <span>✦</span>
+    <div class="about-card">
+      <p class="about-card-eyebrow">About</p>
+      <div class="about-intro">
+        <span class="wand">🪄</span>
+        <p class="about-card-body">
+          Hi, I'm Jennifer. A design witch based in Los Angeles casting spells in Hex code.
+          I craft intuitive, visually sharp digital experiences that actually work — no dark arts required.
+          I read tarot too, which honestly explains why my design decisions are always right.
+        </p>
       </div>
-
-      <div class="arch-wrap">
-        <div class="arch-placeholder">Image</div>
-      </div>
-
-      <span class="rotated-label">this is serious, I mean it</span>
     </div>
   </section>
 
-  <!-- COLLAGE DIVIDER -->
-  <div class="collage">
-    <div class="collage-cell"><div class="collage-cell-inner"></div></div>
-    <div class="collage-cell"><div class="collage-cell-inner"></div></div>
-    <div class="collage-cell"><div class="collage-cell-inner"></div></div>
-    <div class="collage-overlay">
-      <span class="star">✦</span>
-      <p>Crafting digital experiences worth casting spells for</p>
-    </div>
-  </div>
-
-  <!-- WORK -->
+  <!-- ── CASE STUDIES ── -->
   <section class="work-section" id="work">
-    <div class="section-eyebrow"><span>Selected Work</span></div>
-    <div class="case-grid">
+    <p class="work-eyebrow">Selected Work</p>
+    <div class="tarot-grid">
 
-      <div class="case-card">
-        <div class="case-image-wrap"><div class="case-image-placeholder">Case Study Image</div></div>
-        <div class="case-footer">
-          <p class="case-name">Case Study 01</p>
-          <div class="case-tags"><span class="tag">Mobile App</span></div>
+      <div class="tarot-card">
+        <div class="tarot-inner">
+          <p class="tarot-numeral">✦ &nbsp; I &nbsp; ✦</p>
+          <div class="tarot-image-wrap"><div class="tarot-image-placeholder">Image</div></div>
+          <div class="tarot-footer">
+            <div class="tarot-divider"></div>
+            <h3 class="tarot-name">Case Study 01</h3>
+            <div class="tarot-tags"><span class="tag">Mobile App</span></div>
+          </div>
         </div>
       </div>
 
-      <div class="case-card">
-        <div class="case-image-wrap"><div class="case-image-placeholder">Case Study Image</div></div>
-        <div class="case-footer">
-          <p class="case-name">Case Study 02</p>
-          <div class="case-tags"><span class="tag">Desktop App</span></div>
+      <div class="tarot-card">
+        <div class="tarot-inner">
+          <p class="tarot-numeral">✦ &nbsp; II &nbsp; ✦</p>
+          <div class="tarot-image-wrap"><div class="tarot-image-placeholder">Image</div></div>
+          <div class="tarot-footer">
+            <div class="tarot-divider"></div>
+            <h3 class="tarot-name">Case Study 02</h3>
+            <div class="tarot-tags"><span class="tag">Desktop App</span></div>
+          </div>
         </div>
       </div>
 
-      <div class="case-card">
-        <div class="case-image-wrap"><div class="case-image-placeholder">Case Study Image</div></div>
-        <div class="case-footer">
-          <p class="case-name">Case Study 03</p>
-          <div class="case-tags"><span class="tag">Responsive Web</span></div>
+      <div class="tarot-card">
+        <div class="tarot-inner">
+          <p class="tarot-numeral">✦ &nbsp; III &nbsp; ✦</p>
+          <div class="tarot-image-wrap"><div class="tarot-image-placeholder">Image</div></div>
+          <div class="tarot-footer">
+            <div class="tarot-divider"></div>
+            <h3 class="tarot-name">Case Study 03</h3>
+            <div class="tarot-tags"><span class="tag">Responsive Web</span></div>
+          </div>
         </div>
       </div>
 
-      <div class="case-card">
-        <div class="case-image-wrap"><div class="case-image-placeholder">Case Study Image</div></div>
-        <div class="case-footer">
-          <p class="case-name">Case Study 04</p>
-          <div class="case-tags"><span class="tag">Mobile App</span><span class="tag">Responsive Web</span></div>
+      <div class="tarot-card">
+        <div class="tarot-inner">
+          <p class="tarot-numeral">✦ &nbsp; IV &nbsp; ✦</p>
+          <div class="tarot-image-wrap"><div class="tarot-image-placeholder">Image</div></div>
+          <div class="tarot-footer">
+            <div class="tarot-divider"></div>
+            <h3 class="tarot-name">Case Study 04</h3>
+            <div class="tarot-tags"><span class="tag">Mobile App</span><span class="tag">Responsive Web</span></div>
+          </div>
         </div>
       </div>
 
-      <div class="case-card">
-        <div class="case-image-wrap"><div class="case-image-placeholder">Case Study Image</div></div>
-        <div class="case-footer">
-          <p class="case-name">Case Study 05</p>
-          <div class="case-tags"><span class="tag">Print</span></div>
+      <div class="tarot-card">
+        <div class="tarot-inner">
+          <p class="tarot-numeral">✦ &nbsp; V &nbsp; ✦</p>
+          <div class="tarot-image-wrap"><div class="tarot-image-placeholder">Image</div></div>
+          <div class="tarot-footer">
+            <div class="tarot-divider"></div>
+            <h3 class="tarot-name">Case Study 05</h3>
+            <div class="tarot-tags"><span class="tag">Print</span></div>
+          </div>
         </div>
       </div>
 
-      <div class="case-card">
-        <div class="case-image-wrap"><div class="case-image-placeholder">Case Study Image</div></div>
-        <div class="case-footer">
-          <p class="case-name">Case Study 06</p>
-          <div class="case-tags"><span class="tag">Desktop App</span><span class="tag">Responsive Web</span></div>
+      <div class="tarot-card">
+        <div class="tarot-inner">
+          <p class="tarot-numeral">✦ &nbsp; VI &nbsp; ✦</p>
+          <div class="tarot-image-wrap"><div class="tarot-image-placeholder">Image</div></div>
+          <div class="tarot-footer">
+            <div class="tarot-divider"></div>
+            <h3 class="tarot-name">Case Study 06</h3>
+            <div class="tarot-tags"><span class="tag">Desktop App</span><span class="tag">Responsive Web</span></div>
+          </div>
         </div>
       </div>
 
-      <div class="case-card">
-        <div class="case-image-wrap"><div class="case-image-placeholder">Case Study Image</div></div>
-        <div class="case-footer">
-          <p class="case-name">Case Study 07</p>
-          <div class="case-tags"><span class="tag">Mobile App</span></div>
+      <div class="tarot-card">
+        <div class="tarot-inner">
+          <p class="tarot-numeral">✦ &nbsp; VII &nbsp; ✦</p>
+          <div class="tarot-image-wrap"><div class="tarot-image-placeholder">Image</div></div>
+          <div class="tarot-footer">
+            <div class="tarot-divider"></div>
+            <h3 class="tarot-name">Case Study 07</h3>
+            <div class="tarot-tags"><span class="tag">Mobile App</span></div>
+          </div>
         </div>
       </div>
 
-      <div class="case-card">
-        <div class="case-image-wrap"><div class="case-image-placeholder">Case Study Image</div></div>
-        <div class="case-footer">
-          <p class="case-name">Case Study 08</p>
-          <div class="case-tags"><span class="tag">Print</span><span class="tag">Desktop App</span></div>
+      <div class="tarot-card">
+        <div class="tarot-inner">
+          <p class="tarot-numeral">✦ &nbsp; VIII &nbsp; ✦</p>
+          <div class="tarot-image-wrap"><div class="tarot-image-placeholder">Image</div></div>
+          <div class="tarot-footer">
+            <div class="tarot-divider"></div>
+            <h3 class="tarot-name">Case Study 08</h3>
+            <div class="tarot-tags"><span class="tag">Print</span><span class="tag">Desktop App</span></div>
+          </div>
         </div>
       </div>
 
-      <div class="case-card">
-        <div class="case-image-wrap"><div class="case-image-placeholder">Case Study Image</div></div>
-        <div class="case-footer">
-          <p class="case-name">Case Study 09</p>
-          <div class="case-tags"><span class="tag">Responsive Web</span></div>
+      <div class="tarot-card">
+        <div class="tarot-inner">
+          <p class="tarot-numeral">✦ &nbsp; IX &nbsp; ✦</p>
+          <div class="tarot-image-wrap"><div class="tarot-image-placeholder">Image</div></div>
+          <div class="tarot-footer">
+            <div class="tarot-divider"></div>
+            <h3 class="tarot-name">Case Study 09</h3>
+            <div class="tarot-tags"><span class="tag">Responsive Web</span></div>
+          </div>
         </div>
       </div>
 
-      <div class="case-card">
-        <div class="case-image-wrap"><div class="case-image-placeholder">Case Study Image</div></div>
-        <div class="case-footer">
-          <p class="case-name">Case Study 10</p>
-          <div class="case-tags"><span class="tag">Mobile App</span><span class="tag">Print</span></div>
+      <div class="tarot-card">
+        <div class="tarot-inner">
+          <p class="tarot-numeral">✦ &nbsp; X &nbsp; ✦</p>
+          <div class="tarot-image-wrap"><div class="tarot-image-placeholder">Image</div></div>
+          <div class="tarot-footer">
+            <div class="tarot-divider"></div>
+            <h3 class="tarot-name">Case Study 10</h3>
+            <div class="tarot-tags"><span class="tag">Mobile App</span><span class="tag">Print</span></div>
+          </div>
         </div>
       </div>
 
-      <div class="case-card case-card--lone">
-        <div class="case-image-wrap"><div class="case-image-placeholder">Case Study Image</div></div>
-        <div class="case-footer">
-          <p class="case-name">Case Study 11</p>
-          <div class="case-tags"><span class="tag">Desktop App</span><span class="tag">Responsive Web</span></div>
+      <div class="tarot-card tarot-card--lone">
+        <div class="tarot-inner">
+          <p class="tarot-numeral">✦ &nbsp; XI &nbsp; ✦</p>
+          <div class="tarot-image-wrap"><div class="tarot-image-placeholder">Image</div></div>
+          <div class="tarot-footer">
+            <div class="tarot-divider"></div>
+            <h3 class="tarot-name">Case Study 11</h3>
+            <div class="tarot-tags"><span class="tag">Desktop App</span><span class="tag">Responsive Web</span></div>
+          </div>
         </div>
       </div>
 
     </div>
   </section>
 
-  <!-- SERVICES + CONTACT -->
-  <section class="services-contact" id="contact">
-    <h2 class="services-title">Looking to whip<br>up some magic?</h2>
-    <div class="sc-grid">
+  <!-- ── CONTACT + SERVICES ── -->
+  <section class="contact-section" id="contact">
+    <div class="contact-display">
+      <div class="contact-display-word">Let's work.</div>
+    </div>
+    <div class="contact-card">
+      <p class="contact-card-eyebrow">Services &amp; Contact</p>
+      <div class="contact-grid">
 
-      <div>
-        <p class="sc-label">Services</p>
-        <ul class="services-list">
-          <li>Native iOS and Android app design</li>
-          <li>Responsive web</li>
-          <li>SaaS and B2B design</li>
-          <li>Social media graphics</li>
-          <li>Marketing collateral</li>
-          <li>Print graphics</li>
-          <li>Logos and branding</li>
-        </ul>
+        <div>
+          <ul class="services-list">
+            <li>Native iOS and Android app design</li>
+            <li>Responsive web</li>
+            <li>SaaS and B2B design</li>
+            <li>Social media graphics</li>
+            <li>Marketing collateral</li>
+            <li>Print graphics</li>
+            <li>Logos and branding</li>
+          </ul>
+        </div>
+
+        <form class="contact-form" onsubmit="handleSubmit(event)">
+          <div class="form-field">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Your name" required />
+          </div>
+          <div class="form-field">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="your@email.com" required />
+          </div>
+          <div class="form-field">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Tell me about your project..." required></textarea>
+          </div>
+          <button type="submit" class="submit-btn">Submit</button>
+        </form>
+
       </div>
-
-      <form class="contact-form" onsubmit="handleSubmit(event)">
-        <div class="form-field">
-          <label for="name">Name</label>
-          <input type="text" id="name" name="name" placeholder="Your name" required />
-        </div>
-        <div class="form-field">
-          <label for="email">Email Address</label>
-          <input type="email" id="email" name="email" placeholder="your@email.com" required />
-        </div>
-        <div class="form-field">
-          <label for="message">Message</label>
-          <textarea id="message" name="message" placeholder="Tell me about your project..." required></textarea>
-        </div>
-        <button type="submit" class="submit-btn">Submit</button>
-      </form>
-
     </div>
   </section>
 
-  <!-- FOOTER -->
+  <!-- ── FOOTER ── -->
   <footer>
     <p>© 2026 Jennifer Cingatura. All rights reserved.</p>
-    <p class="footer-mark">✦ Hex.</p>
+    <span class="footer-logo">Hex.</span>
   </footer>
 
   <script>
