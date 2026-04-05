@@ -40,9 +40,9 @@
 
     /* ── SPARKLE ANIMATION ── */
     @keyframes sparkle {
-      0%   { opacity: 0.2; transform: scale(0.8); filter: drop-shadow(0 0 0px var(--gold)); }
-      50%  { opacity: 1;   transform: scale(1.15); filter: drop-shadow(0 0 8px var(--gold)) drop-shadow(0 0 16px rgba(196,150,101,0.5)); }
-      100% { opacity: 0.2; transform: scale(0.8); filter: drop-shadow(0 0 0px var(--gold)); }
+      0%   { opacity: 0.25; transform: scale(0.85); filter: drop-shadow(0 0 0px var(--gold)); }
+      50%  { opacity: 1;    transform: scale(1.2);  filter: drop-shadow(0 0 8px var(--gold)) drop-shadow(0 0 16px rgba(196,150,101,0.5)); }
+      100% { opacity: 0.25; transform: scale(0.85); filter: drop-shadow(0 0 0px var(--gold)); }
     }
 
     /* ── NAV ── */
@@ -115,13 +115,13 @@
       );
     }
 
+    /* Filled 4-point stars */
     .hero-star {
       position: absolute;
       z-index: 2;
+      color: var(--gold);
+      line-height: 1;
       pointer-events: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       animation: sparkle var(--dur, 4s) ease-in-out infinite;
       animation-delay: var(--delay, 0s);
     }
@@ -167,10 +167,9 @@
 
     .about-deco-star {
       position: absolute;
+      color: var(--gold);
+      line-height: 1;
       pointer-events: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
     }
 
     .about-headline {
@@ -213,15 +212,11 @@
       display: flex;
       align-items: center;
       flex-wrap: wrap;
-      gap: 0;
     }
 
     .company-list .sep {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
+      color: var(--gold);
       margin: 0 10px;
-      vertical-align: middle;
     }
 
     /* Right — enchantress image */
@@ -248,10 +243,9 @@
     .enchantress-star {
       position: absolute;
       z-index: 2;
+      color: var(--gold);
+      line-height: 1;
       pointer-events: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       animation: sparkle var(--dur, 4s) ease-in-out infinite;
       animation-delay: var(--delay, 0s);
     }
@@ -261,21 +255,24 @@
       background: var(--charcoal);
       display: flex;
       align-items: center;
-      padding: 40px 60px;
+      padding: 48px 60px;
     }
 
     .divider-line {
       flex: 1;
-      height: 4px;
-      background: rgba(245, 240, 234, 0.15);
-      border-radius: 2px;
+      height: 2px;
+      background: var(--gold);
+      border-radius: 1px;
     }
 
     .divider-star-wrap {
-      padding: 0 28px;
+      padding: 0 20px;
       display: flex;
       align-items: center;
       justify-content: center;
+      color: var(--gold);
+      font-size: 96px;
+      line-height: 1;
     }
 
     /* ── CASE STUDIES — #212121 bg ── */
@@ -313,36 +310,40 @@
       flex: 1;
       overflow: hidden;
       border-radius: 34px;
-      background: #e4dfd7;
+      background: #e8e3dc;
       margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
+    /* Single images: contain + centered so full mockup is visible */
     .tarot-image-wrap img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      object-position: center top;
+      object-fit: contain;
+      object-position: center center;
       display: block;
     }
 
-    /* Dual-image layout (SimplePractice, United DS) */
+    /* Dual-image layout — 36px gap */
     .tarot-image-wrap.dual-images {
-      display: flex;
-      gap: 4px;
+      gap: 36px;
+      padding: 0 12px;
     }
 
     .tarot-image-wrap.dual-images img {
       flex: 1;
       min-width: 0;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
       object-position: center top;
     }
 
     .tarot-star {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      text-align: center;
+      color: var(--gold);
+      font-size: 1.2rem;
       margin-bottom: 8px;
       flex-shrink: 0;
     }
@@ -359,21 +360,19 @@
       flex-shrink: 0;
     }
 
-    /* Project name in DM Sans Light uppercase */
+    /* Project name — 16px, gray */
     .tarot-category {
-      font-size: 18px;
+      font-size: 16px;
       font-weight: 300;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: var(--charcoal);
+      color: var(--gray);
       text-align: center;
       flex-shrink: 0;
     }
 
-    /* Center last card (Music Posters) in the 3-col grid */
-    .tarot-card--center {
-      grid-column: 2;
-    }
+    /* Center last card (Music Posters) in col 2 */
+    .tarot-card--center { grid-column: 2; }
 
     /* ── CONTACT + SERVICES — #212121 bg ── */
     .contact-section {
@@ -524,7 +523,7 @@
       background: var(--black);
       padding: 36px 60px;
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
     }
 
@@ -534,12 +533,6 @@
       letter-spacing: 4px;
       text-transform: uppercase;
       color: rgba(245, 240, 234, 0.22);
-    }
-
-    .footer-logo {
-      font-family: 'Stackwitin', serif;
-      font-size: 1.5rem;
-      color: rgba(245, 240, 234, 0.3);
     }
 
     /* ── RESPONSIVE ── */
@@ -570,8 +563,6 @@
       .contact-grid { grid-template-columns: 1fr; gap: 48px; }
       .services-grid { grid-template-columns: repeat(2, 136px); }
       .submit-btn { align-self: flex-start; }
-
-      footer { flex-direction: column; gap: 12px; text-align: center; }
     }
   </style>
 </head>
@@ -592,32 +583,12 @@
   <section class="hero">
     <div class="hero-bg"></div>
 
-    <!-- Thin 6-point SVG stars — each with independent sparkle timing -->
-    <span class="hero-star" style="top:20%; left:7%; --dur:3.8s; --delay:0s;">
-      <svg width="28" height="28" viewBox="-12 -12 24 24" fill="none" stroke="#C49665" stroke-width="0.8" stroke-linejoin="round">
-        <path d="M0-10 2.5-4.33 8.66-5 5 0 8.66 5 2.5 4.33 0 10-2.5 4.33-8.66 5-5 0-8.66-5-2.5-4.33Z"/>
-      </svg>
-    </span>
-    <span class="hero-star" style="top:14%; right:26%; --dur:5.1s; --delay:1.2s;">
-      <svg width="18" height="18" viewBox="-12 -12 24 24" fill="none" stroke="#C49665" stroke-width="0.8" stroke-linejoin="round">
-        <path d="M0-10 2.5-4.33 8.66-5 5 0 8.66 5 2.5 4.33 0 10-2.5 4.33-8.66 5-5 0-8.66-5-2.5-4.33Z"/>
-      </svg>
-    </span>
-    <span class="hero-star" style="top:38%; right:10%; --dur:4.4s; --delay:0.6s;">
-      <svg width="14" height="14" viewBox="-12 -12 24 24" fill="none" stroke="#C49665" stroke-width="0.9" stroke-linejoin="round">
-        <path d="M0-10 2.5-4.33 8.66-5 5 0 8.66 5 2.5 4.33 0 10-2.5 4.33-8.66 5-5 0-8.66-5-2.5-4.33Z"/>
-      </svg>
-    </span>
-    <span class="hero-star" style="top:58%; left:22%; --dur:3.2s; --delay:2.1s;">
-      <svg width="10" height="10" viewBox="-12 -12 24 24" fill="none" stroke="#C49665" stroke-width="1" stroke-linejoin="round">
-        <path d="M0-10 2.5-4.33 8.66-5 5 0 8.66 5 2.5 4.33 0 10-2.5 4.33-8.66 5-5 0-8.66-5-2.5-4.33Z"/>
-      </svg>
-    </span>
-    <span class="hero-star" style="top:30%; left:45%; --dur:4.8s; --delay:0.3s;">
-      <svg width="8" height="8" viewBox="-12 -12 24 24" fill="none" stroke="#C49665" stroke-width="1" stroke-linejoin="round">
-        <path d="M0-10 2.5-4.33 8.66-5 5 0 8.66 5 2.5 4.33 0 10-2.5 4.33-8.66 5-5 0-8.66-5-2.5-4.33Z"/>
-      </svg>
-    </span>
+    <!-- Filled 4-point stars — independent sparkle timings -->
+    <span class="hero-star" style="top:20%; left:7%;  font-size:1.8rem; --dur:3.8s; --delay:0s;">✦</span>
+    <span class="hero-star" style="top:14%; right:26%; font-size:1.1rem; --dur:5.1s; --delay:1.2s;">✦</span>
+    <span class="hero-star" style="top:38%; right:10%; font-size:0.85rem; --dur:4.4s; --delay:0.6s;">✦</span>
+    <span class="hero-star" style="top:58%; left:22%; font-size:0.6rem;  --dur:3.2s; --delay:2.1s;">✦</span>
+    <span class="hero-star" style="top:30%; left:45%; font-size:0.5rem;  --dur:4.8s; --delay:0.3s;">✦</span>
 
     <div class="hero-title-area">
       <p class="hero-location">Los Angeles Design Witch</p>
@@ -632,24 +603,9 @@
       <!-- Headline with 3 differently-sized decorative stars -->
       <div class="about-headline-wrap">
         <h2 class="about-headline">Casting hex code spells<br>for digital experiences</h2>
-        <!-- Large star — top right -->
-        <span class="about-deco-star" style="top: -12px; right: -48px;">
-          <svg width="28" height="28" viewBox="-12 -12 24 24" fill="none" stroke="#C49665" stroke-width="0.8" stroke-linejoin="round">
-            <path d="M0-10 2.5-4.33 8.66-5 5 0 8.66 5 2.5 4.33 0 10-2.5 4.33-8.66 5-5 0-8.66-5-2.5-4.33Z"/>
-          </svg>
-        </span>
-        <!-- Medium star -->
-        <span class="about-deco-star" style="top: 40px; right: -68px;">
-          <svg width="18" height="18" viewBox="-12 -12 24 24" fill="none" stroke="#C49665" stroke-width="0.9" stroke-linejoin="round">
-            <path d="M0-10 2.5-4.33 8.66-5 5 0 8.66 5 2.5 4.33 0 10-2.5 4.33-8.66 5-5 0-8.66-5-2.5-4.33Z"/>
-          </svg>
-        </span>
-        <!-- Small star -->
-        <span class="about-deco-star" style="top: 16px; right: -80px;">
-          <svg width="10" height="10" viewBox="-12 -12 24 24" fill="none" stroke="#C49665" stroke-width="1" stroke-linejoin="round">
-            <path d="M0-10 2.5-4.33 8.66-5 5 0 8.66 5 2.5 4.33 0 10-2.5 4.33-8.66 5-5 0-8.66-5-2.5-4.33Z"/>
-          </svg>
-        </span>
+        <span class="about-deco-star" style="font-size:1.9rem; top:-10px; right:-50px;">✦</span>
+        <span class="about-deco-star" style="font-size:1.1rem; top:42px;  right:-70px;">✦</span>
+        <span class="about-deco-star" style="font-size:0.6rem; top:18px;  right:-82px;">✦</span>
       </div>
 
       <div class="about-body">
@@ -659,36 +615,11 @@
 
       <p class="worked-at-label">Hexed Designs At</p>
       <p class="company-list">
-        IBM
-        <span class="sep">
-          <svg width="10" height="10" viewBox="-12 -12 24 24" fill="none" stroke="#C49665" stroke-width="1" stroke-linejoin="round">
-            <path d="M0-10 2.5-4.33 8.66-5 5 0 8.66 5 2.5 4.33 0 10-2.5 4.33-8.66 5-5 0-8.66-5-2.5-4.33Z"/>
-          </svg>
-        </span>
-        Tala
-        <span class="sep">
-          <svg width="10" height="10" viewBox="-12 -12 24 24" fill="none" stroke="#C49665" stroke-width="1" stroke-linejoin="round">
-            <path d="M0-10 2.5-4.33 8.66-5 5 0 8.66 5 2.5 4.33 0 10-2.5 4.33-8.66 5-5 0-8.66-5-2.5-4.33Z"/>
-          </svg>
-        </span>
-        Solo Funds
-        <span class="sep">
-          <svg width="10" height="10" viewBox="-12 -12 24 24" fill="none" stroke="#C49665" stroke-width="1" stroke-linejoin="round">
-            <path d="M0-10 2.5-4.33 8.66-5 5 0 8.66 5 2.5 4.33 0 10-2.5 4.33-8.66 5-5 0-8.66-5-2.5-4.33Z"/>
-          </svg>
-        </span>
-        United Airlines
-        <span class="sep">
-          <svg width="10" height="10" viewBox="-12 -12 24 24" fill="none" stroke="#C49665" stroke-width="1" stroke-linejoin="round">
-            <path d="M0-10 2.5-4.33 8.66-5 5 0 8.66 5 2.5 4.33 0 10-2.5 4.33-8.66 5-5 0-8.66-5-2.5-4.33Z"/>
-          </svg>
-        </span>
-        Super.com
-        <span class="sep">
-          <svg width="10" height="10" viewBox="-12 -12 24 24" fill="none" stroke="#C49665" stroke-width="1" stroke-linejoin="round">
-            <path d="M0-10 2.5-4.33 8.66-5 5 0 8.66 5 2.5 4.33 0 10-2.5 4.33-8.66 5-5 0-8.66-5-2.5-4.33Z"/>
-          </svg>
-        </span>
+        IBM <span class="sep">✦</span>
+        Tala <span class="sep">✦</span>
+        Solo Funds <span class="sep">✦</span>
+        United Airlines <span class="sep">✦</span>
+        Super.com <span class="sep">✦</span>
         SimplePractice
       </p>
     </div>
@@ -696,68 +627,44 @@
     <div class="about-right">
       <!-- Enchantress image with animated stars -->
       <div class="enchantress-container">
-
-        <!-- Animated stars around the image — independent sparkle timings -->
-        <span class="enchantress-star" style="top: -20px; left: 50%; transform: translateX(-50%); --dur:4.2s; --delay:0.5s;">
-          <svg width="22" height="22" viewBox="-12 -12 24 24" fill="none" stroke="#C49665" stroke-width="0.8" stroke-linejoin="round">
-            <path d="M0-10 2.5-4.33 8.66-5 5 0 8.66 5 2.5 4.33 0 10-2.5 4.33-8.66 5-5 0-8.66-5-2.5-4.33Z"/>
-          </svg>
-        </span>
-        <span class="enchantress-star" style="top: 24px; left: -22px; --dur:3.6s; --delay:1.8s;">
-          <svg width="14" height="14" viewBox="-12 -12 24 24" fill="none" stroke="#C49665" stroke-width="0.9" stroke-linejoin="round">
-            <path d="M0-10 2.5-4.33 8.66-5 5 0 8.66 5 2.5 4.33 0 10-2.5 4.33-8.66 5-5 0-8.66-5-2.5-4.33Z"/>
-          </svg>
-        </span>
-        <span class="enchantress-star" style="top: 24px; right: -22px; --dur:5.0s; --delay:0.1s;">
-          <svg width="14" height="14" viewBox="-12 -12 24 24" fill="none" stroke="#C49665" stroke-width="0.9" stroke-linejoin="round">
-            <path d="M0-10 2.5-4.33 8.66-5 5 0 8.66 5 2.5 4.33 0 10-2.5 4.33-8.66 5-5 0-8.66-5-2.5-4.33Z"/>
-          </svg>
-        </span>
-        <span class="enchantress-star" style="top: 45%; left: -26px; --dur:4.7s; --delay:2.4s;">
-          <svg width="9" height="9" viewBox="-12 -12 24 24" fill="none" stroke="#C49665" stroke-width="1" stroke-linejoin="round">
-            <path d="M0-10 2.5-4.33 8.66-5 5 0 8.66 5 2.5 4.33 0 10-2.5 4.33-8.66 5-5 0-8.66-5-2.5-4.33Z"/>
-          </svg>
-        </span>
-        <span class="enchantress-star" style="top: 45%; right: -26px; --dur:3.3s; --delay:0.9s;">
-          <svg width="9" height="9" viewBox="-12 -12 24 24" fill="none" stroke="#C49665" stroke-width="1" stroke-linejoin="round">
-            <path d="M0-10 2.5-4.33 8.66-5 5 0 8.66 5 2.5 4.33 0 10-2.5 4.33-8.66 5-5 0-8.66-5-2.5-4.33Z"/>
-          </svg>
-        </span>
-
+        <span class="enchantress-star" style="top:-20px; left:50%; transform:translateX(-50%); font-size:1.4rem; --dur:4.2s; --delay:0.5s;">✦</span>
+        <span class="enchantress-star" style="top:22px; left:-24px; font-size:0.9rem; --dur:3.6s; --delay:1.8s;">✦</span>
+        <span class="enchantress-star" style="top:22px; right:-24px; font-size:0.9rem; --dur:5.0s; --delay:0.1s;">✦</span>
+        <span class="enchantress-star" style="top:46%; left:-20px; font-size:0.55rem; --dur:4.7s; --delay:2.4s;">✦</span>
+        <span class="enchantress-star" style="top:46%; right:-20px; font-size:0.55rem; --dur:3.3s; --delay:0.9s;">✦</span>
         <img src="images/Enchantress.png" class="enchantress-img" alt="Enchantress" />
       </div>
     </div>
   </section>
 
+  <!-- ── DIVIDER between About and Work ── -->
+  <div class="section-divider">
+    <div class="divider-line"></div>
+    <div class="divider-star-wrap">✦</div>
+    <div class="divider-line"></div>
+  </div>
+
   <!-- ── CASE STUDIES (#212121 bg) ── -->
   <section class="work-section" id="work">
     <div class="tarot-grid">
 
-      <!-- 1: SimplePractice — dual images -->
+      <!-- 1: SimplePractice — dual images, 36px gap -->
       <div class="tarot-card">
         <div class="tarot-image-wrap dual-images">
-          <img src="images/SimplePractice%20Android.png" alt="SimplePractice Android" />
-          <img src="images/SimplePractice%20iPhone.png" alt="SimplePractice iPhone" />
+          <img src="images/SimplePractice Android.png" alt="SimplePractice Android" />
+          <img src="images/SimplePractice iPhone.png" alt="SimplePractice iPhone" />
         </div>
-        <div class="tarot-star">
-          <svg width="20" height="20" viewBox="-12 -12 24 24" fill="none" stroke="#C49665" stroke-width="0.9" stroke-linejoin="round">
-            <path d="M0-10 2.5-4.33 8.66-5 5 0 8.66 5 2.5 4.33 0 10-2.5 4.33-8.66 5-5 0-8.66-5-2.5-4.33Z"/>
-          </svg>
-        </div>
+        <p class="tarot-star">✦</p>
         <h3 class="tarot-name">SimplePractice</h3>
         <p class="tarot-category">Clinician Documentation</p>
       </div>
 
-      <!-- 2: Super.com -->
+      <!-- 2: Super.com — centered -->
       <div class="tarot-card">
         <div class="tarot-image-wrap">
           <img src="images/Super.com.png" alt="Super.com" />
         </div>
-        <div class="tarot-star">
-          <svg width="20" height="20" viewBox="-12 -12 24 24" fill="none" stroke="#C49665" stroke-width="0.9" stroke-linejoin="round">
-            <path d="M0-10 2.5-4.33 8.66-5 5 0 8.66 5 2.5 4.33 0 10-2.5 4.33-8.66 5-5 0-8.66-5-2.5-4.33Z"/>
-          </svg>
-        </div>
+        <p class="tarot-star">✦</p>
         <h3 class="tarot-name">Super.com</h3>
         <p class="tarot-category">Flights MVP</p>
       </div>
@@ -765,28 +672,20 @@
       <!-- 3: United Airlines MilePlay -->
       <div class="tarot-card">
         <div class="tarot-image-wrap">
-          <img src="images/United%20Mileplay%20Phone.png" alt="United Airlines MilePlay" />
+          <img src="images/United MilePlay Phone.png" alt="United Airlines MilePlay" />
         </div>
-        <div class="tarot-star">
-          <svg width="20" height="20" viewBox="-12 -12 24 24" fill="none" stroke="#C49665" stroke-width="0.9" stroke-linejoin="round">
-            <path d="M0-10 2.5-4.33 8.66-5 5 0 8.66 5 2.5 4.33 0 10-2.5 4.33-8.66 5-5 0-8.66-5-2.5-4.33Z"/>
-          </svg>
-        </div>
+        <p class="tarot-star">✦</p>
         <h3 class="tarot-name">United Airlines</h3>
         <p class="tarot-category">Mileplay</p>
       </div>
 
-      <!-- 4: United Airlines Design System — dual images -->
+      <!-- 4: United Airlines DS — dual images, 36px gap -->
       <div class="tarot-card">
         <div class="tarot-image-wrap dual-images">
-          <img src="images/United%20Airlines%20Android%20DS.png" alt="United Airlines Android DS" />
-          <img src="images/United%20Airlines%20iOS%20DS.png" alt="United Airlines iOS DS" />
+          <img src="images/United Airlines Android DS.png" alt="United Airlines Android DS" />
+          <img src="images/United Airlines iOS DS.png" alt="United Airlines iOS DS" />
         </div>
-        <div class="tarot-star">
-          <svg width="20" height="20" viewBox="-12 -12 24 24" fill="none" stroke="#C49665" stroke-width="0.9" stroke-linejoin="round">
-            <path d="M0-10 2.5-4.33 8.66-5 5 0 8.66 5 2.5 4.33 0 10-2.5 4.33-8.66 5-5 0-8.66-5-2.5-4.33Z"/>
-          </svg>
-        </div>
+        <p class="tarot-star">✦</p>
         <h3 class="tarot-name">United Airlines</h3>
         <p class="tarot-category">Native Mobile Design System</p>
       </div>
@@ -794,13 +693,9 @@
       <!-- 5: Solo Funds -->
       <div class="tarot-card">
         <div class="tarot-image-wrap">
-          <img src="images/Solo%20Funds%20Phone.png" alt="Solo Funds" />
+          <img src="images/Solo Funds Phone.png" alt="Solo Funds" />
         </div>
-        <div class="tarot-star">
-          <svg width="20" height="20" viewBox="-12 -12 24 24" fill="none" stroke="#C49665" stroke-width="0.9" stroke-linejoin="round">
-            <path d="M0-10 2.5-4.33 8.66-5 5 0 8.66 5 2.5 4.33 0 10-2.5 4.33-8.66 5-5 0-8.66-5-2.5-4.33Z"/>
-          </svg>
-        </div>
+        <p class="tarot-star">✦</p>
         <h3 class="tarot-name">Solo Funds</h3>
         <p class="tarot-category">Debit Card Verification</p>
       </div>
@@ -808,13 +703,9 @@
       <!-- 6: Tala KYC -->
       <div class="tarot-card">
         <div class="tarot-image-wrap">
-          <img src="images/Tala%20Phone.png" alt="Tala KYC" />
+          <img src="images/Tala Phone.png" alt="Tala KYC" />
         </div>
-        <div class="tarot-star">
-          <svg width="20" height="20" viewBox="-12 -12 24 24" fill="none" stroke="#C49665" stroke-width="0.9" stroke-linejoin="round">
-            <path d="M0-10 2.5-4.33 8.66-5 5 0 8.66 5 2.5 4.33 0 10-2.5 4.33-8.66 5-5 0-8.66-5-2.5-4.33Z"/>
-          </svg>
-        </div>
+        <p class="tarot-star">✦</p>
         <h3 class="tarot-name">Tala</h3>
         <p class="tarot-category">Know Your Customer</p>
       </div>
@@ -822,13 +713,9 @@
       <!-- 7: Tala CARE -->
       <div class="tarot-card">
         <div class="tarot-image-wrap">
-          <img src="images/Tala%20Desktop.png" alt="Tala CARE" />
+          <img src="images/Tala Desktop.png" alt="Tala CARE" />
         </div>
-        <div class="tarot-star">
-          <svg width="20" height="20" viewBox="-12 -12 24 24" fill="none" stroke="#C49665" stroke-width="0.9" stroke-linejoin="round">
-            <path d="M0-10 2.5-4.33 8.66-5 5 0 8.66 5 2.5 4.33 0 10-2.5 4.33-8.66 5-5 0-8.66-5-2.5-4.33Z"/>
-          </svg>
-        </div>
+        <p class="tarot-star">✦</p>
         <h3 class="tarot-name">Tala</h3>
         <p class="tarot-category">Care Internal Tool</p>
       </div>
@@ -836,13 +723,9 @@
       <!-- 8: IBISWorld -->
       <div class="tarot-card">
         <div class="tarot-image-wrap">
-          <img src="images/IBISWorld%20Desktop.png" alt="IBISWorld" />
+          <img src="images/IBISWorld Desktop.png" alt="IBISWorld" />
         </div>
-        <div class="tarot-star">
-          <svg width="20" height="20" viewBox="-12 -12 24 24" fill="none" stroke="#C49665" stroke-width="0.9" stroke-linejoin="round">
-            <path d="M0-10 2.5-4.33 8.66-5 5 0 8.66 5 2.5 4.33 0 10-2.5 4.33-8.66 5-5 0-8.66-5-2.5-4.33Z"/>
-          </svg>
-        </div>
+        <p class="tarot-star">✦</p>
         <h3 class="tarot-name">IBISWorld</h3>
         <p class="tarot-category">My IBISworld</p>
       </div>
@@ -850,13 +733,9 @@
       <!-- 9: Cemex -->
       <div class="tarot-card">
         <div class="tarot-image-wrap">
-          <img src="images/Cemex%20Desktop.png" alt="Cemex" />
+          <img src="images/Cemex Desktop.png" alt="Cemex" />
         </div>
-        <div class="tarot-star">
-          <svg width="20" height="20" viewBox="-12 -12 24 24" fill="none" stroke="#C49665" stroke-width="0.9" stroke-linejoin="round">
-            <path d="M0-10 2.5-4.33 8.66-5 5 0 8.66 5 2.5 4.33 0 10-2.5 4.33-8.66 5-5 0-8.66-5-2.5-4.33Z"/>
-          </svg>
-        </div>
+        <p class="tarot-star">✦</p>
         <h3 class="tarot-name">Cemex</h3>
         <p class="tarot-category">Cemex Go</p>
       </div>
@@ -864,13 +743,9 @@
       <!-- 10: Music Posters — centered under IBISWorld (column 2) -->
       <div class="tarot-card tarot-card--center">
         <div class="tarot-image-wrap">
-          <img src="images/Music%20Posters.png" alt="Music Posters" />
+          <img src="images/Music Posters.png" alt="Music Posters" />
         </div>
-        <div class="tarot-star">
-          <svg width="20" height="20" viewBox="-12 -12 24 24" fill="none" stroke="#C49665" stroke-width="0.9" stroke-linejoin="round">
-            <path d="M0-10 2.5-4.33 8.66-5 5 0 8.66 5 2.5 4.33 0 10-2.5 4.33-8.66 5-5 0-8.66-5-2.5-4.33Z"/>
-          </svg>
-        </div>
+        <p class="tarot-star">✦</p>
         <h3 class="tarot-name">Music Artist Posters</h3>
         <p class="tarot-category">Print Posters</p>
       </div>
@@ -878,14 +753,10 @@
     </div>
   </section>
 
-  <!-- ── SECTION DIVIDER — 10-point star + 4px lines ── -->
+  <!-- ── DIVIDER between Work and Contact ── -->
   <div class="section-divider">
     <div class="divider-line"></div>
-    <div class="divider-star-wrap">
-      <svg width="28" height="28" viewBox="-12 -12 24 24" fill="none" stroke="#C49665" stroke-width="0.7" stroke-linejoin="round">
-        <path d="M0-10 1.39-4.28 5.88-8.09 3.64-2.65 9.51-3.09 4.5 0 9.51 3.09 3.64 2.65 5.88 8.09 1.39 4.28 0 10-1.39 4.28-5.88 8.09-3.64 2.65-9.51 3.09-4.5 0-9.51-3.09-3.64-2.65-5.88-8.09-1.39-4.28Z"/>
-      </svg>
-    </div>
+    <div class="divider-star-wrap">✦</div>
     <div class="divider-line"></div>
   </div>
 
@@ -901,37 +772,37 @@
         <div class="services-grid">
           <div class="service-tile">
             <div class="service-tile-icon">
-              <img src="images/Responsive%20Web.png" alt="Responsive Websites" />
+              <img src="images/Responsive design 1.png" alt="Responsive Websites" />
             </div>
             <span class="service-tile-label">Responsive Websites</span>
           </div>
           <div class="service-tile">
             <div class="service-tile-icon">
-              <img src="images/Desktop%20and%20app.png" alt="Desktop and Mobile Apps" />
+              <img src="images/Web design 1.png" alt="Desktop and Mobile Apps" />
             </div>
             <span class="service-tile-label">Desktop &amp; Mobile Apps</span>
           </div>
           <div class="service-tile">
             <div class="service-tile-icon">
-              <img src="images/Design%20Systems.png" alt="Design Systems" />
+              <img src="images/Design 1.png" alt="Design Systems" />
             </div>
             <span class="service-tile-label">Design Systems</span>
           </div>
           <div class="service-tile">
             <div class="service-tile-icon">
-              <img src="images/branding.png" alt="Branding and Logos" />
+              <img src="images/Color palette 1.png" alt="Branding and Logos" />
             </div>
             <span class="service-tile-label">Branding &amp; Logos</span>
           </div>
           <div class="service-tile">
             <div class="service-tile-icon">
-              <img src="images/print.png" alt="Print Collateral" />
+              <img src="images/Pencil 1.png" alt="Print Collateral" />
             </div>
             <span class="service-tile-label">Print Collateral</span>
           </div>
           <div class="service-tile">
             <div class="service-tile-icon">
-              <img src="images/AI.png" alt="AI Images" />
+              <img src="images/Magic tool 1.png" alt="AI Images" />
             </div>
             <span class="service-tile-label">AI Images</span>
           </div>
@@ -960,7 +831,6 @@
   <!-- ── FOOTER ── -->
   <footer>
     <p>© 2026 Jennifer Cingatura</p>
-    <span class="footer-logo">Hex.</span>
   </footer>
 
   <script>
