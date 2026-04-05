@@ -186,6 +186,8 @@
     .about-deco-star {
       color: var(--gold);
       line-height: 1;
+      animation: sparkle var(--dur, 4s) ease-in-out infinite;
+      animation-delay: var(--delay, 0s);
     }
 
     /* Body copy */
@@ -430,9 +432,9 @@
         <h1 class="about-headline">Hello, I'm Jennifer</h1>
         <!-- 3 stars clustered immediately to the right of the headline text -->
         <div class="about-stars-cluster">
-          <span class="about-deco-star" style="font-size:1.0rem; align-self:flex-end;">✦</span>
-          <span class="about-deco-star" style="font-size:1.9rem;">✦</span>
-          <span class="about-deco-star" style="font-size:0.6rem; align-self:flex-end;">✦</span>
+          <span class="about-deco-star" style="font-size:1.0rem; align-self:flex-end; --dur:3.8s; --delay:0.4s;">✦</span>
+          <span class="about-deco-star" style="font-size:1.9rem; --dur:4.5s; --delay:1.1s;">✦</span>
+          <span class="about-deco-star" style="font-size:0.6rem; align-self:flex-end; --dur:3.2s; --delay:0.8s;">✦</span>
         </div>
       </div>
 

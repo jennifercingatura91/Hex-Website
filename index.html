@@ -312,6 +312,8 @@
       color: var(--gold);
       line-height: 1;
       pointer-events: none;
+      animation: sparkle var(--dur, 4s) ease-in-out infinite;
+      animation-delay: var(--delay, 0s);
     }
 
     .about-headline {
@@ -851,9 +853,9 @@
     <div class="about-left">
       <div class="about-headline-wrap">
         <h2 class="about-headline">Casting hex code spells<br>for digital experiences</h2>
-        <span class="about-deco-star" style="font-size:1.9rem; top:-10px; right:-50px;">✦</span>
-        <span class="about-deco-star" style="font-size:1.1rem; top:42px;  right:-70px;">✦</span>
-        <span class="about-deco-star" style="font-size:0.6rem; top:18px;  right:-82px;">✦</span>
+        <span class="about-deco-star" style="font-size:1.9rem; top:-10px; right:-50px; --dur:4.5s; --delay:0.3s;">✦</span>
+        <span class="about-deco-star" style="font-size:1.1rem; top:42px;  right:-70px; --dur:3.8s; --delay:1.2s;">✦</span>
+        <span class="about-deco-star" style="font-size:0.6rem; top:18px;  right:-82px; --dur:3.2s; --delay:0.7s;">✦</span>
       </div>
 
       <div class="about-body">
