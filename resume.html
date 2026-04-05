@@ -148,7 +148,7 @@
     .card-back-body {
       flex:1; display:flex; flex-direction:column;
       justify-content:flex-start; gap:10px;
-      padding:16px 0; overflow:hidden;
+      padding:16px 0; overflow-y:auto;
     }
     .card-bullet {
       display:flex; align-items:flex-start; gap:8px;
@@ -205,7 +205,12 @@
       .resume-headline { font-size:40px; }
       .resume-headline-wrap { flex-wrap:wrap; }
       .resume-grid { grid-template-columns:1fr; }
-      .resume-card { height:auto; min-height:460px; }
+      .resume-card { height:520px; }
+      .resume-card.flipped { height:auto; min-height:520px; }
+      .resume-card.flipped .card-inner { position:relative; transform:none; height:auto; }
+      .resume-card.flipped .card-front { display:none; }
+      .resume-card.flipped .card-back { position:relative; transform:none; height:auto; }
+      .resume-card.flipped .card-back-body { overflow-y:visible; max-height:none; }
       footer { padding:28px; }
     }
     @media (max-width:480px) {
