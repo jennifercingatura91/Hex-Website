@@ -55,12 +55,12 @@
       align-items: center;
       padding: 20px 60px;
       background: rgba(33, 33, 33, 0.7);
-      backdrop-filter: blur(14px);
       transition: background 0.3s;
     }
 
     nav.scrolled {
       background: rgba(0, 0, 0, 0.92);
+      backdrop-filter: blur(14px);
     }
 
     .nav-logo-link { display: block; line-height: 0; }
@@ -154,7 +154,7 @@
       align-items: flex-end;
       gap: 16px;
       margin-bottom: 20px;
-      white-space: nowrap;
+      flex-wrap: wrap;
     }
 
     .contact-headline {
@@ -162,8 +162,7 @@
       font-weight: normal;
       font-size: 64px;
       color: var(--cream);
-      line-height: 1.0;
-      flex-shrink: 0;
+      line-height: 1.1;
     }
 
     .contact-stars-cluster {
@@ -350,6 +349,11 @@
       .submit-btn { align-self: flex-start; }
 
       footer { padding: 28px; }
+    }
+
+    @media (max-width: 480px) {
+      .contact-headline { font-size: 32px; }
+      .contact-subtext { font-size: 14px; }
     }
 
     /* ── HAMBURGER BUTTON ── */

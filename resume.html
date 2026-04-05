@@ -18,7 +18,7 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root { --cream:#F5F0EA; --charcoal:#212121; --gray:#7C7C7C; --gold:#C49665; --black:#000; }
     html { scroll-behavior: smooth; }
-    body { background: var(--charcoal); font-family: 'DM Sans', sans-serif; font-weight: 300; }
+    body { background: var(--charcoal); font-family: 'DM Sans', sans-serif; font-weight: 300; overflow-x: hidden; }
 
     @keyframes sparkle {
       0%   { opacity:0.25; transform:scale(0.85); filter:drop-shadow(0 0 0px var(--gold)); }
@@ -31,9 +31,9 @@
       position: fixed; top:0; left:0; right:0; z-index:100;
       display:flex; justify-content:space-between; align-items:center;
       padding:20px 60px;
-      background:rgba(33,33,33,0.7); backdrop-filter:blur(14px); transition:background 0.3s;
+      background:rgba(33,33,33,0.7); transition:background 0.3s;
     }
-    nav.scrolled { background:rgba(0,0,0,0.92); }
+    nav.scrolled { background:rgba(0,0,0,0.92); backdrop-filter:blur(14px); }
     .nav-logo-link { display:block; line-height:0; }
     .nav-logo { height:36px; width:auto; display:block; }
     .nav-links { display:flex; gap:40px; list-style:none; align-items:center; }
@@ -76,7 +76,7 @@
     }
     .resume-headline {
       font-family:'Stackwitin',serif; font-weight:normal; font-size:64px;
-      color:var(--cream); line-height:1.0; flex-shrink:0;
+      color:var(--cream); line-height:1.1;
     }
     .resume-stars-cluster {
       display:flex; flex-direction:column; align-items:flex-start;
@@ -105,7 +105,10 @@
       transform-style:preserve-3d;
       transition:transform 0.65s ease;
     }
-    .resume-card:hover .card-inner,
+    @media (hover: hover) {
+      .resume-card:hover .card-inner { transform:rotateY(180deg); }
+      .resume-card:hover .card-face { border-color:rgba(196,150,101,0.85); }
+    }
     .resume-card.flipped .card-inner {
       transform:rotateY(180deg);
     }
@@ -119,7 +122,6 @@
       padding:28px 28px;
       transition:border-color 0.2s;
     }
-    .resume-card:hover .card-face,
     .resume-card.flipped .card-face { border-color:rgba(196,150,101,0.85); }
 
     .card-back { transform:rotateY(180deg); }
@@ -202,7 +204,7 @@
       .work-panel { grid-template-columns:repeat(2,1fr); gap:12px; }
 
       .resume-section { padding:120px 20px 80px; }
-      .resume-headline { font-size:40px; }
+      .resume-headline { font-size:36px; }
       .resume-headline-wrap { flex-wrap:wrap; }
       .resume-grid { grid-template-columns:1fr; }
       .resume-card { height:520px; }
@@ -210,7 +212,9 @@
       footer { padding:28px; }
     }
     @media (max-width:480px) {
-      .resume-headline { font-size:32px; }
+      .resume-section { padding:100px 16px 60px; }
+      .resume-headline { font-size:28px; }
+      .resume-subhead { font-size:14px; }
       .card-company { font-size:36px; }
     }
   </style>
