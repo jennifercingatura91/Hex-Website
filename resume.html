@@ -206,11 +206,7 @@
       .resume-headline-wrap { flex-wrap:wrap; }
       .resume-grid { grid-template-columns:1fr; }
       .resume-card { height:520px; }
-      .resume-card.flipped { height:auto; min-height:520px; }
-      .resume-card.flipped .card-inner { position:relative; transform:none; height:auto; }
-      .resume-card.flipped .card-front { display:none; }
-      .resume-card.flipped .card-back { position:relative; transform:none; height:auto; }
-      .resume-card.flipped .card-back-body { overflow-y:visible; max-height:none; }
+      .card-back-body { overflow-y:auto; -webkit-overflow-scrolling:touch; }
       footer { padding:28px; }
     }
     @media (max-width:480px) {
