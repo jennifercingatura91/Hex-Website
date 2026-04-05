@@ -109,7 +109,7 @@
       transition: transform 0.2s;
     }
 
-    .nav-item--work:hover > a::after {
+    .nav-item--work.open > a::after {
       transform: rotate(-135deg) translateY(-2px);
     }
 
@@ -129,7 +129,7 @@
       transition: opacity 0.22s ease, transform 0.22s ease;
     }
 
-    .nav-item--work:hover .work-dropdown {
+    .nav-item--work.open .work-dropdown {
       opacity: 1;
       pointer-events: all;
       transform: translateY(0);
@@ -716,7 +716,7 @@
 
   <!-- ── NAV ── -->
   <nav id="main-nav">
-    <img class="nav-logo" src="images/Logo.png" alt="Jennifer Cingatura" />
+    <a href="index.html"><img class="nav-logo" src="images/Logo.png" alt="Jennifer Cingatura" /></a>
     <ul class="nav-links">
 
       <!-- Work with dropdown -->
@@ -816,7 +816,7 @@
         </div>
       </li>
 
-      <li><a href="#about">About</a></li>
+      <li><a href="about.html">About</a></li>
       <li><a href="#resume">Resume</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
@@ -1053,6 +1053,18 @@
     const nav = document.getElementById('main-nav');
     window.addEventListener('scroll', () => {
       nav.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    // Work dropdown — click to open/close
+    const workNavItem = document.querySelector('.nav-item--work');
+    workNavItem.querySelector('a').addEventListener('click', function(e) {
+      e.preventDefault();
+      workNavItem.classList.toggle('open');
+    });
+    document.addEventListener('click', function(e) {
+      if (!workNavItem.contains(e.target)) {
+        workNavItem.classList.remove('open');
+      }
     });
 
     // Work dropdown tab switching
