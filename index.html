@@ -743,21 +743,31 @@
 
       .nav-hamburger { display: flex; }
 
+      /* Full-screen overlay — always in the DOM, fades in/out */
       .nav-links {
-        display: none;
         position: fixed;
         top: 0; left: 0; right: 0; bottom: 0;
-        background: rgba(18, 18, 18, 0.98);
-        backdrop-filter: blur(24px);
+        background: rgba(12, 12, 12, 0.97);
+        backdrop-filter: blur(20px);
         flex-direction: column;
         align-items: flex-start;
-        justify-content: center;
-        padding: 80px 32px 40px;
+        justify-content: flex-start; /* accordion: Work pushes items below it */
+        padding: 96px 32px 48px;
         gap: 0;
         z-index: 99;
+        overflow-y: auto; /* scrollable when Work expands */
+        /* Hidden state — smooth fade + slide */
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-10px);
+        transition: opacity 0.25s ease, transform 0.25s ease;
       }
 
-      nav.nav-open .nav-links { display: flex; }
+      nav.nav-open .nav-links {
+        opacity: 1;
+        pointer-events: all;
+        transform: translateY(0);
+      }
 
       .nav-links > li { width: 100%; }
 
@@ -771,17 +781,20 @@
 
       .nav-links > li:last-child > a { border-bottom: none; }
 
-      /* Work item in mobile nav */
+      /* Work item: arrow sits to the right */
       .nav-item--work > a { justify-content: space-between; width: 100%; }
 
-      /* Work dropdown in mobile: inline below the Work link */
+      /* When Work is open, keep its bottom border as separator */
+      .nav-item--work.open > a { border-bottom: 1px solid rgba(245, 240, 234, 0.08); }
+
+      /* Work dropdown: accordion — expands inline, pushes siblings down */
       .work-dropdown {
         position: static;
         width: 100%;
         background: transparent;
         border: none;
         border-radius: 0;
-        padding: 12px 0 0 0;
+        padding: 16px 0 8px;
         backdrop-filter: none;
         opacity: 1;
         pointer-events: all;
@@ -792,15 +805,13 @@
 
       .nav-item--work.open .work-dropdown { display: block; }
 
-      .work-tabs { flex-wrap: wrap; }
+      .work-tabs { flex-wrap: wrap; padding-bottom: 12px; margin-bottom: 12px; }
 
-      .work-panel { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+      .work-panel { grid-template-columns: repeat(2, 1fr); gap: 12px; }
 
       /* Hero title smaller on phones */
       .hero-title { font-size: 56px; }
       .hero-title-area { padding: 0 20px 40px; }
-
-      /* Hide floating stars on mobile to avoid clutter */
       .hero-star { display: none; }
     }
 
@@ -1163,8 +1174,8 @@
       hamburger.setAttribute('aria-label', nav.classList.contains('nav-open') ? 'Close menu' : 'Open menu');
     });
 
-    // Close mobile nav when a non-Work link is clicked
-    document.querySelectorAll('.nav-links a').forEach(link => {
+    // Close mobile nav when a non-Work nav link is tapped
+    document.querySelectorAll('.nav-links > li > a').forEach(link => {
       link.addEventListener('click', function() {
         if (window.innerWidth <= 768 && !this.closest('.nav-item--work')) {
           nav.classList.remove('nav-open');
@@ -1174,16 +1185,15 @@
 
     // Work dropdown — click to open/close
     const workNavItem = document.querySelector('.nav-item--work');
-    workNavItem.querySelector('a').addEventListener('click', function(e) {
+    workNavItem.querySelector(':scope > a').addEventListener('click', function(e) {
       e.preventDefault();
       workNavItem.classList.toggle('open');
     });
+
+    // Desktop only: close Work dropdown + nav when clicking outside
     document.addEventListener('click', function(e) {
-      if (!workNavItem.contains(e.target) && !hamburger.contains(e.target)) {
+      if (!workNavItem.contains(e.target)) {
         workNavItem.classList.remove('open');
-      }
-      if (!nav.contains(e.target)) {
-        nav.classList.remove('nav-open');
       }
     });
 
