@@ -54,13 +54,21 @@
       justify-content: space-between;
       align-items: center;
       padding: 20px 60px;
-      background: rgba(33, 33, 33, 0.7);
-      transition: background 0.3s;
     }
 
-    nav.scrolled {
-      background: rgba(0, 0, 0, 0.92);
+    nav::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(33, 33, 33, 0.7);
       backdrop-filter: blur(14px);
+      transition: background 0.3s;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    nav.scrolled::before {
+      background: rgba(0, 0, 0, 0.92);
     }
 
     .nav-logo-link { display: block; line-height: 0; }
