@@ -68,7 +68,12 @@
       display: block;
     }
 
-    .nav-links { display: flex; gap: 40px; list-style: none; }
+    .nav-links {
+      display: flex;
+      gap: 40px;
+      list-style: none;
+      align-items: center;
+    }
 
     .nav-links a {
       color: var(--cream);
@@ -81,6 +86,144 @@
     }
 
     .nav-links a:hover { color: var(--gray); }
+
+    /* ── WORK DROPDOWN ── */
+    .nav-item--work {
+      position: relative;
+    }
+
+    .nav-item--work > a {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-item--work > a::after {
+      content: '';
+      display: inline-block;
+      width: 5px;
+      height: 5px;
+      border-right: 1px solid currentColor;
+      border-bottom: 1px solid currentColor;
+      transform: rotate(45deg) translateY(-2px);
+      transition: transform 0.2s;
+    }
+
+    .nav-item--work:hover > a::after {
+      transform: rotate(-135deg) translateY(-2px);
+    }
+
+    .work-dropdown {
+      position: absolute;
+      top: calc(100% + 20px);
+      right: 0;
+      width: 540px;
+      background: rgba(18, 18, 18, 0.97);
+      backdrop-filter: blur(24px);
+      border: 1px solid rgba(196, 150, 101, 0.25);
+      border-radius: 20px;
+      padding: 24px;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-10px);
+      transition: opacity 0.22s ease, transform 0.22s ease;
+    }
+
+    .nav-item--work:hover .work-dropdown {
+      opacity: 1;
+      pointer-events: all;
+      transform: translateY(0);
+    }
+
+    /* Tabs */
+    .work-tabs {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(196, 150, 101, 0.2);
+    }
+
+    .work-tab {
+      background: none;
+      border: none;
+      color: rgba(245, 240, 234, 0.45);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      cursor: pointer;
+      padding: 6px 16px;
+      border-radius: 100px;
+      transition: all 0.18s;
+    }
+
+    .work-tab.active {
+      background: var(--gold);
+      color: var(--charcoal);
+    }
+
+    .work-tab:hover:not(.active) {
+      color: var(--cream);
+    }
+
+    /* Panels */
+    .work-panel {
+      display: none;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .work-panel.active { display: grid; }
+
+    .work-panel--print {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* Dropdown card items */
+    .work-item {
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      cursor: pointer;
+      transition: transform 0.18s ease;
+    }
+
+    .work-item:hover { transform: translateY(-3px); }
+
+    .work-item-img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      border-radius: 10px;
+      overflow: hidden;
+      background: #2c2c2c;
+    }
+
+    .work-item-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+
+    .work-item-company {
+      font-family: 'Stackwitin', serif;
+      font-size: 16px;
+      color: var(--cream);
+      line-height: 1.1;
+    }
+
+    .work-item-project {
+      font-size: 10px;
+      font-weight: 300;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-top: -4px;
+    }
 
     /* ── HERO ── */
     .hero {
@@ -115,7 +258,6 @@
       );
     }
 
-    /* Filled 4-point stars */
     .hero-star {
       position: absolute;
       z-index: 2;
@@ -219,7 +361,6 @@
       margin: 0 10px;
     }
 
-    /* Right — enchantress image */
     .about-right {
       display: flex;
       justify-content: center;
@@ -275,7 +416,7 @@
       line-height: 1;
     }
 
-    /* ── CASE STUDIES — #212121 bg ── */
+    /* ── CASE STUDIES ── */
     .work-section {
       background: var(--charcoal);
       padding: 80px 60px 100px;
@@ -285,7 +426,6 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 32px;
-      justify-content: center;
     }
 
     .tarot-card {
@@ -317,7 +457,6 @@
       justify-content: center;
     }
 
-    /* Single images: contain + centered so full mockup is visible */
     .tarot-image-wrap img {
       width: 100%;
       height: 100%;
@@ -326,7 +465,6 @@
       display: block;
     }
 
-    /* Dual-image layout — 36px gap */
     .tarot-image-wrap.dual-images {
       gap: 36px;
       padding: 0 12px;
@@ -348,7 +486,6 @@
       flex-shrink: 0;
     }
 
-    /* Company name in Stackwitin */
     .tarot-name {
       font-family: 'Stackwitin', serif;
       font-weight: normal;
@@ -360,7 +497,6 @@
       flex-shrink: 0;
     }
 
-    /* Project name — 16px, gray */
     .tarot-category {
       font-size: 16px;
       font-weight: 300;
@@ -371,10 +507,9 @@
       flex-shrink: 0;
     }
 
-    /* Center last card (Music Posters) in col 2 */
     .tarot-card--center { grid-column: 2; }
 
-    /* ── CONTACT + SERVICES — #212121 bg ── */
+    /* ── CONTACT + SERVICES ── */
     .contact-section {
       background: var(--charcoal);
       padding: 80px 60px 100px;
@@ -414,7 +549,6 @@
       margin-bottom: 24px;
     }
 
-    /* 3×2 icon tile grid — fixed 136×157px tiles */
     .services-grid {
       display: grid;
       grid-template-columns: repeat(3, 136px);
@@ -451,12 +585,13 @@
       display: block;
     }
 
+    /* DM Sans Light */
     .service-tile-label {
+      font-family: 'DM Sans', sans-serif;
       font-size: 18px;
-      font-weight: 500;
+      font-weight: 300;
       color: var(--charcoal);
       line-height: 1.3;
-      font-family: 'DM Sans', sans-serif;
     }
 
     /* Form */
@@ -539,6 +674,8 @@
     @media (max-width: 1200px) {
       .tarot-grid { grid-template-columns: repeat(2, 1fr); }
       .tarot-card--center { grid-column: auto; }
+      .work-dropdown { width: 420px; }
+      .work-panel { grid-template-columns: repeat(2, 1fr); }
     }
 
     @media (max-width: 900px) {
@@ -563,6 +700,15 @@
       .contact-grid { grid-template-columns: 1fr; gap: 48px; }
       .services-grid { grid-template-columns: repeat(2, 136px); }
       .submit-btn { align-self: flex-start; }
+
+      .work-dropdown {
+        position: fixed;
+        top: 70px;
+        right: 28px;
+        left: 28px;
+        width: auto;
+      }
+      .work-panel { grid-template-columns: repeat(2, 1fr); }
     }
   </style>
 </head>
@@ -572,7 +718,104 @@
   <nav id="main-nav">
     <img class="nav-logo" src="images/Logo.png" alt="Jennifer Cingatura" />
     <ul class="nav-links">
-      <li><a href="#work">Work</a></li>
+
+      <!-- Work with dropdown -->
+      <li class="nav-item--work">
+        <a href="#work">Work</a>
+        <div class="work-dropdown">
+
+          <!-- Category tabs -->
+          <div class="work-tabs">
+            <button class="work-tab active" data-cat="mobile">Mobile</button>
+            <button class="work-tab" data-cat="web">Web</button>
+            <button class="work-tab" data-cat="print">Print</button>
+          </div>
+
+          <!-- Mobile panel -->
+          <div class="work-panel active" data-cat="mobile">
+            <a class="work-item" href="#case-simplepractice">
+              <div class="work-item-img">
+                <img src="images/SimplePractice.png" alt="SimplePractice" />
+              </div>
+              <p class="work-item-company">SimplePractice</p>
+              <p class="work-item-project">Clinician Documentation</p>
+            </a>
+            <a class="work-item" href="#case-mileplay">
+              <div class="work-item-img">
+                <img src="images/United MilePlay Phone.png" alt="United Airlines MilePlay" />
+              </div>
+              <p class="work-item-company">United Airlines</p>
+              <p class="work-item-project">Mileplay</p>
+            </a>
+            <a class="work-item" href="#case-united-ds">
+              <div class="work-item-img">
+                <img src="images/United Airlines.png" alt="United Airlines DS" />
+              </div>
+              <p class="work-item-company">United Airlines</p>
+              <p class="work-item-project">Mobile Design System</p>
+            </a>
+            <a class="work-item" href="#case-solofunds">
+              <div class="work-item-img">
+                <img src="images/Solo Funds Phone.png" alt="Solo Funds" />
+              </div>
+              <p class="work-item-company">Solo Funds</p>
+              <p class="work-item-project">Debit Card Verification</p>
+            </a>
+            <a class="work-item" href="#case-tala-kyc">
+              <div class="work-item-img">
+                <img src="images/Tala Phone.png" alt="Tala KYC" />
+              </div>
+              <p class="work-item-company">Tala</p>
+              <p class="work-item-project">Know Your Customer</p>
+            </a>
+          </div>
+
+          <!-- Web panel -->
+          <div class="work-panel" data-cat="web">
+            <a class="work-item" href="#case-super">
+              <div class="work-item-img">
+                <img src="images/Super.com.png" alt="Super.com" />
+              </div>
+              <p class="work-item-company">Super.com</p>
+              <p class="work-item-project">Flights MVP</p>
+            </a>
+            <a class="work-item" href="#case-tala-care">
+              <div class="work-item-img">
+                <img src="images/Tala Desktop.png" alt="Tala CARE" />
+              </div>
+              <p class="work-item-company">Tala</p>
+              <p class="work-item-project">Care Internal Tool</p>
+            </a>
+            <a class="work-item" href="#case-ibisworld">
+              <div class="work-item-img">
+                <img src="images/IBISWorld Desktop.png" alt="IBISWorld" />
+              </div>
+              <p class="work-item-company">IBISWorld</p>
+              <p class="work-item-project">My IBISworld</p>
+            </a>
+            <a class="work-item" href="#case-cemex">
+              <div class="work-item-img">
+                <img src="images/Cemex Desktop.png" alt="Cemex" />
+              </div>
+              <p class="work-item-company">Cemex</p>
+              <p class="work-item-project">Cemex Go</p>
+            </a>
+          </div>
+
+          <!-- Print panel -->
+          <div class="work-panel work-panel--print" data-cat="print">
+            <a class="work-item" href="#case-music">
+              <div class="work-item-img">
+                <img src="images/Music Posters.png" alt="Music Posters" />
+              </div>
+              <p class="work-item-company">Music Artist Posters</p>
+              <p class="work-item-project">Print Posters</p>
+            </a>
+          </div>
+
+        </div>
+      </li>
+
       <li><a href="#about">About</a></li>
       <li><a href="#resume">Resume</a></li>
       <li><a href="#contact">Contact</a></li>
@@ -583,7 +826,6 @@
   <section class="hero">
     <div class="hero-bg"></div>
 
-    <!-- Filled 4-point stars — independent sparkle timings -->
     <span class="hero-star" style="top:20%; left:7%;  font-size:1.8rem; --dur:3.8s; --delay:0s;">✦</span>
     <span class="hero-star" style="top:14%; right:26%; font-size:1.1rem; --dur:5.1s; --delay:1.2s;">✦</span>
     <span class="hero-star" style="top:38%; right:10%; font-size:0.85rem; --dur:4.4s; --delay:0.6s;">✦</span>
@@ -596,11 +838,9 @@
     </div>
   </section>
 
-  <!-- ── ABOUT (#212121 bg) ── -->
+  <!-- ── ABOUT ── -->
   <section class="about-section" id="about">
     <div class="about-left">
-
-      <!-- Headline with 3 differently-sized decorative stars -->
       <div class="about-headline-wrap">
         <h2 class="about-headline">Casting hex code spells<br>for digital experiences</h2>
         <span class="about-deco-star" style="font-size:1.9rem; top:-10px; right:-50px;">✦</span>
@@ -625,7 +865,6 @@
     </div>
 
     <div class="about-right">
-      <!-- Enchantress image with animated stars -->
       <div class="enchantress-container">
         <span class="enchantress-star" style="top:-20px; left:50%; transform:translateX(-50%); font-size:1.4rem; --dur:4.2s; --delay:0.5s;">✦</span>
         <span class="enchantress-star" style="top:22px; left:-24px; font-size:0.9rem; --dur:3.6s; --delay:1.8s;">✦</span>
@@ -637,30 +876,27 @@
     </div>
   </section>
 
-  <!-- ── DIVIDER between About and Work ── -->
+  <!-- ── DIVIDER: About → Work ── -->
   <div class="section-divider">
     <div class="divider-line"></div>
     <div class="divider-star-wrap">✦</div>
     <div class="divider-line"></div>
   </div>
 
-  <!-- ── CASE STUDIES (#212121 bg) ── -->
+  <!-- ── CASE STUDIES ── -->
   <section class="work-section" id="work">
     <div class="tarot-grid">
 
-      <!-- 1: SimplePractice — dual images, 36px gap -->
-      <div class="tarot-card">
-        <div class="tarot-image-wrap dual-images">
-          <img src="images/SimplePractice Android.png" alt="SimplePractice Android" />
-          <img src="images/SimplePractice iPhone.png" alt="SimplePractice iPhone" />
+      <div class="tarot-card" id="case-simplepractice">
+        <div class="tarot-image-wrap">
+          <img src="images/SimplePractice.png" alt="SimplePractice" />
         </div>
         <p class="tarot-star">✦</p>
         <h3 class="tarot-name">SimplePractice</h3>
         <p class="tarot-category">Clinician Documentation</p>
       </div>
 
-      <!-- 2: Super.com — centered -->
-      <div class="tarot-card">
+      <div class="tarot-card" id="case-super">
         <div class="tarot-image-wrap">
           <img src="images/Super.com.png" alt="Super.com" />
         </div>
@@ -669,8 +905,7 @@
         <p class="tarot-category">Flights MVP</p>
       </div>
 
-      <!-- 3: United Airlines MilePlay -->
-      <div class="tarot-card">
+      <div class="tarot-card" id="case-mileplay">
         <div class="tarot-image-wrap">
           <img src="images/United MilePlay Phone.png" alt="United Airlines MilePlay" />
         </div>
@@ -679,19 +914,16 @@
         <p class="tarot-category">Mileplay</p>
       </div>
 
-      <!-- 4: United Airlines DS — dual images, 36px gap -->
-      <div class="tarot-card">
-        <div class="tarot-image-wrap dual-images">
-          <img src="images/United Airlines Android DS.png" alt="United Airlines Android DS" />
-          <img src="images/United Airlines iOS DS.png" alt="United Airlines iOS DS" />
+      <div class="tarot-card" id="case-united-ds">
+        <div class="tarot-image-wrap">
+          <img src="images/United Airlines.png" alt="United Airlines DS" />
         </div>
         <p class="tarot-star">✦</p>
         <h3 class="tarot-name">United Airlines</h3>
         <p class="tarot-category">Native Mobile Design System</p>
       </div>
 
-      <!-- 5: Solo Funds -->
-      <div class="tarot-card">
+      <div class="tarot-card" id="case-solofunds">
         <div class="tarot-image-wrap">
           <img src="images/Solo Funds Phone.png" alt="Solo Funds" />
         </div>
@@ -700,8 +932,7 @@
         <p class="tarot-category">Debit Card Verification</p>
       </div>
 
-      <!-- 6: Tala KYC -->
-      <div class="tarot-card">
+      <div class="tarot-card" id="case-tala-kyc">
         <div class="tarot-image-wrap">
           <img src="images/Tala Phone.png" alt="Tala KYC" />
         </div>
@@ -710,8 +941,7 @@
         <p class="tarot-category">Know Your Customer</p>
       </div>
 
-      <!-- 7: Tala CARE -->
-      <div class="tarot-card">
+      <div class="tarot-card" id="case-tala-care">
         <div class="tarot-image-wrap">
           <img src="images/Tala Desktop.png" alt="Tala CARE" />
         </div>
@@ -720,8 +950,7 @@
         <p class="tarot-category">Care Internal Tool</p>
       </div>
 
-      <!-- 8: IBISWorld -->
-      <div class="tarot-card">
+      <div class="tarot-card" id="case-ibisworld">
         <div class="tarot-image-wrap">
           <img src="images/IBISWorld Desktop.png" alt="IBISWorld" />
         </div>
@@ -730,8 +959,7 @@
         <p class="tarot-category">My IBISworld</p>
       </div>
 
-      <!-- 9: Cemex -->
-      <div class="tarot-card">
+      <div class="tarot-card" id="case-cemex">
         <div class="tarot-image-wrap">
           <img src="images/Cemex Desktop.png" alt="Cemex" />
         </div>
@@ -740,8 +968,7 @@
         <p class="tarot-category">Cemex Go</p>
       </div>
 
-      <!-- 10: Music Posters — centered under IBISWorld (column 2) -->
-      <div class="tarot-card tarot-card--center">
+      <div class="tarot-card tarot-card--center" id="case-music">
         <div class="tarot-image-wrap">
           <img src="images/Music Posters.png" alt="Music Posters" />
         </div>
@@ -753,14 +980,14 @@
     </div>
   </section>
 
-  <!-- ── DIVIDER between Work and Contact ── -->
+  <!-- ── DIVIDER: Work → Contact ── -->
   <div class="section-divider">
     <div class="divider-line"></div>
     <div class="divider-star-wrap">✦</div>
     <div class="divider-line"></div>
   </div>
 
-  <!-- ── CONTACT + SERVICES (#212121 bg) ── -->
+  <!-- ── CONTACT + SERVICES ── -->
   <section class="contact-section" id="contact">
     <h2 class="contact-headline">Looking to whip up some magic?</h2>
     <p class="contact-subtext">Have some wicked projects you need help cast some magic onto?<br>Contact me on how I can help bring your designs to life.</p>
@@ -771,39 +998,27 @@
         <p class="services-label">Services Offered</p>
         <div class="services-grid">
           <div class="service-tile">
-            <div class="service-tile-icon">
-              <img src="images/Responsive design 1.png" alt="Responsive Websites" />
-            </div>
+            <div class="service-tile-icon"><img src="images/Responsive design 1.png" alt="Responsive Websites" /></div>
             <span class="service-tile-label">Responsive Websites</span>
           </div>
           <div class="service-tile">
-            <div class="service-tile-icon">
-              <img src="images/Web design 1.png" alt="Desktop and Mobile Apps" />
-            </div>
+            <div class="service-tile-icon"><img src="images/Web design 1.png" alt="Desktop and Mobile Apps" /></div>
             <span class="service-tile-label">Desktop &amp; Mobile Apps</span>
           </div>
           <div class="service-tile">
-            <div class="service-tile-icon">
-              <img src="images/Design 1.png" alt="Design Systems" />
-            </div>
+            <div class="service-tile-icon"><img src="images/Design 1.png" alt="Design Systems" /></div>
             <span class="service-tile-label">Design Systems</span>
           </div>
           <div class="service-tile">
-            <div class="service-tile-icon">
-              <img src="images/Color palette 1.png" alt="Branding and Logos" />
-            </div>
+            <div class="service-tile-icon"><img src="images/Color palette 1.png" alt="Branding and Logos" /></div>
             <span class="service-tile-label">Branding &amp; Logos</span>
           </div>
           <div class="service-tile">
-            <div class="service-tile-icon">
-              <img src="images/Pencil 1.png" alt="Print Collateral" />
-            </div>
+            <div class="service-tile-icon"><img src="images/Pencil 1.png" alt="Print Collateral" /></div>
             <span class="service-tile-label">Print Collateral</span>
           </div>
           <div class="service-tile">
-            <div class="service-tile-icon">
-              <img src="images/Magic tool 1.png" alt="AI Images" />
-            </div>
+            <div class="service-tile-icon"><img src="images/Magic tool 1.png" alt="AI Images" /></div>
             <span class="service-tile-label">AI Images</span>
           </div>
         </div>
@@ -834,11 +1049,27 @@
   </footer>
 
   <script>
+    // Nav scroll
     const nav = document.getElementById('main-nav');
     window.addEventListener('scroll', () => {
       nav.classList.toggle('scrolled', window.scrollY > 60);
     });
 
+    // Work dropdown tab switching
+    const workTabs = document.querySelectorAll('.work-tab');
+    const workPanels = document.querySelectorAll('.work-panel');
+
+    workTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const cat = tab.dataset.cat;
+        workTabs.forEach(t => t.classList.remove('active'));
+        workPanels.forEach(p => p.classList.remove('active'));
+        tab.classList.add('active');
+        document.querySelector(`.work-panel[data-cat="${cat}"]`).classList.add('active');
+      });
+    });
+
+    // Form submit
     function handleSubmit(e) {
       e.preventDefault();
       const btn = e.target.querySelector('.submit-btn');
