@@ -680,6 +680,33 @@
       color: rgba(245, 240, 234, 0.22);
     }
 
+    /* ── HAMBURGER BUTTON ── */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      z-index: 110;
+    }
+
+    .nav-hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--cream);
+      border-radius: 2px;
+      transition: transform 0.22s ease, opacity 0.22s ease;
+      transform-origin: center;
+    }
+
+    nav.nav-open .nav-hamburger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    nav.nav-open .nav-hamburger span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    nav.nav-open .nav-hamburger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 1200px) {
       .tarot-grid { grid-template-columns: repeat(2, 1fr); }
@@ -689,8 +716,6 @@
     }
 
     @media (max-width: 900px) {
-      nav { padding: 20px 28px; }
-      .nav-links { gap: 20px; }
       .hero-title-area { padding: 0 28px 44px; }
       .hero-title { font-size: 72px; }
 
@@ -710,15 +735,77 @@
       .contact-grid { grid-template-columns: 1fr; gap: 48px; }
       .services-grid { grid-template-columns: repeat(2, 136px); }
       .submit-btn { align-self: flex-start; }
+    }
 
-      .work-dropdown {
+    /* ── MOBILE NAV (hamburger) ── */
+    @media (max-width: 768px) {
+      nav { padding: 16px 20px; }
+
+      .nav-hamburger { display: flex; }
+
+      .nav-links {
+        display: none;
         position: fixed;
-        top: 70px;
-        right: 28px;
-        left: 28px;
-        width: auto;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(18, 18, 18, 0.98);
+        backdrop-filter: blur(24px);
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        padding: 80px 32px 40px;
+        gap: 0;
+        z-index: 99;
       }
-      .work-panel { grid-template-columns: repeat(2, 1fr); }
+
+      nav.nav-open .nav-links { display: flex; }
+
+      .nav-links > li { width: 100%; }
+
+      .nav-links > li > a {
+        display: block;
+        font-size: 28px;
+        letter-spacing: 4px;
+        padding: 18px 0;
+        border-bottom: 1px solid rgba(245, 240, 234, 0.08);
+      }
+
+      .nav-links > li:last-child > a { border-bottom: none; }
+
+      /* Work item in mobile nav */
+      .nav-item--work > a { justify-content: space-between; width: 100%; }
+
+      /* Work dropdown in mobile: inline below the Work link */
+      .work-dropdown {
+        position: static;
+        width: 100%;
+        background: transparent;
+        border: none;
+        border-radius: 0;
+        padding: 12px 0 0 0;
+        backdrop-filter: none;
+        opacity: 1;
+        pointer-events: all;
+        transform: none;
+        transition: none;
+        display: none;
+      }
+
+      .nav-item--work.open .work-dropdown { display: block; }
+
+      .work-tabs { flex-wrap: wrap; }
+
+      .work-panel { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+
+      /* Hero title smaller on phones */
+      .hero-title { font-size: 56px; }
+      .hero-title-area { padding: 0 20px 40px; }
+
+      /* Hide floating stars on mobile to avoid clutter */
+      .hero-star { display: none; }
+    }
+
+    @media (max-width: 400px) {
+      .hero-title { font-size: 44px; }
     }
   </style>
 </head>
@@ -727,6 +814,9 @@
   <!-- ── NAV ── -->
   <nav id="main-nav">
     <a href="index.html"><img class="nav-logo" src="images/Logo.png" alt="Jennifer Cingatura" /></a>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
     <ul class="nav-links">
 
       <!-- Work with dropdown -->
@@ -1065,6 +1155,23 @@
       nav.classList.toggle('scrolled', window.scrollY > 60);
     });
 
+    // Hamburger toggle
+    const hamburger = document.getElementById('nav-hamburger');
+    hamburger.addEventListener('click', function(e) {
+      e.stopPropagation();
+      nav.classList.toggle('nav-open');
+      hamburger.setAttribute('aria-label', nav.classList.contains('nav-open') ? 'Close menu' : 'Open menu');
+    });
+
+    // Close mobile nav when a non-Work link is clicked
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', function() {
+        if (window.innerWidth <= 768 && !this.closest('.nav-item--work')) {
+          nav.classList.remove('nav-open');
+        }
+      });
+    });
+
     // Work dropdown — click to open/close
     const workNavItem = document.querySelector('.nav-item--work');
     workNavItem.querySelector('a').addEventListener('click', function(e) {
@@ -1072,8 +1179,11 @@
       workNavItem.classList.toggle('open');
     });
     document.addEventListener('click', function(e) {
-      if (!workNavItem.contains(e.target)) {
+      if (!workNavItem.contains(e.target) && !hamburger.contains(e.target)) {
         workNavItem.classList.remove('open');
+      }
+      if (!nav.contains(e.target)) {
+        nav.classList.remove('nav-open');
       }
     });
 
