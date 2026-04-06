@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Music Artist Posters — Jennifer Cingatura</title>
+
+  <style>
+    @font-face {
+      font-family: 'Stackwitin';
+      src: url('fonts/Stacktwinttf.ttf') format('truetype');
+      font-weight: normal; font-style: normal; font-display: swap;
+    }
+  </style>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --cream: #F5F0EA; --charcoal: #212121; --gray: #7C7C7C;
+      --gold: #C49665; --black: #000000;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--charcoal); font-family: 'DM Sans', sans-serif; font-weight: 300; overflow-x: hidden; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 20px 60px;
+    }
+    nav::before {
+      content: ''; position: absolute; inset: 0;
+      background: rgba(33,33,33,0.7); backdrop-filter: blur(14px);
+      transition: background 0.3s; z-index: -1; pointer-events: none;
+    }
+    nav.scrolled::before { background: rgba(0,0,0,0.92); }
+    .nav-logo-link { display: block; line-height: 0; }
+    .nav-logo { height: 36px; width: auto; display: block; }
+    .nav-links { display: flex; gap: 40px; list-style: none; align-items: center; }
+    .nav-links a {
+      color: var(--cream); text-decoration: none; font-size: 13px;
+      font-weight: 300; letter-spacing: 5px; text-transform: uppercase; transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--gray); }
+    .nav-links a.active { color: var(--gold); }
+
+    /* ── WORK DROPDOWN ── */
+    .nav-item--work { position: relative; }
+    .nav-item--work > a { display: flex; align-items: center; gap: 6px; }
+    .nav-item--work > a::after {
+      content: ''; display: inline-block; width: 5px; height: 5px;
+      border-right: 1px solid currentColor; border-bottom: 1px solid currentColor;
+      transform: rotate(45deg) translateY(-2px); transition: transform 0.2s;
+    }
+    .nav-item--work.open > a::after { transform: rotate(-135deg) translateY(-2px); }
+    .work-dropdown {
+      position: absolute; top: calc(100% + 20px); right: 0; width: 540px;
+      background: rgba(18,18,18,0.97); backdrop-filter: blur(24px);
+      border: 1px solid rgba(196,150,101,0.25); border-radius: 20px; padding: 24px;
+      opacity: 0; pointer-events: none; transform: translateY(-10px);
+      transition: opacity 0.22s ease, transform 0.22s ease;
+    }
+    .nav-item--work.open .work-dropdown { opacity: 1; pointer-events: all; transform: translateY(0); }
+    .work-tabs { display: flex; gap: 4px; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid rgba(196,150,101,0.2); }
+    .work-tab {
+      background: none; border: none; color: rgba(245,240,234,0.45);
+      font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 400;
+      letter-spacing: 4px; text-transform: uppercase; cursor: pointer;
+      padding: 6px 16px; border-radius: 100px; transition: all 0.18s;
+    }
+    .work-tab.active { background: var(--gold); color: var(--charcoal); }
+    .work-tab:hover:not(.active) { color: var(--cream); }
+    .work-panel { display: none; grid-template-columns: repeat(3,1fr); gap: 12px; }
+    .work-panel.active { display: grid; }
+    .work-item { text-decoration: none; display: flex; flex-direction: column; gap: 8px; transition: transform 0.18s; }
+    .work-item:hover { transform: translateY(-3px); }
+    .work-item-img { width: 100%; aspect-ratio: 4/3; border-radius: 10px; overflow: hidden; background: #2c2c2c; }
+    .work-item-img img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+    .work-item-company { font-family: 'Stackwitin', serif; font-size: 16px; color: var(--cream); line-height: 1.1; }
+    .work-item-project { font-size: 10px; font-weight: 300; letter-spacing: 2px; text-transform: uppercase; color: var(--gray); margin-top: -4px; }
+
+    /* ── HERO ── */
+    .music-hero {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      padding-top: 76px; /* clear nav */
+    }
+    .hero-poster { width: 100%; aspect-ratio: 379/585; overflow: hidden; }
+    .hero-poster img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    /* ── TITLE SECTION ── */
+    .music-title-section {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 60px; padding: 80px 92px 60px; align-items: start;
+    }
+    .music-for-giggles {
+      font-family: 'DM Sans', sans-serif; font-weight: 400;
+      font-size: 32px; color: var(--gold);
+      text-transform: uppercase; margin-bottom: 16px; line-height: 1.2;
+    }
+    .music-headline {
+      font-family: 'Stackwitin', serif; font-weight: normal;
+      font-size: 72px; color: var(--cream); line-height: 1.0;
+    }
+    .music-body {
+      font-family: 'DM Sans', sans-serif; font-weight: 300;
+      font-size: 18px; color: #ffffff; line-height: 1.75; padding-top: 12px;
+    }
+
+    /* ── POSTER GRID ── */
+    .music-grid-section { padding: 0 92px 100px; display: flex; flex-direction: column; gap: 40px; }
+    .poster-row {
+      display: grid; grid-template-columns: repeat(3, 379px);
+      gap: 40px; justify-content: start;
+    }
+    .poster-item {
+      width: 379px; height: 585px; overflow: hidden; flex-shrink: 0;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.6), 0 2px 10px rgba(0,0,0,0.35);
+    }
+    .poster-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .poster-item--empty { background: transparent; box-shadow: none; }
+
+    /* ── FOOTER ── */
+    footer { background: var(--black); padding: 36px 60px; display: flex; justify-content: center; align-items: center; }
+    footer p { font-size: 11px; font-weight: 300; letter-spacing: 4px; text-transform: uppercase; color: rgba(245,240,234,0.22); }
+
+    /* ── HAMBURGER ── */
+    .nav-hamburger {
+      display: none; flex-direction: column; justify-content: center;
+      gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; z-index: 110;
+    }
+    .nav-hamburger span {
+      display: block; width: 24px; height: 2px; background: var(--cream);
+      border-radius: 2px; transition: transform 0.22s ease, opacity 0.22s ease; transform-origin: center;
+    }
+    nav.nav-open .nav-hamburger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    nav.nav-open .nav-hamburger span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    nav.nav-open .nav-hamburger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1300px) {
+      .music-grid-section { padding: 0 60px 80px; }
+      .music-title-section { padding: 60px 60px 40px; }
+    }
+    @media (max-width: 1200px) {
+      .work-dropdown { width: 420px; }
+      .work-panel { grid-template-columns: repeat(2,1fr); }
+      .poster-row { grid-template-columns: repeat(3,1fr); }
+      .poster-item { width: 100%; height: auto; aspect-ratio: 379/585; }
+      .music-grid-section { padding: 0 40px 80px; }
+      .music-title-section { padding: 60px 40px 40px; }
+    }
+    @media (max-width: 900px) {
+      .music-title-section { grid-template-columns: 1fr; gap: 24px; padding: 40px 28px; }
+      .music-headline { font-size: 52px; }
+      .music-grid-section { padding: 0 28px 60px; gap: 28px; }
+    }
+    @media (max-width: 768px) {
+      nav { padding: 16px 20px; }
+      .nav-hamburger { display: flex; }
+      .nav-links {
+        position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(12,12,12,0.97); backdrop-filter: blur(20px);
+        flex-direction: column; align-items: flex-start; justify-content: flex-start;
+        padding: 96px 32px 48px; gap: 0; z-index: 99; overflow-y: auto;
+        opacity: 0; pointer-events: none; transform: translateY(-10px);
+        transition: opacity 0.25s ease, transform 0.25s ease;
+      }
+      nav.nav-open .nav-links { opacity: 1; pointer-events: all; transform: translateY(0); }
+      .nav-links > li { width: 100%; }
+      .nav-links > li > a { display: block; font-size: 28px; letter-spacing: 4px; padding: 18px 0; border-bottom: 1px solid rgba(245,240,234,0.08); }
+      .nav-links > li:last-child > a { border-bottom: none; }
+      .nav-item--work > a { justify-content: space-between; width: 100%; }
+      .nav-item--work.open > a { border-bottom: 1px solid rgba(245,240,234,0.08); }
+      .work-dropdown { position: static; width: 100%; background: transparent; border: none; border-radius: 0; padding: 16px 0 8px; backdrop-filter: none; opacity: 1; pointer-events: all; transform: none; transition: none; display: none; }
+      .nav-item--work.open .work-dropdown { display: block; }
+      .work-tabs { flex-wrap: wrap; padding-bottom: 12px; margin-bottom: 12px; }
+      .work-panel { grid-template-columns: repeat(2,1fr); gap: 12px; }
+
+      .music-hero { grid-template-columns: 1fr; padding-top: 64px; }
+      .music-hero .hero-poster:nth-child(2),
+      .music-hero .hero-poster:nth-child(3) { display: none; }
+      .music-title-section { padding: 28px 20px 20px; }
+      .music-headline { font-size: 40px; }
+      .music-for-giggles { font-size: 24px; }
+      .music-grid-section { padding: 0 20px 60px; gap: 20px; }
+      .poster-row { grid-template-columns: 1fr; }
+      .poster-item--empty { display: none; }
+      footer { padding: 28px; }
+    }
+    @media (max-width: 480px) {
+      .music-headline { font-size: 32px; }
+      .music-for-giggles { font-size: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav id="main-nav">
+  <a href="index.html" class="nav-logo-link">
+    <img class="nav-logo" src="images/Logo.png" alt="Jennifer Cingatura" />
+  </a>
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links">
+    <li class="nav-item--work">
+      <a href="index.html#work">Work</a>
+      <div class="work-dropdown">
+        <div class="work-tabs">
+          <button class="work-tab active" data-cat="mobile">Mobile</button>
+          <button class="work-tab" data-cat="web">Web</button>
+          <button class="work-tab" data-cat="print">Print</button>
+        </div>
+        <div class="work-panel active" data-cat="mobile">
+          <a class="work-item" href="password.html?next=simplepractice.html">
+            <div class="work-item-img"><img src="images/SimplePractice.png" alt="SimplePractice" /></div>
+            <p class="work-item-company">SimplePractice</p>
+            <p class="work-item-project">Clinician Documentation</p>
+          </a>
+          <a class="work-item" href="index.html#case-mileplay">
+            <div class="work-item-img"><img src="images/United MilePlay Phone.png" alt="United MilePlay" /></div>
+            <p class="work-item-company">United Airlines</p>
+            <p class="work-item-project">Mileplay</p>
+          </a>
+          <a class="work-item" href="index.html#case-united-ds">
+            <div class="work-item-img"><img src="images/United Airlines.png" alt="United Airlines DS" /></div>
+            <p class="work-item-company">United Airlines</p>
+            <p class="work-item-project">Mobile Design System</p>
+          </a>
+          <a class="work-item" href="index.html#case-solofunds">
+            <div class="work-item-img"><img src="images/Solo Funds Phone.png" alt="Solo Funds" /></div>
+            <p class="work-item-company">Solo Funds</p>
+            <p class="work-item-project">Debit Card Verification</p>
+          </a>
+          <a class="work-item" href="index.html#case-tala-kyc">
+            <div class="work-item-img"><img src="images/Tala Phone.png" alt="Tala KYC" /></div>
+            <p class="work-item-company">Tala</p>
+            <p class="work-item-project">Know Your Customer</p>
+          </a>
+        </div>
+        <div class="work-panel" data-cat="web">
+          <a class="work-item" href="password.html?next=super.html">
+            <div class="work-item-img"><img src="images/Super.com.png" alt="Super.com" /></div>
+            <p class="work-item-company">Super.com</p>
+            <p class="work-item-project">Flights MVP</p>
+          </a>
+          <a class="work-item" href="index.html#case-tala-care">
+            <div class="work-item-img"><img src="images/Tala Desktop.png" alt="Tala CARE" /></div>
+            <p class="work-item-company">Tala</p>
+            <p class="work-item-project">Care Internal Tool</p>
+          </a>
+          <a class="work-item" href="password.html?next=ibisworld.html">
+            <div class="work-item-img"><img src="images/IBISWorld Desktop.png" alt="IBISWorld" /></div>
+            <p class="work-item-company">IBISWorld</p>
+            <p class="work-item-project">My IBISworld</p>
+          </a>
+          <a class="work-item" href="index.html#case-cemex">
+            <div class="work-item-img"><img src="images/Cemex Desktop.png" alt="Cemex" /></div>
+            <p class="work-item-company">Cemex</p>
+            <p class="work-item-project">Cemex Go</p>
+          </a>
+        </div>
+        <div class="work-panel" data-cat="print">
+          <a class="work-item" href="music-posters.html">
+            <div class="work-item-img"><img src="images/Music Posters.png" alt="Music Posters" /></div>
+            <p class="work-item-company">Music Artist Posters</p>
+            <p class="work-item-project">Print Posters</p>
+          </a>
+        </div>
+      </div>
+    </li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="resume.html">Resume</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ── HERO: 3 large header posters ── -->
+<div class="music-hero">
+  <div class="hero-poster">
+    <img src="images/Sleep Toke Large.png" alt="Sleep Token" />
+  </div>
+  <div class="hero-poster">
+    <img src="images/Deftones Large.png" alt="Deftones" />
+  </div>
+  <div class="hero-poster">
+    <img src="images/Bad Omens 1 Large.png" alt="Bad Omens" />
+  </div>
+</div>
+
+<!-- ── TITLE SECTION ── -->
+<div class="music-title-section">
+  <div>
+    <p class="music-for-giggles">For the Giggles</p>
+    <h1 class="music-headline">Music Artist Posters</h1>
+  </div>
+  <p class="music-body">I can't always be soul sucked by corporate bullshit. Graphic design was my humble beginnings and it still stays true as of today.<br><br>I did these posters as a fun exercise to get creative and well do fun shit. If you know anyone needing some poster design help, contact me.</p>
+</div>
+
+<!-- ── POSTER GRID ── -->
+<div class="music-grid-section">
+
+  <!-- Row 1: Bad Omens 2, Dayseeker, Lady Gaga -->
+  <div class="poster-row">
+    <div class="poster-item"><img src="images/Bad Omens 2 Large.png" alt="Bad Omens" /></div>
+    <div class="poster-item"><img src="images/Dayseeker LArge.png" alt="Dayseeker" /></div>
+    <div class="poster-item"><img src="images/Gaga Large.png" alt="Lady Gaga" /></div>
+  </div>
+
+  <!-- Row 2: Invent Animate, Lorna Shore, Chappell Roan -->
+  <div class="poster-row">
+    <div class="poster-item"><img src="images/Invent Large.png" alt="Invent Animate" /></div>
+    <div class="poster-item"><img src="images/Lorna Large.png" alt="Lorna Shore" /></div>
+    <div class="poster-item"><img src="images/Chappel Large.png" alt="Chappell Roan" /></div>
+  </div>
+
+  <!-- Row 3: ERRA, Sabrina Carpenter, Plot in You -->
+  <div class="poster-row">
+    <div class="poster-item"><img src="images/ERRA Large.png" alt="ERRA" /></div>
+    <div class="poster-item"><img src="images/Sabrina LArge.png" alt="Sabrina Carpenter" /></div>
+    <div class="poster-item"><img src="images/Plot Large.png" alt="Plot in You" /></div>
+  </div>
+
+  <!-- Row 4: Spiritbox, MCR, Charli XCX -->
+  <div class="poster-row">
+    <div class="poster-item"><img src="images/SB Large.png" alt="Spiritbox" /></div>
+    <div class="poster-item"><img src="images/MCR Large.png" alt="My Chemical Romance" /></div>
+    <div class="poster-item"><img src="images/Charli Large.png" alt="Charli XCX" /></div>
+  </div>
+
+  <!-- Row 5: BMTH centered directly under MCR (column 2) -->
+  <div class="poster-row">
+    <div class="poster-item poster-item--empty"></div>
+    <div class="poster-item"><img src="images/BMTH Large.png" alt="Bring Me the Horizon" /></div>
+    <div class="poster-item poster-item--empty"></div>
+  </div>
+
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <p>© 2026 Jennifer Cingatura</p>
+</footer>
+
+<script>
+  const nav = document.getElementById('main-nav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 60); });
+
+  const hamburger = document.getElementById('nav-hamburger');
+  hamburger.addEventListener('click', function(e) {
+    e.stopPropagation();
+    nav.classList.toggle('nav-open');
+    hamburger.setAttribute('aria-label', nav.classList.contains('nav-open') ? 'Close menu' : 'Open menu');
+  });
+
+  document.querySelectorAll('.nav-links > li > a').forEach(link => {
+    link.addEventListener('click', function() {
+      if (window.innerWidth <= 768 && !this.closest('.nav-item--work')) nav.classList.remove('nav-open');
+    });
+  });
+
+  const workNavItem = document.querySelector('.nav-item--work');
+  workNavItem.querySelector(':scope > a').addEventListener('click', function(e) {
+    e.preventDefault(); workNavItem.classList.toggle('open');
+  });
+  document.addEventListener('click', function(e) {
+    if (!workNavItem.contains(e.target)) workNavItem.classList.remove('open');
+  });
+
+  const workTabs = document.querySelectorAll('.work-tab');
+  const workPanels = document.querySelectorAll('.work-panel');
+  workTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const cat = tab.dataset.cat;
+      workTabs.forEach(t => t.classList.remove('active'));
+      workPanels.forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      document.querySelector(`.work-panel[data-cat="${cat}"]`).classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>
