@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My IBISWorld — Jennifer Cingatura</title>
+  <script>
+    (function(){
+      if (sessionStorage.getItem('pw_auth') !== '1') {
+        window.location.replace('password.html?next=ibisworld.html');
+      }
+    })();
+  </script>
+  <style>
+    @font-face { font-family:'Stackwitin'; src:url('fonts/Stacktwinttf.ttf') format('truetype'); font-weight:normal; font-style:normal; font-display:swap; }
+  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    :root{--cream:#F5F0EA;--charcoal:#212121;--gray:#7C7C7C;--gold:#C49665;--black:#000000;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--charcoal);font-family:'DM Sans',sans-serif;font-weight:300;overflow-x:hidden;}
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:20px 60px;}
+    nav::before{content:'';position:absolute;inset:0;background:rgba(33,33,33,0.7);backdrop-filter:blur(14px);transition:background 0.3s;z-index:-1;pointer-events:none;}
+    nav.scrolled::before{background:rgba(0,0,0,0.92);}
+    .nav-logo-link{display:block;line-height:0;}
+    .nav-logo{height:36px;width:auto;display:block;}
+    .nav-links{display:flex;gap:40px;list-style:none;align-items:center;}
+    .nav-links a{color:var(--cream);text-decoration:none;font-size:13px;font-weight:300;letter-spacing:5px;text-transform:uppercase;transition:color 0.2s;}
+    .nav-links a:hover{color:var(--gray);}
+    .nav-links a.active{color:var(--gold);}
+    .nav-item--work{position:relative;}
+    .nav-item--work>a{display:flex;align-items:center;gap:6px;}
+    .nav-item--work>a::after{content:'';display:inline-block;width:5px;height:5px;border-right:1px solid currentColor;border-bottom:1px solid currentColor;transform:rotate(45deg) translateY(-2px);transition:transform 0.2s;}
+    .nav-item--work.open>a::after{transform:rotate(-135deg) translateY(-2px);}
+    .work-dropdown{position:absolute;top:calc(100% + 20px);right:0;width:540px;background:rgba(18,18,18,0.97);backdrop-filter:blur(24px);border:1px solid rgba(196,150,101,0.25);border-radius:20px;padding:24px;opacity:0;pointer-events:none;transform:translateY(-10px);transition:opacity 0.22s ease,transform 0.22s ease;}
+    .nav-item--work.open .work-dropdown{opacity:1;pointer-events:all;transform:translateY(0);}
+    .work-tabs{display:flex;gap:4px;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid rgba(196,150,101,0.2);}
+    .work-tab{background:none;border:none;color:rgba(245,240,234,0.45);font-family:'DM Sans',sans-serif;font-size:11px;font-weight:400;letter-spacing:4px;text-transform:uppercase;cursor:pointer;padding:6px 16px;border-radius:100px;transition:all 0.18s;}
+    .work-tab.active{background:var(--gold);color:var(--charcoal);}
+    .work-tab:hover:not(.active){color:var(--cream);}
+    .work-panel{display:none;grid-template-columns:repeat(3,1fr);gap:12px;}
+    .work-panel.active{display:grid;}
+    .work-item{text-decoration:none;display:flex;flex-direction:column;gap:8px;transition:transform 0.18s;}
+    .work-item:hover{transform:translateY(-3px);}
+    .work-item-img{width:100%;aspect-ratio:4/3;border-radius:10px;overflow:hidden;background:#2c2c2c;}
+    .work-item-img img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;}
+    .work-item-company{font-family:'Stackwitin',serif;font-size:16px;color:var(--cream);line-height:1.1;}
+    .work-item-project{font-size:10px;font-weight:300;letter-spacing:2px;text-transform:uppercase;color:var(--gray);margin-top:-4px;}
+    .sc-hero{display:flex;justify-content:center;padding:120px 92px 60px;}
+    .sc-hero-img{max-width:900px;width:100%;display:block;max-height:65vh;object-fit:contain;}
+    .sc-title-section{display:grid;grid-template-columns:1fr 2fr;gap:60px;padding:0 92px 60px;align-items:start;}
+    .sc-label{font-family:'DM Sans',sans-serif;font-weight:300;font-size:24px;color:var(--gold);text-transform:uppercase;margin-bottom:12px;line-height:1.2;}
+    .sc-headline{font-family:'Stackwitin',serif;font-weight:normal;font-size:100px;color:var(--cream);line-height:1.0;}
+    .sc-body{font-family:'DM Sans',sans-serif;font-weight:300;font-size:18px;color:#ffffff;line-height:1.75;}
+    .sc-body strong{font-weight:600;}
+    .sc-meta-row{display:flex;gap:60px;padding:0 92px 80px;align-items:flex-start;}
+    .sc-meta-col{flex:1;}
+    .sc-meta-label{font-family:'DM Sans',sans-serif;font-weight:500;font-size:16px;color:var(--gold);text-transform:uppercase;letter-spacing:5px;margin-bottom:8px;display:block;}
+    .sc-meta-value{font-family:'DM Sans',sans-serif;font-weight:300;font-size:18px;color:#ffffff;line-height:1.5;}
+    .sc-divider{display:flex;align-items:center;gap:24px;padding:0 92px;margin:20px 0;}
+    .sc-divider-line{flex:1;height:1px;background:rgba(196,150,101,0.3);}
+    .sc-divider-star{color:var(--gold);flex-shrink:0;line-height:1;}
+    .sc-section{display:grid;grid-template-columns:1fr 1fr;gap:60px;padding:60px 92px;align-items:start;}
+    .sc-section-headline{font-family:'Stackwitin',serif;font-weight:normal;font-size:72px;color:var(--cream);line-height:1.0;margin-bottom:24px;}
+    .sc-version-headline{font-family:'Stackwitin',serif;font-weight:normal;font-size:48px;color:var(--cream);line-height:1.0;margin-bottom:20px;}
+    .sc-sub-label{display:block;font-family:'DM Sans',sans-serif;font-weight:500;font-size:16px;color:var(--gold);text-transform:uppercase;letter-spacing:5px;margin-top:32px;margin-bottom:10px;}
+    .sc-body-sm{font-family:'DM Sans',sans-serif;font-weight:300;font-size:16px;color:#ffffff;line-height:1.6;}
+    .sc-body-sm strong{font-weight:600;}
+    .sc-img{width:100%;display:block;}
+    .sc-illus-img{width:100%;max-width:300px;display:block;margin:0 auto;}
+    .sc-brewing-video{width:100%;display:block;border-radius:12px;}
+    .sc-wireframe-img{width:100%;display:block;margin-top:16px;}
+    .sc-wireframe-label{display:block;font-family:'DM Sans',sans-serif;font-weight:500;font-size:13px;color:var(--gold);text-transform:uppercase;letter-spacing:4px;margin-top:24px;margin-bottom:0;}
+    .sc-video-wrap{display:flex;justify-content:center;align-items:flex-start;}
+    .star-wrap{position:relative;}
+    .star-wrap img,.star-wrap video{position:relative;z-index:1;}
+    .sp{position:absolute;color:var(--gold);pointer-events:none;z-index:0;line-height:1;display:block;font-style:normal;}
+    .sp-52{font-size:68px;}
+    .sp-31{font-size:40px;}
+    @keyframes sparkle{
+      0%{opacity:0.25;transform:scale(0.85);filter:drop-shadow(0 0 0px var(--gold));}
+      50%{opacity:1;transform:scale(1.2);filter:drop-shadow(0 0 8px var(--gold)) drop-shadow(0 0 16px rgba(196,150,101,0.5));}
+      100%{opacity:0.25;transform:scale(0.85);filter:drop-shadow(0 0 0px var(--gold));}
+    }
+    .headline-glow-wrap{display:flex;align-items:center;gap:12px;flex-wrap:nowrap;margin-bottom:24px;}
+    .headline-glow-wrap .sc-section-headline{margin-bottom:0;}
+    .glow-star-cluster{display:flex;flex-direction:column;align-items:flex-start;gap:2px;padding-bottom:8px;flex-shrink:0;}
+    .glow-star{color:var(--gold);line-height:1;animation:sparkle var(--dur,4s) ease-in-out infinite;animation-delay:var(--delay,0s);}
+    footer{background:var(--black);padding:36px 60px;display:flex;justify-content:center;align-items:center;}
+    footer p{font-size:11px;font-weight:300;letter-spacing:4px;text-transform:uppercase;color:rgba(245,240,234,0.22);}
+    .nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:4px;z-index:110;}
+    .nav-hamburger span{display:block;width:24px;height:2px;background:var(--cream);border-radius:2px;transition:transform 0.22s ease,opacity 0.22s ease;transform-origin:center;}
+    nav.nav-open .nav-hamburger span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+    nav.nav-open .nav-hamburger span:nth-child(2){opacity:0;transform:scaleX(0);}
+    nav.nav-open .nav-hamburger span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+    @media(max-width:1300px){
+      .sc-hero{padding:120px 60px 60px;}
+      .sc-title-section,.sc-meta-row,.sc-section,.sc-divider{padding-left:60px;padding-right:60px;}
+    }
+    @media(max-width:1200px){
+      .work-dropdown{width:420px;}
+      .work-panel{grid-template-columns:repeat(2,1fr);}
+      .sc-headline{font-size:80px;}
+    }
+    @media(max-width:900px){
+      .sc-title-section{grid-template-columns:1fr;gap:24px;}
+      .sc-section{grid-template-columns:1fr;gap:32px;}
+      .sc-section-headline{font-size:52px;}
+    }
+    @media(max-width:768px){
+      nav{padding:16px 20px;}
+      .nav-hamburger{display:flex;}
+      .nav-links{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(12,12,12,0.97);backdrop-filter:blur(20px);flex-direction:column;align-items:flex-start;justify-content:flex-start;padding:96px 32px 48px;gap:0;z-index:99;overflow-y:auto;opacity:0;pointer-events:none;transform:translateY(-10px);transition:opacity 0.25s ease,transform 0.25s ease;}
+      nav.nav-open .nav-links{opacity:1;pointer-events:all;transform:translateY(0);}
+      .nav-links>li{width:100%;}
+      .nav-links>li>a{display:block;font-size:28px;letter-spacing:4px;padding:18px 0;border-bottom:1px solid rgba(245,240,234,0.08);}
+      .nav-links>li:last-child>a{border-bottom:none;}
+      .nav-item--work>a{justify-content:space-between;width:100%;}
+      .nav-item--work.open>a{border-bottom:1px solid rgba(245,240,234,0.08);}
+      .work-dropdown{position:static;width:100%;background:transparent;border:none;border-radius:0;padding:16px 0 8px;backdrop-filter:none;opacity:1;pointer-events:all;transform:none;transition:none;display:none;}
+      .nav-item--work.open .work-dropdown{display:block;}
+      .work-tabs{flex-wrap:wrap;padding-bottom:12px;margin-bottom:12px;}
+      .work-panel{grid-template-columns:repeat(2,1fr);gap:12px;}
+      .sc-hero{padding:80px 20px 40px;}
+      .sc-title-section{grid-template-columns:1fr;gap:24px;padding:0 20px 40px;}
+      .sc-headline{font-size:56px;}
+      .sc-label{font-size:22px;}
+      .sc-section{grid-template-columns:1fr;gap:28px;padding:40px 20px;}
+      .sc-section-headline{font-size:40px;}
+      .sc-version-headline{font-size:32px;}
+      .sc-meta-row{flex-direction:column;gap:28px;padding:0 20px 48px;}
+      .sc-divider{padding:0 20px;}
+      .sp{display:none;}
+      footer{padding:28px;}
+    }
+    @media(max-width:480px){
+      .sc-headline{font-size:42px;}
+      .sc-section-headline{font-size:32px;}
+    }
+  </style>
+</head>
+<body>
+<!-- NAV -->
+<nav id="main-nav">
+  <a href="index.html" class="nav-logo-link"><img class="nav-logo" src="images/Logo.png" alt="Jennifer Cingatura" /></a>
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+  <ul class="nav-links">
+    <li class="nav-item--work">
+      <a href="index.html#work">Work</a>
+      <div class="work-dropdown">
+        <div class="work-tabs">
+          <button class="work-tab" data-cat="mobile">Mobile</button>
+          <button class="work-tab active" data-cat="web">Web</button>
+          <button class="work-tab" data-cat="print">Print</button>
+        </div>
+        <div class="work-panel" data-cat="mobile">
+          <a class="work-item" href="password.html?next=simplepractice.html">
+            <div class="work-item-img"><img src="images/SimplePractice.png" alt="SimplePractice" /></div>
+            <p class="work-item-company">SimplePractice</p>
+            <p class="work-item-project">Clinician Documentation</p>
+          </a>
+          <a class="work-item" href="index.html#case-mileplay">
+            <div class="work-item-img"><img src="images/United MilePlay Phone.png" alt="United MilePlay" /></div>
+            <p class="work-item-company">United Airlines</p>
+            <p class="work-item-project">Mileplay</p>
+          </a>
+          <a class="work-item" href="united-airlines-ds.html">
+            <div class="work-item-img"><img src="images/United Airlines.png" alt="United Airlines DS" /></div>
+            <p class="work-item-company">United Airlines</p>
+            <p class="work-item-project">Mobile Design System</p>
+          </a>
+          <a class="work-item" href="solofunds.html">
+            <div class="work-item-img"><img src="images/Solo Funds Phone.png" alt="Solo Funds" /></div>
+            <p class="work-item-company">Solo Funds</p>
+            <p class="work-item-project">Debit Card Verification</p>
+          </a>
+          <a class="work-item" href="tala-kyc.html">
+            <div class="work-item-img"><img src="images/Tala Phone.png" alt="Tala KYC" /></div>
+            <p class="work-item-company">Tala</p>
+            <p class="work-item-project">Know Your Customer</p>
+          </a>
+        </div>
+        <div class="work-panel active" data-cat="web">
+          <a class="work-item" href="password.html?next=super.html">
+            <div class="work-item-img"><img src="images/Super.com.png" alt="Super.com" /></div>
+            <p class="work-item-company">Super.com</p>
+            <p class="work-item-project">Flights MVP</p>
+          </a>
+          <a class="work-item" href="index.html#case-tala-care">
+            <div class="work-item-img"><img src="images/Tala Desktop.png" alt="Tala CARE" /></div>
+            <p class="work-item-company">Tala</p>
+            <p class="work-item-project">Care Internal Tool</p>
+          </a>
+          <a class="work-item active" href="password.html?next=ibisworld.html">
+            <div class="work-item-img"><img src="images/IBISWorld Desktop.png" alt="IBISWorld" /></div>
+            <p class="work-item-company">IBISWorld</p>
+            <p class="work-item-project">My IBISworld</p>
+          </a>
+          <a class="work-item" href="cemex-go.html">
+            <div class="work-item-img"><img src="images/Cemex Desktop.png" alt="Cemex" /></div>
+            <p class="work-item-company">Cemex</p>
+            <p class="work-item-project">Cemex Go</p>
+          </a>
+        </div>
+        <div class="work-panel" data-cat="print">
+          <a class="work-item" href="music-posters.html">
+            <div class="work-item-img"><img src="images/Music Posters.png" alt="Music Posters" /></div>
+            <p class="work-item-company">Music Artist Posters</p>
+            <p class="work-item-project">Print Posters</p>
+          </a>
+        </div>
+      </div>
+    </li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="resume.html">Resume</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="sc-hero">
+  <img src="images/IW - Header.png" alt="My IBISWorld header" class="sc-hero-img" />
+</section>
+
+<!-- TITLE -->
+<section class="sc-title-section">
+  <div>
+    <p class="sc-label">IBISWorld</p>
+    <h1 class="sc-headline">My IBISWorld</h1>
+  </div>
+  <div>
+    <p class="sc-body">IBISWorld - an Australian research company - wanted to restructure their current, old legacy existing client based website into a more modern take. This fresh now web based app appropriately dubbed &lsquo;My IBISWorld&rsquo;, allows a user to swiftly browse and search for reports within different product offerings, download multiple different report methods, bookmark reports and has shiny, happy interactive charts (plus a whole bunch of other good stuff). Needless to say IBISWorld is no longer gonna party like it&rsquo;s 1999.</p>
+  </div>
+</section>
+
+<!-- META -->
+<div class="sc-meta-row">
+  <div class="sc-meta-col">
+    <span class="sc-meta-label">Role</span>
+    <p class="sc-meta-value">Lead Product Designer</p>
+  </div>
+  <div class="sc-meta-col">
+    <span class="sc-meta-label">Duration</span>
+    <p class="sc-meta-value">1.1 years (May 2019 &ndash; June 2020)</p>
+  </div>
+  <div class="sc-meta-col">
+    <span class="sc-meta-label">Responsibilities</span>
+    <p class="sc-meta-value">Conduct user interviews. Plan and scope requirements. Feedback sessions with multi-country stakeholders. Work with developers on technicality feasibility. Create and maintain IW Design System.</p>
+  </div>
+</div>
+
+<!-- DIVIDER 1 -->
+<div class="sc-divider">
+  <div class="sc-divider-line"></div>
+  <span class="sc-divider-star">&#10022;</span>
+  <div class="sc-divider-line"></div>
+</div>
+
+<!-- PREVIOUS DESIGN -->
+<section class="sc-section">
+  <div>
+    <div class="headline-glow-wrap">
+      <h2 class="sc-section-headline">Previous Design</h2>
+      <div class="glow-star-cluster">
+        <span class="glow-star" style="font-size:28px;--dur:3.5s;--delay:0s;">&#10022;</span>
+        <span class="glow-star" style="font-size:18px;--dur:4.5s;--delay:0.8s;">&#10022;</span>
+      </div>
+    </div>
+    <p class="sc-body">I know &mdash; you thought things like this went extinct 10 years ago. But have no fear 1999 lived on not only through today&rsquo;s fashion trends but through websites like IBISWorld&rsquo;s client based report site. Clients for years have been using this site to research industries from banking investments to how many cremations are done per year. If Beyonce could evolve from 90s Destiny&rsquo;s Child to being one of the most successful solo artists in 2019, then this site could evolve the same way.</p>
+  </div>
+  <div>
+    <img src="images/IW - Before.png" alt="IBISWorld previous design" class="sc-img" />
+  </div>
+</section>
+
+<!-- DIVIDER 2 -->
+<div class="sc-divider">
+  <div class="sc-divider-line"></div>
+  <span class="sc-divider-star">&#10022;</span>
+  <div class="sc-divider-line"></div>
+</div>
+
+<!-- BEFORE THE MAGIC -->
+<section class="sc-section">
+  <div>
+    <div class="headline-glow-wrap">
+      <h2 class="sc-section-headline">Before the magic</h2>
+      <div class="glow-star-cluster">
+        <span class="glow-star" style="font-size:28px;--dur:3.8s;--delay:0s;">&#10022;</span>
+        <span class="glow-star" style="font-size:18px;--dur:4.2s;--delay:0.6s;">&#10022;</span>
+      </div>
+    </div>
+    <p class="sc-body">How can we create a B2B platform that heightens data visualization within digital reports, become fully WCAG complaint for users while bring a fresh modern spin to the IBISWorld platform for all types of users?</p>
+    <span class="sc-sub-label">usability goals</span>
+    <p class="sc-body-sm">IBISWorld prioritized WCAG compliance to meet the strict requirements of academic clients. The platform also caters to Gen X and Baby Boomer users who value a clean interface for quickly reading and printing reports for meetings.</p>
+    <span class="sc-sub-label">business goals</span>
+    <p class="sc-body-sm">To drive renewals and attract new clients, IBISWorld integrated interactive data visualizations and improved accessibility. These updates ensure reports are easier to explore while maintaining full regulatory compliance.</p>
+    <span class="sc-sub-label">Predicted outcome</span>
+    <p class="sc-body-sm">Revamping the core product with a modern, intuitive UI directly supports client retention and acquisition. By streamlining UX functionality, IBISWorld strengthens its market appeal and fosters long-term client relationships.</p>
+  </div>
+  <div style="display:flex;justify-content:center;align-items:flex-start;">
+    <div class="star-wrap">
+      <em class="sp sp-52" style="top:-28px;right:-24px;animation:sparkle 3.8s ease-in-out infinite;">&#10022;</em>
+      <em class="sp sp-31" style="top:-14px;left:-18px;animation:sparkle 4.5s ease-in-out infinite 0.7s;">&#10022;</em>
+      <em class="sp sp-31" style="bottom:-16px;right:-18px;animation:sparkle 4.1s ease-in-out infinite 1.2s;">&#10022;</em>
+      <em class="sp sp-52" style="bottom:-28px;left:-24px;animation:sparkle 3.5s ease-in-out infinite 0.4s;">&#10022;</em>
+      <img src="images/Before Magic.png" alt="Before the magic" class="sc-illus-img" />
+    </div>
+  </div>
+</section>
+
+<!-- DIVIDER 3 -->
+<div class="sc-divider">
+  <div class="sc-divider-line"></div>
+  <span class="sc-divider-star">&#10022;</span>
+  <div class="sc-divider-line"></div>
+</div>
+
+<!-- STUDYING THE CHARTS -->
+<section class="sc-section">
+  <div style="display:flex;justify-content:center;align-items:flex-start;">
+    <div class="star-wrap">
+      <em class="sp sp-52" style="top:-28px;right:-24px;animation:sparkle 4.1s ease-in-out infinite;">&#10022;</em>
+      <em class="sp sp-31" style="top:-14px;left:-18px;animation:sparkle 3.7s ease-in-out infinite 0.9s;">&#10022;</em>
+      <em class="sp sp-31" style="bottom:-16px;right:-18px;animation:sparkle 4.4s ease-in-out infinite 0.3s;">&#10022;</em>
+      <em class="sp sp-52" style="bottom:-28px;left:-24px;animation:sparkle 3.9s ease-in-out infinite 1.1s;">&#10022;</em>
+      <img src="images/Studyin Charts.png" alt="Studying the charts" class="sc-illus-img" />
+    </div>
+  </div>
+  <div>
+    <div class="headline-glow-wrap">
+      <h2 class="sc-section-headline">Studying the charts</h2>
+      <div class="glow-star-cluster">
+        <span class="glow-star" style="font-size:28px;--dur:4.0s;--delay:0s;">&#10022;</span>
+        <span class="glow-star" style="font-size:18px;--dur:3.6s;--delay:0.5s;">&#10022;</span>
+      </div>
+    </div>
+    <p class="sc-body">Before diving into the design process, I interviewed a few current IBISWorld clients to get their take on how they would like a new platform to function and look</p>
+    <span class="sc-sub-label">Keepin&rsquo; it old school</span>
+    <p class="sc-body-sm">Most users are long time clients to IBISWorld that wanted to still have the capabilities to download and print reports to take into meetings</p>
+    <span class="sc-sub-label">I don&rsquo;t see the vision</span>
+    <p class="sc-body-sm">Users felt the data visualizations didn&rsquo;t align with the information provided. They requested higher-level overviews and interactive states for better data exploration.</p>
+    <span class="sc-sub-label">Written education</span>
+    <p class="sc-body-sm">Users claimed to wanting more in-depth analysis reports, however that is not a UX problem but an overall product content/feature problem for report writers.</p>
+  </div>
+</section>
+
+<!-- DIVIDER 4 -->
+<div class="sc-divider">
+  <div class="sc-divider-line"></div>
+  <span class="sc-divider-star">&#10022;</span>
+  <div class="sc-divider-line"></div>
+</div>
+
+<!-- BREWING -->
+<section class="sc-section">
+  <div>
+    <video class="sc-brewing-video" src="videos/IW-MyIW.mp4" autoplay muted loop playsinline></video>
+    <span class="sc-sub-label">About My IBISWorld</span>
+  </div>
+  <div>
+    <div class="headline-glow-wrap">
+      <h2 class="sc-section-headline">Brewing up the design process</h2>
+      <div class="glow-star-cluster">
+        <span class="glow-star" style="font-size:28px;--dur:3.9s;--delay:0s;">&#10022;</span>
+        <span class="glow-star" style="font-size:18px;--dur:4.3s;--delay:0.7s;">&#10022;</span>
+      </div>
+    </div>
+    <p class="sc-body">I led UX research through interviews with stakeholders and clients to identify core needs and strengthen the brand loyalty. Translated insights into streamlined user flows and wireframes under tight deadlines. Developed the &ldquo;IDEAL&rdquo; design system leveraging Material Design, enabling faster dev collaboration across an 8-person team. Prioritized accessibility through WCAG audits and vendor evaluation post-launch.</p>
+    <br />
+    <p class="sc-body">I Introduced a universal search experience (landing, header, in-report) based on user demand and designed a new report navigation system, allowing seamless chapter and related report access&mdash;improving usability and engagement.</p>
+  </div>
+</section>
+
+<!-- HOME PAGE -->
+<section class="sc-section">
+  <div>
+    <h3 class="sc-version-headline">Home Page</h3>
+    <p class="sc-body">The home page was designed as an evolving dashboard, initially focusing on quick access to saved, searched, and previous reports. We also built a new navigation system to clearly display product features based on the client&rsquo;s specific subscription.</p>
+    <span class="sc-wireframe-label">Wireframes</span>
+    <img src="images/IW - Home Page - Wires.png" alt="Home page wireframes" class="sc-wireframe-img" />
+  </div>
+  <div>
+    <img src="images/IW - Home Page.png" alt="Home page final design" class="sc-img" />
+  </div>
+</section>
+
+<!-- INDUSTRY REPORTS -->
+<section class="sc-section">
+  <div>
+    <h3 class="sc-version-headline">Industry Reports</h3>
+    <p class="sc-body">Industry reports are IBISWorld&rsquo;s bread and butter. I overhauled these detailed search results&mdash;covering everything from farming to travel&mdash;with interactive High Charts visualizations for easier development and better UX. I also added a side navigation to allow users to search, download, and jump between report chapters seamlessly.</p>
+    <span class="sc-wireframe-label">Wireframes</span>
+    <img src="images/IW - Reports - Wires.png" alt="Industry reports wireframes" class="sc-wireframe-img" />
+  </div>
+  <div>
+    <img src="images/IW - Reports.png" alt="Industry reports final design" class="sc-img" />
+  </div>
+</section>
+
+<!-- DATA VISUALIZATIONS -->
+<section class="sc-section">
+  <div>
+    <h3 class="sc-version-headline">Data Visualizations</h3>
+    <p class="sc-body">Post-launch, I addressed accessibility issues in legacy visualizations by redesigning them with Highcharts. Using tools like the Colorblinding extension, I introduced a colorblind-friendly palette, added patterns and shape markers for clarity, and increased spacing to improve readability for users with visual impairments.</p>
+    <span class="sc-wireframe-label">Previous visualizations</span>
+    <img src="images/IW - Old DV.png" alt="Previous data visualizations" class="sc-wireframe-img" />
+  </div>
+  <div>
+    <img src="images/IW - DV.png" alt="Updated data visualizations" class="sc-img" />
+  </div>
+</section>
+
+<!-- DIVIDER 5 -->
+<div class="sc-divider">
+  <div class="sc-divider-line"></div>
+  <span class="sc-divider-star">&#10022;</span>
+  <div class="sc-divider-line"></div>
+</div>
+
+<!-- TIME TO SEE IF THE MAGIC HOLDS -->
+<section class="sc-section">
+  <div style="display:flex;justify-content:center;align-items:flex-start;">
+    <div class="star-wrap">
+      <em class="sp sp-52" style="top:-28px;right:-24px;animation:sparkle 3.7s ease-in-out infinite;">&#10022;</em>
+      <em class="sp sp-31" style="top:-14px;left:-18px;animation:sparkle 4.6s ease-in-out infinite 0.6s;">&#10022;</em>
+      <em class="sp sp-31" style="bottom:-16px;right:-18px;animation:sparkle 4.0s ease-in-out infinite 1.3s;">&#10022;</em>
+      <em class="sp sp-52" style="bottom:-28px;left:-24px;animation:sparkle 3.6s ease-in-out infinite 0.2s;">&#10022;</em>
+      <img src="images/Magic Holds.png" alt="Time to see if the magic holds" class="sc-illus-img" />
+    </div>
+  </div>
+  <div>
+    <div class="headline-glow-wrap">
+      <h2 class="sc-section-headline">Time to see if the magic holds</h2>
+      <div class="glow-star-cluster">
+        <span class="glow-star" style="font-size:28px;--dur:3.9s;--delay:0s;">&#10022;</span>
+        <span class="glow-star" style="font-size:18px;--dur:4.4s;--delay:0.8s;">&#10022;</span>
+      </div>
+    </div>
+    <p class="sc-body">I conducted User Testing with current clients of IBISWorld. I spoke with a range of clients user types via Skype.</p>
+    <span class="sc-sub-label">You betta bet on bugs</span>
+    <p class="sc-body-sm">Beta testing revealed numerous code bugs in the product, which proved valuable for identifying issues before the official launch.</p>
+    <span class="sc-sub-label">Where&rsquo;s the f*@$ing button?</span>
+    <p class="sc-body-sm">Users initially struggled to find the report download button, so the icon was repositioned next to the report title, resulting in improved user success with downloads.</p>
+    <span class="sc-sub-label">Dealer&rsquo;s Choice</span>
+    <p class="sc-body-sm">5/6 users loved the ability to customize their preferences through bookmarks, in-app notifications, and the ability to download multiple formats of reports. In all this was something the old product did not offer users.</p>
+    <span class="sc-sub-label">&#127925; Can you paint with all the colors of accessibility &#127925;</span>
+    <p class="sc-body-sm">Feedback from a colorblind user revealed issues with the notification icon visibility and complex data visualizations. In response, version 1.3 of MyIBISWorld improved icon color and redesigned visualizations for better accessibility.</p>
+  </div>
+</section>
+
+<!-- DIVIDER 6 -->
+<div class="sc-divider">
+  <div class="sc-divider-line"></div>
+  <span class="sc-divider-star">&#10022;</span>
+  <div class="sc-divider-line"></div>
+</div>
+
+<!-- THE FINISHED POTION -->
+<section class="sc-section">
+  <div>
+    <div class="headline-glow-wrap">
+      <h2 class="sc-section-headline">The finished potion</h2>
+      <div class="glow-star-cluster">
+        <span class="glow-star" style="font-size:28px;--dur:4.0s;--delay:0s;">&#10022;</span>
+        <span class="glow-star" style="font-size:18px;--dur:3.5s;--delay:0.9s;">&#10022;</span>
+      </div>
+    </div>
+    <span class="sc-sub-label">Ain&rsquo;t nobody as dope as me...</span>
+    <p class="sc-body-sm">MyIBISWorld was launched in December 2019 to all current IBISWorld clients across 9 countries.</p>
+    <p class="sc-body-sm" style="margin-top:12px;">Internal C-suite staff and clients claimed the new product was &ldquo;fresh, clean, up to date and with the modern times.&rdquo;</p>
+    <span class="sc-sub-label">It&rsquo;s a &lsquo;yes&rsquo; from me dawg</span>
+    <p class="sc-body-sm">IBISWorld saw a <strong>13% increase</strong> in clients renewing their contracts early with the new adaption of MyIBISWorld.</p>
+    <span class="sc-sub-label">I just can&rsquo;t stop winning</span>
+    <p class="sc-body-sm">IBISWorld was approached by new clients in the college/university space after hearing how the business model and now a more <strong>&ldquo;accessibility friendly&rdquo;</strong> platform was available compared to other research competitors.</p>
+  </div>
+  <div style="display:flex;justify-content:center;align-items:flex-start;">
+    <div class="star-wrap">
+      <em class="sp sp-52" style="top:-28px;right:-24px;animation:sparkle 4.2s ease-in-out infinite;">&#10022;</em>
+      <em class="sp sp-31" style="top:-14px;left:-18px;animation:sparkle 3.8s ease-in-out infinite 0.5s;">&#10022;</em>
+      <em class="sp sp-31" style="bottom:-16px;right:-18px;animation:sparkle 4.5s ease-in-out infinite 1.0s;">&#10022;</em>
+      <em class="sp sp-52" style="bottom:-28px;left:-24px;animation:sparkle 3.6s ease-in-out infinite 0.3s;">&#10022;</em>
+      <img src="images/Finished potion.png" alt="The finished potion" class="sc-illus-img" />
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>&copy; 2024 Jennifer Cingatura &mdash; All rights reserved</p>
+</footer>
+
+<script>
+  // Nav scroll
+  const nav = document.getElementById('main-nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  // Work dropdown
+  const workItem = document.querySelector('.nav-item--work');
+  const workLink = workItem ? workItem.querySelector('a') : null;
+  if (workLink) {
+    workLink.addEventListener('click', e => {
+      e.preventDefault();
+      workItem.classList.toggle('open');
+    });
+    document.addEventListener('click', e => {
+      if (!workItem.contains(e.target)) workItem.classList.remove('open');
+    });
+  }
+
+  // Tab switching
+  document.querySelectorAll('.work-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      const cat = tab.dataset.cat;
+      tab.closest('.work-dropdown').querySelectorAll('.work-tab').forEach(t => t.classList.remove('active'));
+      tab.closest('.work-dropdown').querySelectorAll('.work-panel').forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      tab.closest('.work-dropdown').querySelector(`.work-panel[data-cat="${cat}"]`).classList.add('active');
+    });
+  });
+
+  // Hamburger
+  const hamburger = document.getElementById('nav-hamburger');
+  if (hamburger) {
+    hamburger.addEventListener('click', () => nav.classList.toggle('nav-open'));
+  }
+</script>
+</body>
+</html>
