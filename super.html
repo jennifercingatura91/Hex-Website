@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Super.com Flights MVP — Jennifer Cingatura</title>
+
+  <style>
+    @font-face {
+      font-family: 'Stackwitin';
+      src: url('fonts/Stacktwinttf.ttf') format('truetype');
+      font-weight: normal; font-style: normal; font-display: swap;
+    }
+  </style>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --cream: #F5F0EA; --charcoal: #212121; --gray: #7C7C7C; --gold: #C49665; --black: #000000; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--charcoal); font-family: 'DM Sans', sans-serif; font-weight: 300; overflow-x: hidden; }
+
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 20px 60px; }
+    nav::before { content: ''; position: absolute; inset: 0; background: rgba(33,33,33,0.7); backdrop-filter: blur(14px); transition: background 0.3s; z-index: -1; pointer-events: none; }
+    nav.scrolled::before { background: rgba(0,0,0,0.92); }
+    .nav-logo-link { display: block; line-height: 0; }
+    .nav-logo { height: 36px; width: auto; display: block; }
+    .nav-links { display: flex; gap: 40px; list-style: none; align-items: center; }
+    .nav-links a { color: var(--cream); text-decoration: none; font-size: 13px; font-weight: 300; letter-spacing: 5px; text-transform: uppercase; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--gray); }
+    .nav-links a.active { color: var(--gold); }
+    .nav-item--work { position: relative; }
+    .nav-item--work > a { display: flex; align-items: center; gap: 6px; }
+    .nav-item--work > a::after { content: ''; display: inline-block; width: 5px; height: 5px; border-right: 1px solid currentColor; border-bottom: 1px solid currentColor; transform: rotate(45deg) translateY(-2px); transition: transform 0.2s; }
+    .nav-item--work.open > a::after { transform: rotate(-135deg) translateY(-2px); }
+    .work-dropdown { position: absolute; top: calc(100% + 20px); right: 0; width: 540px; background: rgba(18,18,18,0.97); backdrop-filter: blur(24px); border: 1px solid rgba(196,150,101,0.25); border-radius: 20px; padding: 24px; opacity: 0; pointer-events: none; transform: translateY(-10px); transition: opacity 0.22s ease, transform 0.22s ease; }
+    .nav-item--work.open .work-dropdown { opacity: 1; pointer-events: all; transform: translateY(0); }
+    .work-tabs { display: flex; gap: 4px; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid rgba(196,150,101,0.2); }
+    .work-tab { background: none; border: none; color: rgba(245,240,234,0.45); font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 400; letter-spacing: 4px; text-transform: uppercase; cursor: pointer; padding: 6px 16px; border-radius: 100px; transition: all 0.18s; }
+    .work-tab.active { background: var(--gold); color: var(--charcoal); }
+    .work-tab:hover:not(.active) { color: var(--cream); }
+    .work-panel { display: none; grid-template-columns: repeat(3,1fr); gap: 12px; }
+    .work-panel.active { display: grid; }
+    .work-item { text-decoration: none; display: flex; flex-direction: column; gap: 8px; transition: transform 0.18s; }
+    .work-item:hover { transform: translateY(-3px); }
+    .work-item-img { width: 100%; aspect-ratio: 4/3; border-radius: 10px; overflow: hidden; background: #2c2c2c; }
+    .work-item-img img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+    .work-item-company { font-family: 'Stackwitin', serif; font-size: 16px; color: var(--cream); line-height: 1.1; }
+    .work-item-project { font-size: 10px; font-weight: 300; letter-spacing: 2px; text-transform: uppercase; color: var(--gray); margin-top: -4px; }
+
+    /* PAGE */
+    .sc-hero { display: flex; justify-content: center; padding: 120px 92px 60px; }
+    .sc-hero-img { max-width: 900px; width: 100%; display: block; }
+    .sc-title-section { display: grid; grid-template-columns: 1fr 2fr; gap: 60px; padding: 0 92px 60px; align-items: start; }
+    .sc-label { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 24px; color: var(--gold); text-transform: uppercase; margin-bottom: 12px; line-height: 1.2; }
+    .sc-headline { font-family: 'Stackwitin', serif; font-weight: normal; font-size: 100px; color: var(--cream); line-height: 1.0; }
+    .sc-body { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 18px; color: #ffffff; line-height: 1.75; }
+    .sc-body strong { font-weight: 600; }
+    .sc-meta-row { display: flex; gap: 60px; padding: 0 92px 80px; align-items: flex-start; }
+    .sc-meta-col { flex: 1; }
+    .sc-meta-label { font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 16px; color: var(--gold); text-transform: uppercase; letter-spacing: 5px; margin-bottom: 8px; display: block; }
+    .sc-meta-value { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 18px; color: #ffffff; line-height: 1.5; }
+    .sc-divider { display: flex; align-items: center; gap: 24px; padding: 0 92px; margin: 20px 0; }
+    .sc-divider-line { flex: 1; height: 1px; background: rgba(196,150,101,0.3); }
+    .sc-divider-star { font-family: 'Stackwitin', serif; font-size: 48px; color: var(--gold); flex-shrink: 0; line-height: 1; }
+    .sc-section { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; padding: 60px 92px; align-items: start; }
+    .sc-section-headline { font-family: 'Stackwitin', serif; font-weight: normal; font-size: 72px; color: var(--cream); line-height: 1.0; margin-bottom: 24px; }
+    .sc-sub-headline { font-family: 'Stackwitin', serif; font-weight: normal; font-size: 48px; color: var(--cream); line-height: 1.0; margin-bottom: 20px; }
+    .sc-sub-label { display: block; font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 16px; color: var(--gold); text-transform: uppercase; letter-spacing: 5px; margin-top: 32px; margin-bottom: 10px; }
+    .sc-body-sm { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 16px; color: #ffffff; line-height: 1.6; }
+    .sc-body-sm strong { font-weight: 600; }
+    .sc-img { width: 100%; display: block; }
+    .sc-video { width: 100%; max-width: 600px; display: block; margin: 0 auto; border-radius: 12px; }
+    .sc-illus-img { width: 100%; max-width: 300px; display: block; margin: 0 auto; }
+    .sc-wireframe-img { width: 100%; display: block; margin-top: 24px; }
+
+    /* STARS */
+    .star-wrap { position: relative; }
+    .star-wrap img { position: relative; z-index: 1; }
+    .sp { position: absolute; color: var(--gold); pointer-events: none; z-index: 0; line-height: 1; display: block; font-style: normal; }
+    .sp-52 { font-size: 52px; }
+    .sp-31 { font-size: 31px; }
+
+    /* FOOTER */
+    footer { background: var(--black); padding: 36px 60px; display: flex; justify-content: center; align-items: center; }
+    footer p { font-size: 11px; font-weight: 300; letter-spacing: 4px; text-transform: uppercase; color: rgba(245,240,234,0.22); }
+
+    /* HAMBURGER */
+    .nav-hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; z-index: 110; }
+    .nav-hamburger span { display: block; width: 24px; height: 2px; background: var(--cream); border-radius: 2px; transition: transform 0.22s ease, opacity 0.22s ease; transform-origin: center; }
+    nav.nav-open .nav-hamburger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    nav.nav-open .nav-hamburger span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    nav.nav-open .nav-hamburger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* RESPONSIVE */
+    @media (max-width: 1300px) {
+      .sc-hero { padding: 120px 60px 60px; }
+      .sc-title-section, .sc-meta-row, .sc-section, .sc-divider { padding-left: 60px; padding-right: 60px; }
+    }
+    @media (max-width: 1200px) {
+      .work-dropdown { width: 420px; }
+      .work-panel { grid-template-columns: repeat(2,1fr); }
+      .sc-headline { font-size: 80px; }
+    }
+    @media (max-width: 900px) {
+      .sc-title-section { grid-template-columns: 1fr; gap: 24px; }
+      .sc-section { grid-template-columns: 1fr; gap: 32px; }
+      .sc-section-headline { font-size: 52px; }
+    }
+    @media (max-width: 768px) {
+      nav { padding: 16px 20px; }
+      .nav-hamburger { display: flex; }
+      .nav-links { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(12,12,12,0.97); backdrop-filter: blur(20px); flex-direction: column; align-items: flex-start; justify-content: flex-start; padding: 96px 32px 48px; gap: 0; z-index: 99; overflow-y: auto; opacity: 0; pointer-events: none; transform: translateY(-10px); transition: opacity 0.25s ease, transform 0.25s ease; }
+      nav.nav-open .nav-links { opacity: 1; pointer-events: all; transform: translateY(0); }
+      .nav-links > li { width: 100%; }
+      .nav-links > li > a { display: block; font-size: 28px; letter-spacing: 4px; padding: 18px 0; border-bottom: 1px solid rgba(245,240,234,0.08); }
+      .nav-links > li:last-child > a { border-bottom: none; }
+      .nav-item--work > a { justify-content: space-between; width: 100%; }
+      .nav-item--work.open > a { border-bottom: 1px solid rgba(245,240,234,0.08); }
+      .work-dropdown { position: static; width: 100%; background: transparent; border: none; border-radius: 0; padding: 16px 0 8px; backdrop-filter: none; opacity: 1; pointer-events: all; transform: none; transition: none; display: none; }
+      .nav-item--work.open .work-dropdown { display: block; }
+      .work-tabs { flex-wrap: wrap; padding-bottom: 12px; margin-bottom: 12px; }
+      .work-panel { grid-template-columns: repeat(2,1fr); gap: 12px; }
+      .sc-hero { padding: 80px 20px 40px; }
+      .sc-title-section { grid-template-columns: 1fr; gap: 24px; padding: 0 20px 40px; }
+      .sc-headline { font-size: 56px; }
+      .sc-label { font-size: 22px; }
+      .sc-section { grid-template-columns: 1fr; gap: 28px; padding: 40px 20px; }
+      .sc-section-headline { font-size: 40px; }
+      .sc-sub-headline { font-size: 32px; }
+      .sc-meta-row { flex-direction: column; gap: 28px; padding: 0 20px 48px; }
+      .sc-divider { padding: 0 20px; }
+      .sp { display: none; }
+      footer { padding: 28px; }
+    }
+    @media (max-width: 480px) {
+      .sc-headline { font-size: 42px; }
+      .sc-section-headline { font-size: 32px; }
+      .sc-sub-headline { font-size: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <a href="index.html" class="nav-logo-link">
+    <img class="nav-logo" src="images/Logo.png" alt="Jennifer Cingatura" />
+  </a>
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links">
+    <li class="nav-item--work">
+      <a href="index.html#work">Work</a>
+      <div class="work-dropdown">
+        <div class="work-tabs">
+          <button class="work-tab" data-cat="mobile">Mobile</button>
+          <button class="work-tab active" data-cat="web">Web</button>
+          <button class="work-tab" data-cat="print">Print</button>
+        </div>
+        <div class="work-panel" data-cat="mobile">
+          <a class="work-item" href="password.html?next=simplepractice.html">
+            <div class="work-item-img"><img src="images/SimplePractice.png" alt="SimplePractice" /></div>
+            <p class="work-item-company">SimplePractice</p>
+            <p class="work-item-project">Clinician Documentation</p>
+          </a>
+          <a class="work-item" href="index.html#case-mileplay">
+            <div class="work-item-img"><img src="images/United MilePlay Phone.png" alt="United MilePlay" /></div>
+            <p class="work-item-company">United Airlines</p>
+            <p class="work-item-project">Mileplay</p>
+          </a>
+          <a class="work-item" href="united-airlines-ds.html">
+            <div class="work-item-img"><img src="images/United Airlines.png" alt="United Airlines DS" /></div>
+            <p class="work-item-company">United Airlines</p>
+            <p class="work-item-project">Mobile Design System</p>
+          </a>
+          <a class="work-item" href="index.html#case-solofunds">
+            <div class="work-item-img"><img src="images/Solo Funds Phone.png" alt="Solo Funds" /></div>
+            <p class="work-item-company">Solo Funds</p>
+            <p class="work-item-project">Debit Card Verification</p>
+          </a>
+          <a class="work-item" href="index.html#case-tala-kyc">
+            <div class="work-item-img"><img src="images/Tala Phone.png" alt="Tala KYC" /></div>
+            <p class="work-item-company">Tala</p>
+            <p class="work-item-project">Know Your Customer</p>
+          </a>
+        </div>
+        <div class="work-panel active" data-cat="web">
+          <a class="work-item active" href="password.html?next=super.html">
+            <div class="work-item-img"><img src="images/Super.com.png" alt="Super.com" /></div>
+            <p class="work-item-company">Super.com</p>
+            <p class="work-item-project">Flights MVP</p>
+          </a>
+          <a class="work-item" href="index.html#case-tala-care">
+            <div class="work-item-img"><img src="images/Tala Desktop.png" alt="Tala CARE" /></div>
+            <p class="work-item-company">Tala</p>
+            <p class="work-item-project">Care Internal Tool</p>
+          </a>
+          <a class="work-item" href="password.html?next=ibisworld.html">
+            <div class="work-item-img"><img src="images/IBISWorld Desktop.png" alt="IBISWorld" /></div>
+            <p class="work-item-company">IBISWorld</p>
+            <p class="work-item-project">My IBISworld</p>
+          </a>
+          <a class="work-item" href="index.html#case-cemex">
+            <div class="work-item-img"><img src="images/Cemex Desktop.png" alt="Cemex" /></div>
+            <p class="work-item-company">Cemex</p>
+            <p class="work-item-project">Cemex Go</p>
+          </a>
+        </div>
+        <div class="work-panel" data-cat="print">
+          <a class="work-item" href="music-posters.html">
+            <div class="work-item-img"><img src="images/Music Posters.png" alt="Music Posters" /></div>
+            <p class="work-item-company">Music Artist Posters</p>
+            <p class="work-item-project">Print Posters</p>
+          </a>
+        </div>
+      </div>
+    </li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="resume.html">Resume</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="sc-hero">
+  <img src="images/Super.com-Header.png" class="sc-hero-img" alt="Super.com Flights MVP" />
+</div>
+
+<!-- TITLE SECTION -->
+<div class="sc-title-section">
+  <div>
+    <p class="sc-label">Super.com</p>
+    <h1 class="sc-headline">Flights MVP</h1>
+  </div>
+  <p class="sc-body">Super.com, a B2C startup with travel, finance, and rewards products, aimed to launch a new flights MVP as part of its travel offerings to attract new customers. It was a fast-paced, high-pressure 0-to-1 product built quickly and under intense conditions. My sanity was lost somewhere along in the process. I was 5 seconds away from entering my Girl, Interrupted phase &#x1F92A;<br><br>Flights is under an NDA. This case study does not contain any mentions of in-depth metrics or strategy. I bet this is how Marvel actors feel about their NDAs when they can&rsquo;t snitch about upcoming projects. Flights is available on Super.com and on Super.com&rsquo;s app.</p>
+</div>
+
+<!-- META ROW -->
+<div class="sc-meta-row">
+  <div class="sc-meta-col">
+    <span class="sc-meta-label">Role</span>
+    <p class="sc-meta-value">Senior Product Designer (Contract)</p>
+  </div>
+  <div class="sc-meta-col">
+    <span class="sc-meta-label">Duration</span>
+    <p class="sc-meta-value">5 months<br>(Feb 2025 &ndash; Jun 2025)</p>
+  </div>
+  <div class="sc-meta-col">
+    <span class="sc-meta-label">Responsibilities</span>
+    <p class="sc-meta-value">Partnered with off-shore developers to understand feasibility and lend a guiding hand to new design direction, buddied up with a product manager and team leader on requirements, QA all design work, share out flow work to teams, used the best of my knowledge on UX functionality/UI best practices.</p>
+  </div>
+</div>
+
+<!-- DIVIDER 1 -->
+<div class="sc-divider">
+  <div class="sc-divider-line"></div>
+  <span class="sc-divider-star">&#10022;</span>
+  <div class="sc-divider-line"></div>
+</div>
+
+<!-- BEFORE THE MAGIC -->
+<div class="sc-section">
+  <div>
+    <h2 class="sc-section-headline">Before the magic</h2>
+    <p class="sc-body">How can Super.com provide a new way to attract customers, retain their current customer base and gain new Super+ memberships all at the same time?</p>
+    <span class="sc-sub-label">Usability Goals</span>
+    <p class="sc-body-sm">Ensure users can easily search, book, and purchase a flight booking and ancillaries (checked bags) successfully. Showcase the best flight discounts online compared to other online travel agencies like Expedia and TripAdvisor.</p>
+    <span class="sc-sub-label">Business Goals</span>
+    <p class="sc-body-sm">Introduce a new travel product to compliment Super&rsquo;s hotel product, aimed at increasing overall user engagement and loyalty. Focused on attracting new business by promoting Super+ membership benefits including travel discounts, cash back rewards and more.</p>
+    <span class="sc-sub-label">Predicted Outcome</span>
+    <p class="sc-body-sm">Creating a new travel product offering can help shape the Super.com business to gaining new customers to the Super brand and product, garner new memberships and retain current Super+ members. Lots of big risks with this being an MVP.</p>
+  </div>
+  <div class="star-wrap">
+    <span class="sp sp-52" style="top:-8px;right:-18px;">&#10022;</span>
+    <span class="sp sp-31" style="top:-12px;right:20px;">&#10022;</span>
+    <span class="sp sp-52" style="bottom:-18px;left:-40px;">&#10022;</span>
+    <span class="sp sp-31" style="bottom:8px;left:-12px;">&#10022;</span>
+    <span class="sp sp-31" style="top:40%;right:-15px;">&#10022;</span>
+    <img src="images/Before Magic.png" alt="Before the Magic" class="sc-illus-img" />
+  </div>
+</div>
+
+<!-- DIVIDER 2 -->
+<div class="sc-divider">
+  <div class="sc-divider-line"></div>
+  <span class="sc-divider-star">&#10022;</span>
+  <div class="sc-divider-line"></div>
+</div>
+
+<!-- BREWING -->
+<div class="sc-section">
+  <img src="images/Super.com - Brewing.png" alt="Brewing — design process mockup" class="sc-img" />
+  <div>
+    <h2 class="sc-section-headline">Brewing up the design process</h2>
+    <p class="sc-body">Let me tell you something, this was a &lsquo;no walk in the park&rsquo; project.<br>I was the last team member added to a high-pressure project and had just 2 months to design a fully functioning flight booking product&mdash;from the search homepage to post-booking flow. Yes, you read that correctly, 2 months.<br><br>I collaborated closely with the PM to clarify and question requirements, I used my prior airline industry knowledge to fill in gaps. I partnered with the hotel product designer to adapt successful UX/UI frameworks from the hotel flow to the flight flow. Before designing, I mapped out a UX flow chart to align the teams with. Then, I built the UX/UI screens, developed new UI components, leveraged the existing design system (Atlas), and partnered with a content designer on content all while continuously validating feasibility and strategy.</p>
+  </div>
+</div>
+
+<!-- UX FLOW CHART -->
+<div class="sc-section">
+  <div>
+    <h3 class="sc-sub-headline">UX Flow Chart</h3>
+    <p class="sc-body">Before starting design work, I mapped out the flight product flows, including scenarios like searching directly on Super.com and via a Google link. These maps covered all possible customer states during search, selection, and checkout.</p>
+  </div>
+  <div class="star-wrap">
+    <span class="sp sp-52" style="top:-8px;right:-18px;">&#10022;</span>
+    <span class="sp sp-31" style="top:-12px;right:20px;">&#10022;</span>
+    <span class="sp sp-52" style="bottom:-18px;left:-40px;">&#10022;</span>
+    <span class="sp sp-31" style="bottom:8px;left:-12px;">&#10022;</span>
+    <img src="images/Super.com - Flow chart.png" alt="UX Flow Chart" class="sc-img" />
+  </div>
+</div>
+
+<!-- VERSION 1 - PRE REBRAND -->
+<div class="sc-section">
+  <div>
+    <h3 class="sc-sub-headline">Version 1 &ndash; Pre Rebrand</h3>
+    <p class="sc-body">I designed responsive, high-fidelity Figma mockups for the end-to-end flight booking experience, including a new baggage feature. I iterated based on internal feedback and worked with third-party engineers to ensure feasibility before handing off via Dev Mode. Advanced features like seat selection were pushed to future phases, and I handled staging QA to catch bugs and ensure design accuracy.<br><br>I basically pulled a &ldquo;Hail Mary&rdquo; on this whole project.</p>
+    <span class="sc-sub-label">Wireframes</span>
+    <img src="images/Super.com - Wireframes - Prerebrand.png" alt="Version 1 Wireframes" class="sc-wireframe-img" />
+  </div>
+  <div class="star-wrap">
+    <span class="sp sp-31" style="top:0px;right:24px;">&#10022;</span>
+    <span class="sp sp-52" style="top:28px;right:0px;">&#10022;</span>
+    <span class="sp sp-52" style="bottom:60px;right:4px;">&#10022;</span>
+    <span class="sp sp-31" style="top:0px;left:24px;">&#10022;</span>
+    <span class="sp sp-52" style="top:28px;left:0px;">&#10022;</span>
+    <span class="sp sp-31" style="bottom:60px;left:4px;">&#10022;</span>
+    <video src="videos/Super - PrereBrand.mp4" autoplay loop muted playsinline class="sc-video" style="margin-top:60px;"></video>
+  </div>
+</div>
+
+<!-- VERSION 2 - AFTER REBRAND -->
+<div class="sc-section">
+  <div>
+    <h3 class="sc-sub-headline">Version 2 &ndash; After Rebrand</h3>
+    <p class="sc-body">C&rsquo;mon on Barbie let&rsquo;s go party with the new brand colors! These new brand colors launched in July 2025 on the Super.com website and app. Before my departure, I proposed a new filter functionality for departure and arrival times that didn&rsquo;t involve a clunky slider. This functionality essentially streamlines easy selection of flight times.</p>
+    <span class="sc-sub-label">Wireframes</span>
+    <img src="images/Super.com - Wireframes - Rebrand.png" alt="Version 2 Wireframes" class="sc-wireframe-img" />
+  </div>
+  <div class="star-wrap">
+    <span class="sp sp-31" style="top:0px;right:24px;">&#10022;</span>
+    <span class="sp sp-52" style="top:28px;right:0px;">&#10022;</span>
+    <span class="sp sp-52" style="bottom:60px;right:4px;">&#10022;</span>
+    <span class="sp sp-31" style="top:0px;left:24px;">&#10022;</span>
+    <span class="sp sp-52" style="top:28px;left:0px;">&#10022;</span>
+    <span class="sp sp-31" style="bottom:60px;left:4px;">&#10022;</span>
+    <video src="videos/Super.mp4" autoplay loop muted playsinline class="sc-video" style="margin-top:60px;"></video>
+  </div>
+</div>
+
+<!-- DIVIDER 3 -->
+<div class="sc-divider">
+  <div class="sc-divider-line"></div>
+  <span class="sc-divider-star">&#10022;</span>
+  <div class="sc-divider-line"></div>
+</div>
+
+<!-- THE FINISHED POTION -->
+<div class="sc-section">
+  <div>
+    <h2 class="sc-section-headline">The finished potion</h2>
+    <p class="sc-body">Super.com Flights launched in May 2025 to US customers on the website and app. Metrics were captured in Amplitude.</p>
+    <span class="sc-sub-label">3, 2, 1, Launch!</span>
+    <p class="sc-body-sm">Within 30 days of launch, flights had nearly <strong>8,000 unique</strong> visits between app and website. There was a total of <strong>121 confirmed</strong> flight bookings from current members and new customers.</p>
+    <span class="sc-sub-label">Not much but honest work</span>
+    <p class="sc-body-sm">There was a 1<strong>2% attachment rate</strong> of new Super+ memberships subscribed during the flight booking process.</p>
+    <span class="sc-sub-label">Make it lewk geood</span>
+    <p class="sc-body-sm">After launch, minor design bugs appeared. I updated all UI bugs, QA&rsquo;d developer bugs, and collaborated with a content designer to align with proper copy. I made suggestions to improve the sort &amp; filter sections and investigated on how to solve for fare families feature.</p>
+    <span class="sc-sub-label">It&rsquo;s a Barbie summer</span>
+    <p class="sc-body-sm">Super.com had a rebrand of their colors that I helped shape to apply to the flights feature. These UI updates took effect in July 2025.</p>
+  </div>
+  <div class="star-wrap">
+    <span class="sp sp-52" style="top:-8px;right:-18px;">&#10022;</span>
+    <span class="sp sp-31" style="top:-12px;right:20px;">&#10022;</span>
+    <span class="sp sp-31" style="top:8px;left:-15px;">&#10022;</span>
+    <span class="sp sp-52" style="top:32px;left:-38px;">&#10022;</span>
+    <span class="sp sp-52" style="bottom:-18px;left:-40px;">&#10022;</span>
+    <span class="sp sp-31" style="bottom:8px;left:-12px;">&#10022;</span>
+    <img src="images/Finished potion.png" alt="The Finished Potion" class="sc-illus-img" />
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>&copy; 2026 Jennifer Cingatura</p>
+</footer>
+
+<script>
+  const nav = document.getElementById('main-nav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 60); });
+
+  const hamburger = document.getElementById('nav-hamburger');
+  hamburger.addEventListener('click', function(e) {
+    e.stopPropagation();
+    nav.classList.toggle('nav-open');
+    hamburger.setAttribute('aria-label', nav.classList.contains('nav-open') ? 'Close menu' : 'Open menu');
+  });
+
+  document.querySelectorAll('.nav-links > li > a').forEach(link => {
+    link.addEventListener('click', function() {
+      if (window.innerWidth <= 768 && !this.closest('.nav-item--work')) nav.classList.remove('nav-open');
+    });
+  });
+
+  const workNavItem = document.querySelector('.nav-item--work');
+  workNavItem.querySelector(':scope > a').addEventListener('click', function(e) {
+    e.preventDefault(); workNavItem.classList.toggle('open');
+  });
+  document.addEventListener('click', function(e) {
+    if (!workNavItem.contains(e.target)) workNavItem.classList.remove('open');
+  });
+
+  const workTabs = document.querySelectorAll('.work-tab');
+  const workPanels = document.querySelectorAll('.work-panel');
+  workTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const cat = tab.dataset.cat;
+      workTabs.forEach(t => t.classList.remove('active'));
+      workPanels.forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      document.querySelector(`.work-panel[data-cat="${cat}"]`).classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>
