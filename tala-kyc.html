@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Solo Funds Debit Card Verification — Jennifer Cingatura</title>
+  <title>Tala Know Your Customer — Jennifer Cingatura</title>
   <style>
     @font-face { font-family:'Stackwitin'; src:url('fonts/Stacktwinttf.ttf') format('truetype'); font-weight:normal; font-style:normal; font-display:swap; }
   </style>
@@ -58,7 +58,7 @@
     .sc-divider-star{color:var(--gold);flex-shrink:0;line-height:1;}
     .sc-section{display:grid;grid-template-columns:1fr 1fr;gap:60px;padding:60px 92px;align-items:start;}
     .sc-section-headline{font-family:'Stackwitin',serif;font-weight:normal;font-size:72px;color:var(--cream);line-height:1.0;margin-bottom:24px;}
-    .sc-sub-headline{font-family:'Stackwitin',serif;font-weight:normal;font-size:48px;color:var(--cream);line-height:1.0;margin-bottom:20px;}
+    .sc-version-headline{font-family:'Stackwitin',serif;font-weight:normal;font-size:48px;color:var(--cream);line-height:1.0;margin-bottom:20px;}
     .sc-sub-label{display:block;font-family:'DM Sans',sans-serif;font-weight:500;font-size:16px;color:var(--gold);text-transform:uppercase;letter-spacing:5px;margin-top:32px;margin-bottom:10px;}
     .sc-body-sm{font-family:'DM Sans',sans-serif;font-weight:300;font-size:16px;color:#ffffff;line-height:1.6;}
     .sc-body-sm strong{font-weight:600;}
@@ -67,13 +67,10 @@
     .sc-brewing-img{width:445px;height:406px;object-fit:cover;display:block;}
     .sc-video{width:100%;max-width:351px;display:block;border-radius:12px;}
     .sc-wireframe-img{width:100%;display:block;margin-top:16px;}
-    .sc-wireframe-label{display:block;font-family:'DM Sans',sans-serif;font-weight:500;font-size:13px;color:var(--gold);text-transform:uppercase;letter-spacing:4px;margin-bottom:0;margin-top:24px;}
-    .sc-version-headline{font-family:'Stackwitin',serif;font-weight:normal;font-size:48px;color:var(--cream);line-height:1.0;margin-bottom:20px;}
-    .sc-stat{font-family:'Stackwitin',serif;font-size:56px;color:var(--gold);line-height:1.0;margin-bottom:8px;}
-    .sc-stat-label{font-size:14px;font-weight:300;color:var(--cream);letter-spacing:2px;text-transform:uppercase;margin-bottom:24px;}
+    .sc-wireframe-label{display:block;font-family:'DM Sans',sans-serif;font-weight:500;font-size:13px;color:var(--gold);text-transform:uppercase;letter-spacing:4px;margin-top:24px;margin-bottom:0;}
+    .sc-video-wrap{display:flex;justify-content:center;align-items:flex-start;}
     .star-wrap{position:relative;}
     .star-wrap img,.star-wrap video{position:relative;z-index:1;}
-    .sc-video-wrap{display:flex;justify-content:center;align-items:flex-start;}
     .sp{position:absolute;color:var(--gold);pointer-events:none;z-index:0;line-height:1;display:block;font-style:normal;}
     .sp-52{font-size:68px;}
     .sp-31{font-size:40px;}
@@ -127,7 +124,7 @@
       .sc-label{font-size:22px;}
       .sc-section{grid-template-columns:1fr;gap:28px;padding:40px 20px;}
       .sc-section-headline{font-size:40px;}
-      .sc-sub-headline{font-size:32px;}
+      .sc-version-headline{font-size:32px;}
       .sc-meta-row{flex-direction:column;gap:28px;padding:0 20px 48px;}
       .sc-divider{padding:0 20px;}
       .sp{display:none;}
@@ -136,20 +133,14 @@
     @media(max-width:480px){
       .sc-headline{font-size:42px;}
       .sc-section-headline{font-size:32px;}
-      .sc-sub-headline{font-size:28px;}
     }
   </style>
 </head>
 <body>
-
 <!-- NAV -->
 <nav id="main-nav">
-  <a href="index.html" class="nav-logo-link">
-    <img class="nav-logo" src="images/Logo.png" alt="Jennifer Cingatura" />
-  </a>
-  <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu">
-    <span></span><span></span><span></span>
-  </button>
+  <a href="index.html" class="nav-logo-link"><img class="nav-logo" src="images/Logo.png" alt="Jennifer Cingatura" /></a>
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
   <ul class="nav-links">
     <li class="nav-item--work">
       <a href="index.html#work">Work</a>
@@ -162,57 +153,47 @@
         <div class="work-panel active" data-cat="mobile">
           <a class="work-item" href="password.html?next=simplepractice.html">
             <div class="work-item-img"><img src="images/SimplePractice.png" alt="SimplePractice" /></div>
-            <p class="work-item-company">SimplePractice</p>
-            <p class="work-item-project">Clinician Documentation</p>
+            <p class="work-item-company">SimplePractice</p><p class="work-item-project">Clinician Documentation</p>
           </a>
           <a class="work-item" href="index.html#case-mileplay">
             <div class="work-item-img"><img src="images/United MilePlay Phone.png" alt="United MilePlay" /></div>
-            <p class="work-item-company">United Airlines</p>
-            <p class="work-item-project">Mileplay</p>
+            <p class="work-item-company">United Airlines</p><p class="work-item-project">Mileplay</p>
           </a>
           <a class="work-item" href="united-airlines-ds.html">
             <div class="work-item-img"><img src="images/United Airlines.png" alt="United Airlines DS" /></div>
-            <p class="work-item-company">United Airlines</p>
-            <p class="work-item-project">Mobile Design System</p>
+            <p class="work-item-company">United Airlines</p><p class="work-item-project">Mobile Design System</p>
           </a>
-          <a class="work-item active" href="solofunds.html">
+          <a class="work-item" href="solofunds.html">
             <div class="work-item-img"><img src="images/Solo Funds Phone.png" alt="Solo Funds" /></div>
-            <p class="work-item-company">Solo Funds</p>
-            <p class="work-item-project">Debit Card Verification</p>
+            <p class="work-item-company">Solo Funds</p><p class="work-item-project">Debit Card Verification</p>
           </a>
-          <a class="work-item" href="tala-kyc.html">
+          <a class="work-item active" href="tala-kyc.html">
             <div class="work-item-img"><img src="images/Tala Phone.png" alt="Tala KYC" /></div>
-            <p class="work-item-company">Tala</p>
-            <p class="work-item-project">Know Your Customer</p>
+            <p class="work-item-company">Tala</p><p class="work-item-project">Know Your Customer</p>
           </a>
         </div>
         <div class="work-panel" data-cat="web">
           <a class="work-item" href="password.html?next=super.html">
             <div class="work-item-img"><img src="images/Super.com.png" alt="Super.com" /></div>
-            <p class="work-item-company">Super.com</p>
-            <p class="work-item-project">Flights MVP</p>
+            <p class="work-item-company">Super.com</p><p class="work-item-project">Flights MVP</p>
           </a>
           <a class="work-item" href="index.html#case-tala-care">
             <div class="work-item-img"><img src="images/Tala Desktop.png" alt="Tala CARE" /></div>
-            <p class="work-item-company">Tala</p>
-            <p class="work-item-project">Care Internal Tool</p>
+            <p class="work-item-company">Tala</p><p class="work-item-project">Care Internal Tool</p>
           </a>
           <a class="work-item" href="password.html?next=ibisworld.html">
             <div class="work-item-img"><img src="images/IBISWorld Desktop.png" alt="IBISWorld" /></div>
-            <p class="work-item-company">IBISWorld</p>
-            <p class="work-item-project">My IBISworld</p>
+            <p class="work-item-company">IBISWorld</p><p class="work-item-project">My IBISworld</p>
           </a>
           <a class="work-item" href="index.html#case-cemex">
             <div class="work-item-img"><img src="images/Cemex Desktop.png" alt="Cemex" /></div>
-            <p class="work-item-company">Cemex</p>
-            <p class="work-item-project">Cemex Go</p>
+            <p class="work-item-company">Cemex</p><p class="work-item-project">Cemex Go</p>
           </a>
         </div>
         <div class="work-panel" data-cat="print">
           <a class="work-item" href="music-posters.html">
             <div class="work-item-img"><img src="images/Music Posters.png" alt="Music Posters" /></div>
-            <p class="work-item-company">Music Artist Posters</p>
-            <p class="work-item-project">Print Posters</p>
+            <p class="work-item-company">Music Artist Posters</p><p class="work-item-project">Print Posters</p>
           </a>
         </div>
       </div>
@@ -225,16 +206,16 @@
 
 <!-- HERO -->
 <div class="sc-hero">
-  <img src="images/Solo Funds - Header.png" class="sc-hero-img" alt="Solo Funds Debit Card Verification" />
+  <img src="images/Tala - KYC - Header.png" class="sc-hero-img" alt="Tala Know Your Customer" />
 </div>
 
 <!-- TITLE SECTION -->
 <div class="sc-title-section">
   <div>
-    <p class="sc-label">Solo Funds</p>
-    <h1 class="sc-headline">Debit Card Verification</h1>
+    <p class="sc-label">Tala</p>
+    <h1 class="sc-headline">Know Your Customer</h1>
   </div>
-  <p class="sc-body">SoLo Funds is a peer-to-peer microlending native app where a user can request loans that are funded by the public. SoLo Funds Debit Card Verification was a new feature for SoLo to help prevent fraud activity amongst the user base. SoLo partnered with 3rd party platform, Plaid to let users connect their banking credentials. This is some deep thinking, technical shit, folks.<br><br>Solo Funds app is available on the Apple App Store and Google Play Store.</p>
+  <p class="sc-body">Tala&rsquo;s KYC (Know Your Customer) is a custom manual process done at Tala to verify a Tala customer in order to either start a savings account or be provided a loan. KYC is completed through the B2C Android app and then verified through a back-end internal program, CARE. It&rsquo;s a process that most customers will fail either due to not reading the provided instructions or creating drop off due to a lengthy application process. Instant gratification truly is our humanity downfall.<br><br>Tala Android App is only available on the Google Play Store in Mexico, India, Kenya and the Philippines</p>
 </div>
 
 <!-- META ROW -->
@@ -245,15 +226,43 @@
   </div>
   <div class="sc-meta-col">
     <span class="sc-meta-label">Duration</span>
-    <p class="sc-meta-value">6.5 Months<br>(Apr 2022 &ndash; Oct 2022)</p>
+    <p class="sc-meta-value">4 Months (May 2021 &ndash; Sept 2021)</p>
   </div>
   <div class="sc-meta-col">
     <span class="sc-meta-label">Responsibilities</span>
-    <p class="sc-meta-value">Work with Data Scientists and PMs to compile user metrics/research, define scoping and requirements, understand feasibility from Engineers, work with a marketing copywriter to write thorough copy for users to understand. Design UX wireframes/high-fi screens. Document flows within Figma for handoffs.</p>
+    <p class="sc-meta-value">Work with stakeholders, UX researchers, PMs in Philippines and Mexico to understand feasibility, data and complex user problems. Speak with engineers about flow and any other questions that arose. Design UX/UI. Document flows within Figma for handoffs.</p>
   </div>
 </div>
 
 <!-- DIVIDER 1 -->
+<div class="sc-divider">
+  <div class="sc-divider-line"></div>
+  <span class="sc-divider-star"><svg width="96" height="96" viewBox="0 0 24 24" aria-hidden="true" style="display:block;flex-shrink:0"><path fill="currentColor" d="M11.629,10.859L11.991,0.250Q12.000,0.000,12.009,0.250L12.371,10.859L18.900,2.489Q19.053,2.292,18.913,2.499L12.971,11.295L23.172,8.361Q23.413,8.292,23.178,8.377L13.200,12.000L23.178,15.623Q23.413,15.708,23.172,15.639L12.971,12.705L18.913,21.501Q19.053,21.708,18.900,21.511L12.371,13.141L12.009,23.750Q12.000,24.000,11.991,23.750L11.629,13.141L5.100,21.511Q4.947,21.708,5.087,21.501L11.029,12.705L0.828,15.639Q0.587,15.708,0.822,15.623L10.800,12.000L0.822,8.377Q0.587,8.292,0.828,8.361L11.029,11.295L5.087,2.499Q4.947,2.292,5.100,2.489Z"/></svg></span>
+  <div class="sc-divider-line"></div>
+</div>
+<!-- PREVIOUS DESIGN -->
+<div class="sc-section">
+  <img src="images/Tala - KYC - Previous.png" alt="Previous Design" class="sc-img" />
+  <div>
+    <div class="headline-glow-wrap">
+      <h2 class="sc-section-headline">Previous Design</h2>
+      <div class="glow-star-cluster">
+        <span class="glow-star" style="font-size:1.0rem;align-self:flex-end;--dur:3.8s;--delay:0.4s;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:inline-block;vertical-align:middle"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
+        <span class="glow-star" style="font-size:1.9rem;--dur:4.5s;--delay:1.1s;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:inline-block;vertical-align:middle"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
+        <span class="glow-star" style="font-size:0.6rem;align-self:flex-end;--dur:3.2s;--delay:0.8s;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:inline-block;vertical-align:middle"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
+      </div>
+    </div>
+    <p class="sc-body">While KYC was a current feature within the Tala B2C app, it faced many issues in it&rsquo;s previous feature. 35% of users had drop off rates during the KYC process for numerous reasons.</p>
+    <span class="sc-sub-label">No bars</span>
+    <p class="sc-body-sm">15% of users faced issues with their phone service or wifi connection.</p>
+    <span class="sc-sub-label">I ain&rsquo;t reading all that</span>
+    <p class="sc-body-sm">20% of users dropped off due to too lengthy of flow or too much text to read to know what to do.</p>
+    <span class="sc-sub-label">No catfishing a loan company</span>
+    <p class="sc-body-sm">37% of users had their KYC rejected due to poorly taken selfie or not submitting the right documents needed for the KYC process.</p>
+  </div>
+</div>
+
+<!-- DIVIDER 2 -->
 <div class="sc-divider">
   <div class="sc-divider-line"></div>
   <span class="sc-divider-star"><svg width="96" height="96" viewBox="0 0 24 24" aria-hidden="true" style="display:block;flex-shrink:0"><path fill="currentColor" d="M11.629,10.859L11.991,0.250Q12.000,0.000,12.009,0.250L12.371,10.859L18.900,2.489Q19.053,2.292,18.913,2.499L12.971,11.295L23.172,8.361Q23.413,8.292,23.178,8.377L13.200,12.000L23.178,15.623Q23.413,15.708,23.172,15.639L12.971,12.705L18.913,21.501Q19.053,21.708,18.900,21.511L12.371,13.141L12.009,23.750Q12.000,24.000,11.991,23.750L11.629,13.141L5.100,21.511Q4.947,21.708,5.087,21.501L11.029,12.705L0.828,15.639Q0.587,15.708,0.822,15.623L10.800,12.000L0.822,8.377Q0.587,8.292,0.828,8.361L11.029,11.295L5.087,2.499Q4.947,2.292,5.100,2.489Z"/></svg></span>
@@ -266,18 +275,18 @@
     <div class="headline-glow-wrap">
       <h2 class="sc-section-headline">Before the magic</h2>
       <div class="glow-star-cluster">
-        <span class="glow-star" style="font-size:1.0rem;align-self:flex-end;--dur:3.8s;--delay:0.4s;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:inline-block;vertical-align:middle"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
-        <span class="glow-star" style="font-size:1.9rem;--dur:4.5s;--delay:1.1s;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:inline-block;vertical-align:middle"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
-        <span class="glow-star" style="font-size:0.6rem;align-self:flex-end;--dur:3.2s;--delay:0.8s;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:inline-block;vertical-align:middle"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
+        <span class="glow-star" style="font-size:1.0rem;align-self:flex-end;--dur:4.0s;--delay:0.5s;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:inline-block;vertical-align:middle"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
+        <span class="glow-star" style="font-size:1.9rem;--dur:4.8s;--delay:1.2s;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:inline-block;vertical-align:middle"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
+        <span class="glow-star" style="font-size:0.6rem;align-self:flex-end;--dur:3.5s;--delay:0.9s;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:inline-block;vertical-align:middle"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
       </div>
     </div>
-    <p class="sc-body">Nearly 34% of Solo users experience fraud activity &mdash; most commonly through a lost debit card, stolen phone, or compromised bank credentials from a third party hack. The feature was to target to cut down on fraudulent activity.</p>
+    <p class="sc-body">How can we improve the KYC process to build user trust and ensure higher approval rates? What specific guidance can we offer to help customers submit the right documents first try?</p>
     <span class="sc-sub-label">Usability Goals</span>
-    <p class="sc-body-sm">Ensure users can easily connect and enter their banking information in just a few short steps, clearly understand the terminology being asking of them, and provide tips of what users are being asked to do.</p>
+    <p class="sc-body-sm">Increase KYC success rates with customers so they can be serviced promptly. Make instructions clearer for customers. Improve the quality of visual indicators to customers so they know how to complete the feature.</p>
     <span class="sc-sub-label">Business Goals</span>
-    <p class="sc-body-sm">Decrease fraud from 34% to 15% or less. Partner with Plaid to have users enter in their banking credentials.</p>
+    <p class="sc-body-sm">Decrease drop-off rates by limiting verbiage and steps from 35% to 15%, lower the rejection rates of KYC from 37% to 20% to start off with.</p>
     <span class="sc-sub-label">Predicted Outcome</span>
-    <p class="sc-body-sm">Partnering with Plaid to help streamline the process of verification will give users a sense of security of their Solo accounts. Users can still report issues and stolen cards to customer service.</p>
+    <p class="sc-body-sm">By giving more examples of which documents are accepted, shortening the flow, lessening complex verbiage and provide tips on how to give great selfies for verification purposes can elevate a customer&rsquo;s chance at being approved within the app. We&rsquo;re McLovin&rsquo; this.</p>
   </div>
   <div class="star-wrap">
     <span class="sp sp-52" style="top:-8px;right:-18px;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
@@ -289,13 +298,12 @@
   </div>
 </div>
 
-<!-- DIVIDER 2 -->
+<!-- DIVIDER 3 -->
 <div class="sc-divider">
   <div class="sc-divider-line"></div>
   <span class="sc-divider-star"><svg width="96" height="96" viewBox="0 0 24 24" aria-hidden="true" style="display:block;flex-shrink:0"><path fill="currentColor" d="M11.629,10.859L11.991,0.250Q12.000,0.000,12.009,0.250L12.371,10.859L18.900,2.489Q19.053,2.292,18.913,2.499L12.971,11.295L23.172,8.361Q23.413,8.292,23.178,8.377L13.200,12.000L23.178,15.623Q23.413,15.708,23.172,15.639L12.971,12.705L18.913,21.501Q19.053,21.708,18.900,21.511L12.371,13.141L12.009,23.750Q12.000,24.000,11.991,23.750L11.629,13.141L5.100,21.511Q4.947,21.708,5.087,21.501L11.029,12.705L0.828,15.639Q0.587,15.708,0.822,15.623L10.800,12.000L0.822,8.377Q0.587,8.292,0.828,8.361L11.029,11.295L5.087,2.499Q4.947,2.292,5.100,2.489Z"/></svg></span>
   <div class="sc-divider-line"></div>
 </div>
-
 <!-- STUDYING THE CHARTS -->
 <div class="sc-section">
   <div class="star-wrap">
@@ -314,84 +322,13 @@
         <span class="glow-star" style="font-size:0.6rem;align-self:flex-end;--dur:4.9s;--delay:1.4s;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:inline-block;vertical-align:middle"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
       </div>
     </div>
-    <p class="sc-body">Before diving into the design process, I sent out a Maze survey to new users asking them about fraud prevention questions.</p>
-    <div style="margin-top:32px;">
-      <span class="sc-sub-label">Honey, where&rsquo;s my phone?</span>
-      <p class="sc-body-sm" style="margin-bottom:28px;">27% of users at one time lost their phones and worried about the app on their phones.</p>
-      <span class="sc-sub-label">Always have protection</span>
-      <p class="sc-body-sm" style="margin-bottom:28px;">89% of users felt connecting a bank account to their debit card would give them a sense of safety.</p>
-      <span class="sc-sub-label">Clueless (not the 1995 cinematic masterpiece)</span>
-      <p class="sc-body-sm">93% of new users didn&rsquo;t know other fintech apps offered fraud prevention measures.</p>
-    </div>
-  </div>
-</div>
-
-<!-- DIVIDER 3 -->
-<div class="sc-divider">
-  <div class="sc-divider-line"></div>
-  <span class="sc-divider-star"><svg width="96" height="96" viewBox="0 0 24 24" aria-hidden="true" style="display:block;flex-shrink:0"><path fill="currentColor" d="M11.629,10.859L11.991,0.250Q12.000,0.000,12.009,0.250L12.371,10.859L18.900,2.489Q19.053,2.292,18.913,2.499L12.971,11.295L23.172,8.361Q23.413,8.292,23.178,8.377L13.200,12.000L23.178,15.623Q23.413,15.708,23.172,15.639L12.971,12.705L18.913,21.501Q19.053,21.708,18.900,21.511L12.371,13.141L12.009,23.750Q12.000,24.000,11.991,23.750L11.629,13.141L5.100,21.511Q4.947,21.708,5.087,21.501L11.029,12.705L0.828,15.639Q0.587,15.708,0.822,15.623L10.800,12.000L0.822,8.377Q0.587,8.292,0.828,8.361L11.029,11.295L5.087,2.499Q4.947,2.292,5.100,2.489Z"/></svg></span>
-  <div class="sc-divider-line"></div>
-</div>
-
-<!-- BREWING -->
-<div class="sc-section">
-  <img src="images/Solod Funds - Brewing.png" alt="Brewing — design process" class="sc-brewing-img" />
-  <div>
-    <div class="headline-glow-wrap">
-      <h2 class="sc-section-headline">Brewing up the design process</h2>
-      <div class="glow-star-cluster">
-        <span class="glow-star" style="font-size:1.0rem;align-self:flex-end;--dur:4.0s;--delay:0.7s;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:inline-block;vertical-align:middle"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
-        <span class="glow-star" style="font-size:1.9rem;--dur:3.9s;--delay:0.3s;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:inline-block;vertical-align:middle"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
-        <span class="glow-star" style="font-size:0.6rem;align-self:flex-end;--dur:4.6s;--delay:1.2s;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:inline-block;vertical-align:middle"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
-      </div>
-    </div>
-    <p class="sc-body">Leveraging the research in hand via Maze surveys and customer complaints, I continued to work with my PM to understand user stories and metrics to piece together some wireframes. I collaborated with data scientists and one product manager to gather information for dashboard program, Looker.<br><br>This feature was technically complex due to integration with a third-party platform and extensive backend API calls. I designed separate flows for three user types: Power Lenders (trusted users who bypassed Plaid), new users, and current Borrowers. Most fraud concerns involved new users. Multiple entry points for users to enter their information were created across Settings, Wallet, and Marketplace.</p>
-  </div>
-</div>
-
-<!-- NEW USERS VERSION 1 -->
-<div class="sc-section">
-  <div>
-    <h2 class="sc-version-headline">New Users &mdash; Connect Account Version 1</h2>
-    <p class="sc-body" style="margin-bottom:24px;">With these screens I was able to explore the option of messaging to the user base, notifying the users where in the process they were, how drop-offs would work if a user chose that process, what does the UI look for the difference between the Power Lenders versus everyone else. I leveraged the SoLo Funds Design System to build out my screens for this feature.</p>
-    <span class="sc-wireframe-label">Wireframes</span>
-    <img src="images/Solo Funds - Wires - Version 1.png" alt="New Users Wireframes Version 1" class="sc-wireframe-img" />
-  </div>
-  <div class="sc-video-wrap">
-    <div class="star-wrap">
-      <span class="sp sp-31" style="top:15%;left:-32px;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
-      <span class="sp sp-52" style="top:42%;left:-52px;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
-      <span class="sp sp-31" style="top:68%;left:-28px;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
-      <span class="sp sp-52" style="top:20%;right:-50px;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
-      <span class="sp sp-31" style="top:50%;right:-30px;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
-      <span class="sp sp-52" style="top:73%;right:-46px;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
-      <video class="sc-video" autoplay loop muted playsinline style="margin-top:60px;">
-        <source src="videos/Solo Funds - DVC - V1.mp4" type="video/mp4" />
-      </video>
-    </div>
-  </div>
-</div>
-
-<!-- NEW USERS VERSION 2 -->
-<div class="sc-section">
-  <div>
-    <h2 class="sc-version-headline">New Users &mdash; Connect Account Version 2</h2>
-    <p class="sc-body" style="margin-bottom:24px;">Post-release, I partnered with a lead back-end engineer to design error states for when Plaid decided to be a little punk. We addressed issues where Plaid timed out or failed to recognize smaller credit unions users were apart since they weren&rsquo;t in Plaid&rsquo;s system.<br><br>I also streamlined the flow by cutting out the back-and-forth to the home screen, allowing users to jump straight from entering their debit card to selecting their bank account.</p>
-    <span class="sc-wireframe-label">Wireframes</span>
-    <img src="images/Solo Funds - Wires - Final.png" alt="New Users Final Wireframes" class="sc-wireframe-img" />
-  </div>
-  <div class="sc-video-wrap">
-    <div class="star-wrap">
-      <span class="sp sp-31" style="top:15%;left:-32px;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
-      <span class="sp sp-52" style="top:42%;left:-52px;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
-      <span class="sp sp-31" style="top:68%;left:-28px;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
-      <span class="sp sp-52" style="top:20%;right:-50px;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
-      <span class="sp sp-31" style="top:50%;right:-30px;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
-      <span class="sp sp-52" style="top:73%;right:-46px;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
-      <video class="sc-video" autoplay loop muted playsinline style="margin-top:60px;">
-        <source src="videos/Solo Funds - DCV - Final.mp4" type="video/mp4" />
-      </video>
-    </div>
+    <p class="sc-body">Before starting design work, I collaborated with UX researchers in the Philippines and Kenya to understand user pain points in the KYC process.</p>
+    <span class="sc-sub-label">I can see clearly now</span>
+    <p class="sc-body-sm">Users wanted clearer visual indicators to show documentation failures, process status and selfie tips.</p>
+    <span class="sc-sub-label">I got distracted</span>
+    <p class="sc-body-sm">Request the ability to save progress on their KYC application if progress got interrupted.</p>
+    <span class="sc-sub-label">When they go low, I go low-er</span>
+    <p class="sc-body-sm">Users requested to have a application process that could benefit from poor service or low wifi quality areas. The current selfie taker took a lot of data and the app sometimes booted out users.</p>
   </div>
 </div>
 
@@ -402,29 +339,64 @@
   <div class="sc-divider-line"></div>
 </div>
 
-<!-- TIME TO SEE IF THE MAGIC HOLDS -->
+<!-- BREWING -->
 <div class="sc-section">
-  <div class="star-wrap">
-    <span class="sp sp-52" style="top:-8px;left:-18px;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
-    <span class="sp sp-31" style="top:-12px;left:20px;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
-    <span class="sp sp-52" style="bottom:-18px;right:-40px;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
-    <span class="sp sp-31" style="bottom:8px;right:-12px;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
-    <img src="images/Magic Holds.png" alt="Time to see if the magic holds" class="sc-illus-img" />
-  </div>
+  <img src="images/Tala - KYC - Brewing.png" alt="Brewing — design process" class="sc-brewing-img" />
   <div>
     <div class="headline-glow-wrap">
-      <h2 class="sc-section-headline">Time to see if the magic holds</h2>
+      <h2 class="sc-section-headline">Brewing up the design process</h2>
       <div class="glow-star-cluster">
-        <span class="glow-star" style="font-size:1.0rem;align-self:flex-end;--dur:3.6s;--delay:0.5s;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:inline-block;vertical-align:middle"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
-        <span class="glow-star" style="font-size:1.9rem;--dur:4.3s;--delay:1.0s;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:inline-block;vertical-align:middle"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
-        <span class="glow-star" style="font-size:0.6rem;align-self:flex-end;--dur:3.4s;--delay:0.9s;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:inline-block;vertical-align:middle"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
+        <span class="glow-star" style="font-size:1.0rem;align-self:flex-end;--dur:4.0s;--delay:0.7s;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:inline-block;vertical-align:middle"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
+        <span class="glow-star" style="font-size:1.9rem;--dur:3.9s;--delay:0.3s;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:inline-block;vertical-align:middle"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
+        <span class="glow-star" style="font-size:0.6rem;align-self:flex-end;--dur:4.6s;--delay:1.2s;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:inline-block;vertical-align:middle"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
       </div>
     </div>
-    <p class="sc-body">User testing was done using an unmoderated session on Maze. 11 participants were tested through a clickable prototype.</p>
-    <span class="sc-sub-label">flow too funky and not fresh</span>
-    <p class="sc-body-sm">Users felt the original flow was a bit lengthy still, which given the amount of information to enter, I predicted drop-off would happen no matter what. Modern people have short attention spans, including me.</p>
-    <span class="sc-sub-label">Safety first, folks</span>
-    <p class="sc-body-sm">Users felt that this feature could help prevent fraud like activity on their accounts. It&rsquo;s like having your own personal club bouncer outside ready to not let the whacky plebeians into your VIP club.</p>
+    <p class="sc-body">After confirming UX design work with stakeholders, I started to focus on updating the UI to Tala&rsquo;s new standards for mobile. For mobile, it was only certain UI elements such as colors and icons that was to be updated. I also with the help of in-country market teams, wrote UX copy that was easier to understand.<br><br>On the side of this project I worked with the design team to help establish and kick off the ideation of applying our rebrand across the board to our mobile app and also creating a higher level design system that could be more uniformed across all design aspects Tala created.</p>
+  </div>
+</div>
+<!-- KYC VERSION 1 -->
+<div class="sc-section">
+  <div>
+    <h2 class="sc-version-headline">KYC &mdash; Version 1</h2>
+    <p class="sc-body" style="margin-bottom:24px;">To reduce cognitive overload from a lengthy process, I focused on minimizing screens and providing clear, written and visual guidance to prevent errors. A drop-off screen was added to show incomplete steps, and users were given the flexibility to upload documents in any order. I also ensured easy navigation back to the overview screen for document re-uploading.</p>
+    <span class="sc-wireframe-label">Wireframes</span>
+    <img src="images/Tala - KYC - Wires - V1.png" alt="KYC Version 1 Wireframes" class="sc-wireframe-img" />
+  </div>
+  <div class="sc-video-wrap">
+    <div class="star-wrap">
+      <span class="sp sp-31" style="top:15%;left:-32px;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
+      <span class="sp sp-52" style="top:42%;left:-52px;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
+      <span class="sp sp-31" style="top:68%;left:-28px;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
+      <span class="sp sp-52" style="top:20%;right:-50px;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
+      <span class="sp sp-31" style="top:50%;right:-30px;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
+      <span class="sp sp-52" style="top:73%;right:-46px;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
+      <video class="sc-video" autoplay loop muted playsinline style="margin-top:60px;">
+        <source src="videos/Tala - KYC - Verison 1.mp4" type="video/mp4" />
+      </video>
+    </div>
+  </div>
+</div>
+
+<!-- KYC FINAL -->
+<div class="sc-section">
+  <div>
+    <h2 class="sc-version-headline">KYC &mdash; Final</h2>
+    <p class="sc-body" style="margin-bottom:24px;">I streamlined the KYC flow by returning users to the primary overview screen for a more continuous experience. I removed the top icon to reduce scrolling, and updated error states to automatically reroute users or prompt for a valid ID if they submitted the wrong documentation.</p>
+    <span class="sc-wireframe-label">Wireframes</span>
+    <img src="images/Tala - KYC - Wires - Final.png" alt="KYC Final Wireframes" class="sc-wireframe-img" />
+  </div>
+  <div class="sc-video-wrap">
+    <div class="star-wrap">
+      <span class="sp sp-31" style="top:15%;left:-32px;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
+      <span class="sp sp-52" style="top:42%;left:-52px;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
+      <span class="sp sp-31" style="top:68%;left:-28px;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
+      <span class="sp sp-52" style="top:20%;right:-50px;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
+      <span class="sp sp-31" style="top:50%;right:-30px;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
+      <span class="sp sp-52" style="top:73%;right:-46px;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
+      <video class="sc-video" autoplay loop muted playsinline style="margin-top:60px;">
+        <source src="videos/Tala - KYC - Final.mp4" type="video/mp4" />
+      </video>
+    </div>
   </div>
 </div>
 
@@ -435,31 +407,62 @@
   <div class="sc-divider-line"></div>
 </div>
 
+<!-- TIME TO SEE IF THE MAGIC HOLDS -->
+<div class="sc-section">
+  <div>
+    <img src="images/Magic Holds.png" alt="Magic Holds" class="sc-illus-img" />
+  </div>
+  <div>
+    <span class="sc-label">Time to see if the magic holds</span>
+    <h2 class="sc-headline">
+      <span class="glow-star glow-star-left"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.629,10.859L11.991,0.250Q12.000,0.000,12.009,0.250L12.371,10.859L18.900,2.489Q19.053,2.292,18.913,2.499L12.971,11.295L23.172,8.361Q23.413,8.292,23.178,8.377L13.200,12.000L23.178,15.623Q23.413,15.708,23.172,15.639L12.971,12.705L18.913,21.501Q19.053,21.708,18.900,21.511L12.371,13.141L12.009,23.750Q12.000,24.000,11.991,23.750L11.629,13.141L5.100,21.511Q4.947,21.708,5.087,21.501L11.029,12.705L0.828,15.639Q0.587,15.708,0.822,15.623L10.800,12.000L0.822,8.377Q0.587,8.292,0.828,8.361L11.029,11.295L5.087,2.499Q4.947,2.292,5.100,2.489Z"/></svg></span>
+      Usability Testing
+      <span class="glow-star glow-star-right"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.629,10.859L11.991,0.250Q12.000,0.000,12.009,0.250L12.371,10.859L18.900,2.489Q19.053,2.292,18.913,2.499L12.971,11.295L23.172,8.361Q23.413,8.292,23.178,8.377L13.200,12.000L23.178,15.623Q23.413,15.708,23.172,15.639L12.971,12.705L18.913,21.501Q19.053,21.708,18.900,21.511L12.371,13.141L12.009,23.750Q12.000,24.000,11.991,23.750L11.629,13.141L5.100,21.511Q4.947,21.708,5.087,21.501L11.029,12.705L0.828,15.639Q0.587,15.708,0.822,15.623L10.800,12.000L0.822,8.377Q0.587,8.292,0.828,8.361L11.029,11.295L5.087,2.499Q4.947,2.292,5.100,2.489Z"/></svg></span>
+    </h2>
+    <p class="sc-body" style="margin-bottom:28px;">Tala&rsquo;s UX Researcher in the PH market conducted the moderated session with 8 participants.</p>
+    <span class="sc-sub-label">Keep it flowin&rsquo; like a rap song</span>
+    <p class="sc-body-sm" style="margin-bottom:28px;">Cut out some of the screens that return back to the main steps screen. Keep a continuous flow right on through. If drop-off happened of course count for that return by starting back at the main screen upon app load.</p>
+    <span class="sc-sub-label">Lemme see some ID</span>
+    <p class="sc-body-sm" style="margin-bottom:28px;">Visually show the user where an ID number can be found on their identification card, that way the proper number can be entered.</p>
+    <span class="sc-sub-label">You get a tip, you get a tip, everyone gets tips!</span>
+    <p class="sc-body-sm">Keep the ability to show tips for the user even if they tap off.</p>
+  </div>
+</div>
+
+<!-- DIVIDER 6 -->
+<div class="sc-divider">
+  <div class="sc-divider-line"></div>
+  <span class="sc-divider-star"><svg width="96" height="96" viewBox="0 0 24 24" aria-hidden="true" style="display:block;flex-shrink:0"><path fill="currentColor" d="M11.629,10.859L11.991,0.250Q12.000,0.000,12.009,0.250L12.371,10.859L18.900,2.489Q19.053,2.292,18.913,2.499L12.971,11.295L23.172,8.361Q23.413,8.292,23.178,8.377L13.200,12.000L23.178,15.623Q23.413,15.708,23.172,15.639L12.971,12.705L18.913,21.501Q19.053,21.708,18.900,21.511L12.371,13.141L12.009,23.750Q12.000,24.000,11.991,23.750L11.629,13.141L5.100,21.511Q4.947,21.708,5.087,21.501L11.029,12.705L0.828,15.639Q0.587,15.708,0.822,15.623L10.800,12.000L0.822,8.377Q0.587,8.292,0.828,8.361L11.029,11.295L5.087,2.499Q4.947,2.292,5.100,2.489Z"/></svg></span>
+  <div class="sc-divider-line"></div>
+</div>
+
 <!-- THE FINISHED POTION -->
 <div class="sc-section">
   <div>
-    <div class="headline-glow-wrap">
-      <h2 class="sc-section-headline">The finished potion</h2>
-      <div class="glow-star-cluster">
-        <span class="glow-star" style="font-size:1.0rem;align-self:flex-end;--dur:4.1s;--delay:0.3s;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:inline-block;vertical-align:middle"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
-        <span class="glow-star" style="font-size:1.9rem;--dur:4.8s;--delay:1.2s;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:inline-block;vertical-align:middle"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
-        <span class="glow-star" style="font-size:0.6rem;align-self:flex-end;--dur:3.5s;--delay:0.7s;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:inline-block;vertical-align:middle"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
-      </div>
-    </div>
-    <p class="sc-body">Solo Funds rolled out Debit Card Verification to 300K users in July 2022. Metrics were captured via Looker.</p>
-    <span class="sc-sub-label">Business, baby!</span>
-    <p class="sc-body-sm"><strong>88%</strong> of users successfully were able to connect a bank and debit card successfully.</p>
-    <span class="sc-sub-label">drop it like it&rsquo;s hot (or not)</span>
-    <p class="sc-body-sm">Only <strong>12%</strong> of users dropped off entirely, mainly due to issues connecting to Plaid or banks that weren&rsquo;t supported such as small mom and pop credit unions.</p>
-    <span class="sc-sub-label">Catch these errors (and hands)</span>
-    <p class="sc-body-sm">Post launch for a version 2 iteration, design updates were captured to handle Plaid-related error messages within the Solo app. I worked with a back-end engineering lead to ID all possible error states and communicate them clearly to users. Additionally, we removed a few redundant screens to streamline flow.</p>
+    <span class="sc-label">The finished potion</span>
+    <h2 class="sc-headline">
+      <span class="glow-star glow-star-left"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.629,10.859L11.991,0.250Q12.000,0.000,12.009,0.250L12.371,10.859L18.900,2.489Q19.053,2.292,18.913,2.499L12.971,11.295L23.172,8.361Q23.413,8.292,23.178,8.377L13.200,12.000L23.178,15.623Q23.413,15.708,23.172,15.639L12.971,12.705L18.913,21.501Q19.053,21.708,18.900,21.511L12.371,13.141L12.009,23.750Q12.000,24.000,11.991,23.750L11.629,13.141L5.100,21.511Q4.947,21.708,5.087,21.501L11.029,12.705L0.828,15.639Q0.587,15.708,0.822,15.623L10.800,12.000L0.822,8.377Q0.587,8.292,0.828,8.361L11.029,11.295L5.087,2.499Q4.947,2.292,5.100,2.489Z"/></svg></span>
+      Final Metrics
+      <span class="glow-star glow-star-right"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.629,10.859L11.991,0.250Q12.000,0.000,12.009,0.250L12.371,10.859L18.900,2.489Q19.053,2.292,18.913,2.499L12.971,11.295L23.172,8.361Q23.413,8.292,23.178,8.377L13.200,12.000L23.178,15.623Q23.413,15.708,23.172,15.639L12.971,12.705L18.913,21.501Q19.053,21.708,18.900,21.511L12.371,13.141L12.009,23.750Q12.000,24.000,11.991,23.750L11.629,13.141L5.100,21.511Q4.947,21.708,5.087,21.501L11.029,12.705L0.828,15.639Q0.587,15.708,0.822,15.623L10.800,12.000L0.822,8.377Q0.587,8.292,0.828,8.361L11.029,11.295L5.087,2.499Q4.947,2.292,5.100,2.489Z"/></svg></span>
+    </h2>
+    <p class="sc-body" style="margin-bottom:28px;">Tala rolled out KYC to 810K of users in October of 2021. Metrics were captured via Looker.</p>
+    <span class="sc-sub-label">Lightening McQueen fast adoption</span>
+    <p class="sc-body-sm" style="margin-bottom:28px;">91% of users were able to go through the KYC process with ease. 9% still had issues with the flow being &lsquo;too long&rsquo; but with this process we couldn&rsquo;t cut out much more since everything was for country specific legal purposes.</p>
+    <span class="sc-sub-label">K.Y.C. yeah you know me</span>
+    <p class="sc-body-sm" style="margin-bottom:28px;">KYC acceptation rates went up from <strong>63% to 83%.</strong></p>
+    <span class="sc-sub-label">Look at this photograph, every time it makes me laugh</span>
+    <p class="sc-body-sm" style="margin-bottom:28px;">Tala embed a better photo capturing capability in Version 2 that would accurately capture the users&rsquo; selfie and photo ID. Included was a step to ask users to check for their image quality to help improve chances of KYC approvals.</p>
+    <span class="sc-sub-label">Yo, check this flow</span>
+    <p class="sc-body-sm">Removed the constant go back to the home page by having users to do an all in one continuous flow. If someone dropped-off, they could pick up where they left off on the KYC home screen.</p>
   </div>
-  <div class="star-wrap">
-    <span class="sp sp-52" style="top:-8px;right:-18px;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
-    <span class="sp sp-31" style="top:-12px;right:20px;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
-    <span class="sp sp-52" style="bottom:-18px;left:-40px;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
-    <span class="sp sp-31" style="bottom:8px;left:-12px;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
-    <img src="images/Finished potion.png" alt="The Finished Potion" class="sc-illus-img" />
+  <div class="star-wrap" style="display:flex;align-items:center;justify-content:center;">
+    <span class="sp sp-31" style="top:18%;left:-40px;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
+    <span class="sp sp-52" style="top:44%;left:-56px;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
+    <span class="sp sp-31" style="top:72%;left:-36px;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
+    <span class="sp sp-52" style="top:24%;right:-52px;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
+    <span class="sp sp-31" style="top:52%;right:-34px;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
+    <span class="sp sp-52" style="top:76%;right:-48px;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
+    <img src="images/Finished potion.png" alt="Finished Potion" class="sc-illus-img" />
   </div>
 </div>
 
