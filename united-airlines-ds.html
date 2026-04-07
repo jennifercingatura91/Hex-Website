@@ -85,7 +85,7 @@
 
     /* ── PAGE STYLES ── */
     .ua-hero { display: flex; justify-content: center; padding: 120px 92px 60px; }
-    .ua-hero-img { max-width: 768px; width: 100%; display: block; }
+    .ua-hero-img { max-width: 576px; width: 100%; display: block; }
 
     .ua-title-section {
       display: grid; grid-template-columns: 1fr 2fr;
@@ -177,6 +177,18 @@
     }
     .sp-52 { font-size: 52px; }
     .sp-31 { font-size: 31px; }
+
+    /* ── GLOWING HEADLINE STARS ── */
+    @keyframes sparkle {
+      0%   { opacity: 0.25; transform: scale(0.85); filter: drop-shadow(0 0 0px var(--gold)); }
+      50%  { opacity: 1;    transform: scale(1.2);  filter: drop-shadow(0 0 8px var(--gold)) drop-shadow(0 0 16px rgba(196,150,101,0.5)); }
+      100% { opacity: 0.25; transform: scale(0.85); filter: drop-shadow(0 0 0px var(--gold)); }
+    }
+    .headline-glow-wrap { display: flex; align-items: center; gap: 12px; flex-wrap: nowrap; margin-bottom: 24px; }
+    .headline-glow-wrap .ua-section-headline,
+    .headline-glow-wrap .ua-sub-headline { margin-bottom: 0; }
+    .glow-star-cluster { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; padding-bottom: 8px; flex-shrink: 0; }
+    .glow-star { color: var(--gold); line-height: 1; animation: sparkle var(--dur, 4s) ease-in-out infinite; animation-delay: var(--delay, 0s); }
 
     /* ── FOOTER ── */
     footer { background: var(--black); padding: 36px 60px; display: flex; justify-content: center; align-items: center; }
@@ -377,7 +389,14 @@
 <!-- ── PREVIOUS DESIGN ── -->
 <div class="ua-section">
   <div>
-    <h2 class="ua-section-headline">Previous Design</h2>
+    <div class="headline-glow-wrap">
+      <h2 class="ua-section-headline">Previous Design</h2>
+      <div class="glow-star-cluster">
+        <span class="glow-star" style="font-size:1.0rem; align-self:flex-end; --dur:3.8s; --delay:0.4s;">✦</span>
+        <span class="glow-star" style="font-size:1.9rem; --dur:4.5s; --delay:1.1s;">✦</span>
+        <span class="glow-star" style="font-size:0.6rem; align-self:flex-end; --dur:3.2s; --delay:0.8s;">✦</span>
+      </div>
+    </div>
     <p class="ua-body">I was around when United launch their last rebrand in 2018 and here I was again in the year of our lord 2024 seeing another. This time around, United wanted to shed it&rsquo;s usage of the purple colors and get back to basics with feelin&rsquo; blue again. United partnered with a local Chicago design agency to craft an all new branding experience. Giving the United Blue a jazzy modern update along with all it&rsquo;s color companions.<br><br>With this new rebranding also comes with wrangling the mobile design system to be more uniformed. Before, the mobile design system got out of hand with one off components and color usages. A lack of consistency throughout the app made parts of the flows feel different from one another. Atmos, the Design System team at United, wanted to make sure consistency is key this time around. And by gosh dang it, did I want to set up our mobile designers for success (and maybe bully them a bit too.)</p>
   </div>
   <div class="star-wrap">
@@ -406,7 +425,14 @@
     <img src="images/United DS - Writing.png" class="ua-ds-img" style="width:55%;margin:0 auto;" alt="Writing the Design Grimoire" />
   </div>
   <div>
-    <h2 class="ua-section-headline">Writing the design grimoire</h2>
+    <div class="headline-glow-wrap">
+      <h2 class="ua-section-headline">Writing the design grimoire</h2>
+      <div class="glow-star-cluster">
+        <span class="glow-star" style="font-size:1.0rem; align-self:flex-end; --dur:4.2s; --delay:0.7s;">✦</span>
+        <span class="glow-star" style="font-size:1.9rem; --dur:3.9s; --delay:0.2s;">✦</span>
+        <span class="glow-star" style="font-size:0.6rem; align-self:flex-end; --dur:4.7s; --delay:1.3s;">✦</span>
+      </div>
+    </div>
     <p class="ua-body">First, I had to translate the native mobile design system from Sketch to Figma. Believe me, I was happy to not have to deal with that design blasphemy of a program any longer. I created each component from scratch in Figma (IYKYK) and resized correctly to account for mobile device sizes and their respective system guidelines. Using the Atomic Design foundations, I broke up the native mobile design system into atoms, molecules and organisms. Things like buttons would live under molecules while things like the cart experience would live as an organism.<br><br>Both Android and iOS system components lived within one Figma for ease of flipping between each system type. A utility library was created to help host most atoms that would be shared between web and mobile design system files such as colors, icons and imagery.</p>
   </div>
 </div>
@@ -493,7 +519,14 @@
     <img src="https://www.figma.com/api/mcp/asset/2a797871-1d0c-442c-a92b-993a4d91af10" alt="New Phone Illustration" class="ua-illus-img" />
   </div>
   <div>
-    <h2 class="ua-section-headline">New phone, who dis?</h2>
+    <div class="headline-glow-wrap">
+      <h2 class="ua-section-headline">New phone, who dis?</h2>
+      <div class="glow-star-cluster">
+        <span class="glow-star" style="font-size:1.0rem; align-self:flex-end; --dur:3.5s; --delay:1.0s;">✦</span>
+        <span class="glow-star" style="font-size:1.9rem; --dur:4.8s; --delay:0.5s;">✦</span>
+        <span class="glow-star" style="font-size:0.6rem; align-self:flex-end; --dur:3.3s; --delay:1.6s;">✦</span>
+      </div>
+    </div>
     <p class="ua-body">New components were applied to the most complex B2C app flows, including introducing features like full-page modals and card formatting for better screen readability. Collaborating with the Atmos team and leadership, ideas were presented and approved, while mobile developers received Zeplin handoffs and support during implementation.<br><br>Beyond UI, UX functionality issues were assessed across teams, especially in outdated flows. I coordinated with 20+ designers to ensured alignment, with the rebrand work serving as a foundation for guiding future design practices and consistent component use across the app through 2024&ndash;2025. This was a proactive attempt to keep all teams aligned and not have teams misbehavin&rsquo; any further. Everyone is going to be drinking this Kool-Aid now.</p>
   </div>
 </div>
@@ -508,7 +541,14 @@
 <!-- ── THE FINISHED POTION ── -->
 <div class="ua-section">
   <div>
-    <h2 class="ua-section-headline">The finished potion</h2>
+    <div class="headline-glow-wrap">
+      <h2 class="ua-section-headline">The finished potion</h2>
+      <div class="glow-star-cluster">
+        <span class="glow-star" style="font-size:1.0rem; align-self:flex-end; --dur:4.0s; --delay:0.3s;">✦</span>
+        <span class="glow-star" style="font-size:1.9rem; --dur:3.7s; --delay:1.4s;">✦</span>
+        <span class="glow-star" style="font-size:0.6rem; align-self:flex-end; --dur:4.4s; --delay:0.6s;">✦</span>
+      </div>
+    </div>
     <p class="ua-body">United Airlines launched rebrand in May 2024 for both mobile and website. This launched reached 16.2M people on mobile. My Design System however reached only 40 designers unlike Shopify&rsquo;s open source design system website.</p>
     <span class="ua-sub-label">Start the preaching</span>
     <p class="ua-body-sm">What do you do when most designers have never used Figma and kinda sucked at understanding mobile components? Well you get on your soapbox and start preaching the teachings of Figma and the glory of the mobile design system!</p>

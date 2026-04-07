@@ -85,6 +85,17 @@
     .sp-52 { font-size: 52px; }
     .sp-31 { font-size: 31px; }
 
+    /* GLOWING HEADLINE STARS */
+    @keyframes sparkle {
+      0%   { opacity: 0.25; transform: scale(0.85); filter: drop-shadow(0 0 0px var(--gold)); }
+      50%  { opacity: 1;    transform: scale(1.2);  filter: drop-shadow(0 0 8px var(--gold)) drop-shadow(0 0 16px rgba(196,150,101,0.5)); }
+      100% { opacity: 0.25; transform: scale(0.85); filter: drop-shadow(0 0 0px var(--gold)); }
+    }
+    .headline-glow-wrap { display: flex; align-items: center; gap: 12px; flex-wrap: nowrap; margin-bottom: 24px; }
+    .headline-glow-wrap .sc-section-headline { margin-bottom: 0; }
+    .glow-star-cluster { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; padding-bottom: 8px; flex-shrink: 0; }
+    .glow-star { color: var(--gold); line-height: 1; animation: sparkle var(--dur, 4s) ease-in-out infinite; animation-delay: var(--delay, 0s); }
+
     /* FOOTER */
     footer { background: var(--black); padding: 36px 60px; display: flex; justify-content: center; align-items: center; }
     footer p { font-size: 11px; font-weight: 300; letter-spacing: 4px; text-transform: uppercase; color: rgba(245,240,234,0.22); }
@@ -267,7 +278,14 @@
 <!-- BEFORE THE MAGIC -->
 <div class="sc-section">
   <div>
-    <h2 class="sc-section-headline">Before the magic</h2>
+    <div class="headline-glow-wrap">
+      <h2 class="sc-section-headline">Before the magic</h2>
+      <div class="glow-star-cluster">
+        <span class="glow-star" style="font-size:1.0rem; align-self:flex-end; --dur:3.8s; --delay:0.4s;">✦</span>
+        <span class="glow-star" style="font-size:1.9rem; --dur:4.5s; --delay:1.1s;">✦</span>
+        <span class="glow-star" style="font-size:0.6rem; align-self:flex-end; --dur:3.2s; --delay:0.8s;">✦</span>
+      </div>
+    </div>
     <p class="sc-body">How can Super.com provide a new way to attract customers, retain their current customer base and gain new Super+ memberships all at the same time?</p>
     <span class="sc-sub-label">Usability Goals</span>
     <p class="sc-body-sm">Ensure users can easily search, book, and purchase a flight booking and ancillaries (checked bags) successfully. Showcase the best flight discounts online compared to other online travel agencies like Expedia and TripAdvisor.</p>
@@ -297,7 +315,14 @@
 <div class="sc-section">
   <img src="images/Super.com - Brewing.png" alt="Brewing — design process mockup" class="sc-img" />
   <div>
-    <h2 class="sc-section-headline">Brewing up the design process</h2>
+    <div class="headline-glow-wrap">
+      <h2 class="sc-section-headline">Brewing up the design process</h2>
+      <div class="glow-star-cluster">
+        <span class="glow-star" style="font-size:1.0rem; align-self:flex-end; --dur:4.2s; --delay:0.7s;">✦</span>
+        <span class="glow-star" style="font-size:1.9rem; --dur:3.9s; --delay:0.2s;">✦</span>
+        <span class="glow-star" style="font-size:0.6rem; align-self:flex-end; --dur:4.7s; --delay:1.3s;">✦</span>
+      </div>
+    </div>
     <p class="sc-body">Let me tell you something, this was a &lsquo;no walk in the park&rsquo; project.<br>I was the last team member added to a high-pressure project and had just 2 months to design a fully functioning flight booking product&mdash;from the search homepage to post-booking flow. Yes, you read that correctly, 2 months.<br><br>I collaborated closely with the PM to clarify and question requirements, I used my prior airline industry knowledge to fill in gaps. I partnered with the hotel product designer to adapt successful UX/UI frameworks from the hotel flow to the flight flow. Before designing, I mapped out a UX flow chart to align the teams with. Then, I built the UX/UI screens, developed new UI components, leveraged the existing design system (Atlas), and partnered with a content designer on content all while continuously validating feasibility and strategy.</p>
   </div>
 </div>
@@ -365,7 +390,14 @@
 <!-- THE FINISHED POTION -->
 <div class="sc-section">
   <div>
-    <h2 class="sc-section-headline">The finished potion</h2>
+    <div class="headline-glow-wrap">
+      <h2 class="sc-section-headline">The finished potion</h2>
+      <div class="glow-star-cluster">
+        <span class="glow-star" style="font-size:1.0rem; align-self:flex-end; --dur:4.0s; --delay:0.3s;">✦</span>
+        <span class="glow-star" style="font-size:1.9rem; --dur:3.7s; --delay:1.4s;">✦</span>
+        <span class="glow-star" style="font-size:0.6rem; align-self:flex-end; --dur:4.4s; --delay:0.6s;">✦</span>
+      </div>
+    </div>
     <p class="sc-body">Super.com Flights launched in May 2025 to US customers on the website and app. Metrics were captured in Amplitude.</p>
     <span class="sc-sub-label">3, 2, 1, Launch!</span>
     <p class="sc-body-sm">Within 30 days of launch, flights had nearly <strong>8,000 unique</strong> visits between app and website. There was a total of <strong>121 confirmed</strong> flight bookings from current members and new customers.</p>
