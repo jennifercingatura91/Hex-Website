@@ -101,7 +101,7 @@
     }
     .music-for-giggles {
       font-family: 'DM Sans', sans-serif; font-weight: 400;
-      font-size: 32px; color: var(--gold);
+      font-size: 24px; color: var(--gold);
       text-transform: uppercase; margin-bottom: 16px; line-height: 1.2;
     }
     .music-headline {
@@ -112,6 +112,14 @@
       font-family: 'DM Sans', sans-serif; font-weight: 300;
       font-size: 18px; color: #ffffff; line-height: 1.75; padding-top: 12px;
     }
+
+    /* ── DIVIDER ── */
+    .music-divider {
+      display: flex; align-items: center; gap: 24px;
+      padding: 0 92px; margin: 0 0 60px;
+    }
+    .music-divider-line { flex: 1; height: 1px; background: rgba(196,150,101,0.3); }
+    .music-divider-star { font-size: 36px; color: var(--gold); flex-shrink: 0; line-height: 1; }
 
     /* ── POSTER GRID ── */
     .music-grid-section { padding: 0 92px 100px; display: flex; flex-direction: column; gap: 40px; }
@@ -186,6 +194,7 @@
       .music-title-section { padding: 28px 20px 20px; }
       .music-headline { font-size: 40px; }
       .music-for-giggles { font-size: 24px; }
+      .music-divider { padding: 0 20px; margin-bottom: 40px; }
       .music-grid-section { padding: 0 20px 60px; gap: 20px; }
       .poster-row { grid-template-columns: 1fr; }
       .poster-item--empty { display: none; }
@@ -300,6 +309,13 @@
     <h1 class="music-headline">Music Artist Posters</h1>
   </div>
   <p class="music-body">I can't always be soul sucked by corporate bullshit. Graphic design was my humble beginnings and it still stays true as of today.<br><br>I did these posters as a fun exercise to get creative and well do fun shit. If you know anyone needing some poster design help, contact me.</p>
+</div>
+
+<!-- ── DIVIDER ── -->
+<div class="music-divider">
+  <div class="music-divider-line"></div>
+  <span class="music-divider-star">✦</span>
+  <div class="music-divider-line"></div>
 </div>
 
 <!-- ── POSTER GRID ── -->
