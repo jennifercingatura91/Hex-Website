@@ -233,7 +233,7 @@
     <p class="sc-label">Solo Funds</p>
     <h1 class="sc-headline">Debit Card Verification</h1>
   </div>
-  <p class="sc-body">SoLo Funds is a peer-to-peer micro-lending platform where community members lend and borrow from each other. To protect lenders and borrowers on the platform, SoLo introduced a debit card verification flow to reduce fraud and increase trust within the community.<br><br>This case study is under an NDA. Specific metrics and strategy details have been omitted, but the design process and outcomes are shared here.</p>
+  <p class="sc-body">SoLo Funds is a peer-to-peer microlending native app where a user can request loans that are funded by the public. SoLo Funds Debit Card Verification was a new feature for SoLo to help prevent fraud activity amongst the user base. SoLo partnered with 3rd party platform, Plaid to let users connect their banking credentials. This is some deep thinking, technical shit, folks.<br><br>Solo Funds app is available on the Apple App Store and Google Play Store.</p>
 </div>
 
 <!-- META ROW -->
@@ -248,7 +248,7 @@
   </div>
   <div class="sc-meta-col">
     <span class="sc-meta-label">Responsibilities</span>
-    <p class="sc-meta-value">Collaborated with Data Scientists and Product Managers to define requirements, led end-to-end design from research through delivery, conducted usability testing via Maze, and iterated on designs based on findings and stakeholder feedback.</p>
+    <p class="sc-meta-value">Work with Data Scientists and PMs to compile user metrics/research, define scoping and requirements, understand feasibility from Engineers, work with a marketing copywriter to write thorough copy for users to understand. Design UX wireframes/high-fi screens. Document flows within Figma for handoffs.</p>
   </div>
 </div>
 
@@ -270,13 +270,13 @@
         <span class="glow-star" style="font-size:0.6rem;align-self:flex-end;--dur:3.2s;--delay:0.8s;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:inline-block;vertical-align:middle"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
       </div>
     </div>
-    <p class="sc-body">Nearly 34% of SoLo users experience fraud activity on the platform. The team needed to design a debit card verification flow that would protect users while keeping the onboarding experience frictionless and trustworthy.</p>
+    <p class="sc-body">Nearly 34% of Solo users experience fraud activity &mdash; most commonly through a lost debit card, stolen phone, or compromised bank credentials from a third party hack. The feature was to target to cut down on fraudulent activity.</p>
     <span class="sc-sub-label">Usability Goals</span>
-    <p class="sc-body-sm">Design a seamless, intuitive debit card verification flow that users can complete quickly and with confidence. Minimize drop-off by reducing cognitive load and making each step feel safe and necessary.</p>
+    <p class="sc-body-sm">Ensure users can easily connect and enter their banking information in just a few short steps, clearly understand the terminology being asking of them, and provide tips of what users are being asked to do.</p>
     <span class="sc-sub-label">Business Goals</span>
-    <p class="sc-body-sm">Reduce fraud on the SoLo platform, increase lender trust, and improve overall community health. Card verification was seen as a key trust signal that would drive both lender and borrower retention.</p>
+    <p class="sc-body-sm">Decrease fraud from 34% to 15% or less. Partner with Plaid to have users enter in their banking credentials.</p>
     <span class="sc-sub-label">Predicted Outcome</span>
-    <p class="sc-body-sm">A verified debit card flow would reduce fraudulent transactions, increase lender confidence in the platform, and create a healthier peer-to-peer lending ecosystem that benefits both sides of the marketplace.</p>
+    <p class="sc-body-sm">Partnering with Plaid to help streamline the process of verification will give users a sense of security of their Solo accounts. Users can still report issues and stolen cards to customer service.</p>
   </div>
   <div class="star-wrap">
     <span class="sp sp-52" style="top:-8px;right:-18px;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
@@ -313,14 +313,17 @@
         <span class="glow-star" style="font-size:0.6rem;align-self:flex-end;--dur:4.9s;--delay:1.4s;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:inline-block;vertical-align:middle"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
       </div>
     </div>
-    <p class="sc-body">Before diving into the design process, I sent out a Maze survey to current SoLo users to understand their awareness of fraud, their feelings about connecting financial information, and what other fintech apps they use. The data was eye-opening.</p>
+    <p class="sc-body">Before diving into the design process, I sent out a Maze survey to new users asking them about fraud prevention questions.</p>
     <div style="margin-top:32px;">
+      <span class="sc-sub-label">Honey, where&rsquo;s my phone?</span>
       <p class="sc-stat">27%</p>
-      <p class="sc-stat-label">of users reported losing their phone or having it stolen</p>
+      <p class="sc-body-sm" style="margin-bottom:28px;">of users at one time lost their phones and worried about the app on their phones.</p>
+      <span class="sc-sub-label">Always have protection</span>
       <p class="sc-stat">89%</p>
-      <p class="sc-stat-label">felt that bank connection gives them a sense of safety on the platform</p>
+      <p class="sc-body-sm" style="margin-bottom:28px;">of users felt connecting a bank account to their debit card would give them a sense of safety.</p>
+      <span class="sc-sub-label">Clueless (not the 1995 cinematic masterpiece)</span>
       <p class="sc-stat">93%</p>
-      <p class="sc-stat-label">were unaware that other fintech apps offered fraud prevention features</p>
+      <p class="sc-body-sm">of new users didn&rsquo;t know other fintech apps offered fraud prevention measures.</p>
     </div>
   </div>
 </div>
@@ -344,15 +347,15 @@
         <span class="glow-star" style="font-size:0.6rem;align-self:flex-end;--dur:4.6s;--delay:1.2s;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:inline-block;vertical-align:middle"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
       </div>
     </div>
-    <p class="sc-body">Armed with research and a clear problem to solve, I leveraged the survey findings to shape the design direction. Working closely with Data Scientists and the Product Manager, I mapped out the verification states, edge cases, and error scenarios before touching a single frame.<br><br>The biggest challenge was balancing security requirements with user trust&mdash;nobody wants to feel interrogated when they&rsquo;re just trying to borrow money for groceries. I focused on progressive disclosure, clear microcopy, and reassuring UI patterns to keep the experience feeling supportive rather than suspicious.</p>
+    <p class="sc-body">Leveraging the research in hand via Maze surveys and customer complaints, I continued to work with my PM to understand user stories and metrics to piece together some wireframes. I collaborated with data scientists and one product manager to gather information for dashboard program, Looker.<br><br>This feature was technically complex due to integration with a third-party platform and extensive backend API calls. I designed separate flows for three user types: Power Lenders (trusted users who bypassed Plaid), new users, and current Borrowers. Most fraud concerns involved new users. Multiple entry points for users to enter their information were created across Settings, Wallet, and Marketplace.</p>
   </div>
 </div>
 
 <!-- NEW USERS VERSION 1 -->
 <div class="sc-section">
   <div>
-    <h2 class="sc-version-headline">New users — version 1</h2>
-    <p class="sc-body" style="margin-bottom:24px;">The first version of the debit card verification flow focused on getting users verified as quickly as possible. Wireframes were kept minimal, prioritizing speed over education. The assumption was that users would trust the process if it was fast.</p>
+    <h2 class="sc-version-headline">New Users &mdash; Connect Account Version 1</h2>
+    <p class="sc-body" style="margin-bottom:24px;">With these screens I was able to explore the option of messaging to the user base, notifying the users where in the process they were, how drop-offs would work if a user chose that process, what does the UI look for the difference between the Power Lenders versus everyone else. I leveraged the SoLo Funds Design System to build out my screens for this feature.</p>
     <span class="sc-wireframe-label">Wireframes</span>
     <img src="images/Solo Funds - Wires - Version 1.png" alt="New Users Wireframes Version 1" class="sc-wireframe-img" />
   </div>
@@ -366,8 +369,8 @@
 <!-- NEW USERS VERSION 2 -->
 <div class="sc-section">
   <div>
-    <h2 class="sc-version-headline">New users — version 2</h2>
-    <p class="sc-body" style="margin-bottom:24px;">After usability testing revealed users felt rushed and confused about why they needed to verify, I redesigned the flow with more context and reassurance at each step. Version 2 introduced educational moments and clearer progress indicators to keep users oriented and confident.</p>
+    <h2 class="sc-version-headline">New Users &mdash; Connect Account Version 2</h2>
+    <p class="sc-body" style="margin-bottom:24px;">Post-release, I partnered with a lead back-end engineer to design error states for when Plaid decided to be a little punk. We addressed issues where Plaid timed out or failed to recognize smaller credit unions users were apart since they weren&rsquo;t in Plaid&rsquo;s system.<br><br>I also streamlined the flow by cutting out the back-and-forth to the home screen, allowing users to jump straight from entering their debit card to selecting their bank account.</p>
     <span class="sc-wireframe-label">Wireframes</span>
     <img src="images/Solo Funds - Wires - Final.png" alt="New Users Final Wireframes" class="sc-wireframe-img" />
   </div>
@@ -403,11 +406,11 @@
         <span class="glow-star" style="font-size:0.6rem;align-self:flex-end;--dur:3.4s;--delay:0.9s;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:inline-block;vertical-align:middle"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
       </div>
     </div>
-    <p class="sc-body">I ran an unmoderated Maze usability test with 11 participants to validate the Version 2 flow before final handoff. The results gave us clear direction on what was working and what still needed refinement.</p>
-    <span class="sc-sub-label">Flow too funky</span>
-    <p class="sc-body-sm">Several participants got confused between the micro-deposit verification step and the instant card verification option. The choice architecture needed clearer hierarchy&mdash;users wanted to know which path was faster before committing.</p>
-    <span class="sc-sub-label">Safety first</span>
-    <p class="sc-body-sm">Participants responded positively to the trust-building copy and iconography. The messaging around &ldquo;your information is protected&rdquo; significantly reduced hesitation. Users felt safe handing over card details when they understood the why behind it.</p>
+    <p class="sc-body">User testing was done using an unmoderated session on Maze. 11 participants were tested through a clickable prototype.</p>
+    <span class="sc-sub-label">flow too funky and not fresh</span>
+    <p class="sc-body-sm">Users felt the original flow was a bit lengthy still, which given the amount of information to enter, I predicted drop-off would happen no matter what. Modern people have short attention spans, including me.</p>
+    <span class="sc-sub-label">Safety first, folks</span>
+    <p class="sc-body-sm">Users felt that this feature could help prevent fraud like activity on their accounts. It&rsquo;s like having your own personal club bouncer outside ready to not let the whacky plebeians into your VIP club.</p>
   </div>
 </div>
 
@@ -429,13 +432,13 @@
         <span class="glow-star" style="font-size:0.6rem;align-self:flex-end;--dur:3.5s;--delay:0.7s;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:inline-block;vertical-align:middle"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
       </div>
     </div>
-    <p class="sc-body">After two rounds of iteration and testing, the debit card verification flow launched and delivered measurable results. The final design balanced security with empathy, making verification feel like a feature rather than a barrier.</p>
-    <span class="sc-sub-label">Success Rate</span>
-    <p class="sc-body-sm"><strong>88% of users successfully connected</strong> their debit card on the first attempt in post-launch monitoring&mdash;a strong signal that the flow was intuitive and trustworthy.</p>
-    <span class="sc-sub-label">Drop-off</span>
-    <p class="sc-body-sm">12% of users dropped off during the verification flow. Post-launch, a V2 error handling pass addressed the most common failure states&mdash;expired cards, unsupported banks&mdash;further reducing abandonment.</p>
-    <span class="sc-sub-label">What I learned</span>
-    <p class="sc-body-sm">Security UX is trust UX. The moment users understand <em>why</em> they&rsquo;re being asked for something sensitive, their willingness to comply shoots up. Investing in the right copy and iconography at the right moments is just as important as the interaction design itself.</p>
+    <p class="sc-body">Solo Funds rolled out Debit Card Verification to 300K users in July 2022. Metrics were captured via Looker.</p>
+    <span class="sc-sub-label">Business, baby!</span>
+    <p class="sc-body-sm">88% of users successfully were able to connect a bank and debit card successfully.</p>
+    <span class="sc-sub-label">drop it like it&rsquo;s hot (or not)</span>
+    <p class="sc-body-sm">Only 12% of users dropped off entirely, mainly due to issues connecting to Plaid or banks that weren&rsquo;t supported such as small mom and pop credit unions.</p>
+    <span class="sc-sub-label">Catch these errors (and hands)</span>
+    <p class="sc-body-sm">Post launch for a version 2 iteration, design updates were captured to handle Plaid-related error messages within the Solo app. I worked with a back-end engineering lead to ID all possible error states and communicate them clearly to users. Additionally, we removed a few redundant screens to streamline flow.</p>
   </div>
   <div class="star-wrap">
     <span class="sp sp-52" style="top:-8px;right:-18px;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
