@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SimplePractice Clinician Documentation — Jennifer Cingatura</title>
+  <style id="pw-hide">html{display:none!important;}</style>
+  <script>
+    (function(){
+      if (sessionStorage.getItem('pw:simplepractice.html') !== '1') {
+        document.documentElement.style.display='';
+        window.location.replace('password.html?next=simplepractice.html');
+      } else {
+        var s=document.getElementById('pw-hide');
+        if(s) s.parentNode.removeChild(s);
+      }
+    })();
+  </script>
+  <style>
+    @font-face { font-family:'Stackwitin'; src:url('fonts/Stacktwinttf.ttf') format('truetype'); font-weight:normal; font-style:normal; font-display:swap; }
+  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    :root{--cream:#F5F0EA;--charcoal:#212121;--gray:#7C7C7C;--gold:#C49665;--black:#000000;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--charcoal);font-family:'DM Sans',sans-serif;font-weight:300;overflow-x:hidden;}
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:20px 60px;}
+    nav::before{content:'';position:absolute;inset:0;background:rgba(33,33,33,0.7);backdrop-filter:blur(14px);transition:background 0.3s;z-index:-1;pointer-events:none;}
+    nav.scrolled::before{background:rgba(0,0,0,0.92);}
+    .nav-logo-link{display:block;line-height:0;}
+    .nav-logo{height:36px;width:auto;display:block;}
+    .nav-links{display:flex;gap:40px;list-style:none;align-items:center;}
+    .nav-links a{color:var(--cream);text-decoration:none;font-size:13px;font-weight:300;letter-spacing:5px;text-transform:uppercase;transition:color 0.2s;}
+    .nav-links a:hover{color:var(--gray);}
+    .nav-links a.active{color:var(--gold);}
+    .nav-item--work{position:relative;}
+    .nav-item--work>a{display:flex;align-items:center;gap:6px;}
+    .nav-item--work>a::after{content:'';display:inline-block;width:5px;height:5px;border-right:1px solid currentColor;border-bottom:1px solid currentColor;transform:rotate(45deg) translateY(-2px);transition:transform 0.2s;}
+    .nav-item--work.open>a::after{transform:rotate(-135deg) translateY(-2px);}
+    .work-dropdown{position:absolute;top:calc(100% + 20px);right:0;width:540px;background:rgba(18,18,18,0.97);backdrop-filter:blur(24px);border:1px solid rgba(196,150,101,0.25);border-radius:20px;padding:24px;opacity:0;pointer-events:none;transform:translateY(-10px);transition:opacity 0.22s ease,transform 0.22s ease;}
+    .nav-item--work.open .work-dropdown{opacity:1;pointer-events:all;transform:translateY(0);}
+    .work-tabs{display:flex;gap:4px;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid rgba(196,150,101,0.2);}
+    .work-tab{background:none;border:none;color:rgba(245,240,234,0.45);font-family:'DM Sans',sans-serif;font-size:11px;font-weight:400;letter-spacing:4px;text-transform:uppercase;cursor:pointer;padding:6px 16px;border-radius:100px;transition:all 0.18s;}
+    .work-tab.active{background:var(--gold);color:var(--charcoal);}
+    .work-tab:hover:not(.active){color:var(--cream);}
+    .work-panel{display:none;grid-template-columns:repeat(3,1fr);gap:12px;}
+    .work-panel.active{display:grid;}
+    .work-item{text-decoration:none;display:flex;flex-direction:column;gap:8px;transition:transform 0.18s;}
+    .work-item:hover{transform:translateY(-3px);}
+    .work-item-img{width:100%;aspect-ratio:4/3;border-radius:10px;overflow:hidden;background:#2c2c2c;}
+    .work-item-img img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;}
+    .work-item-company{font-family:'Stackwitin',serif;font-size:16px;color:var(--cream);line-height:1.1;}
+    .work-item-project{font-size:10px;font-weight:300;letter-spacing:2px;text-transform:uppercase;color:var(--gray);margin-top:-4px;}
+    .sc-hero{display:flex;justify-content:center;padding:120px 92px 60px;}
+    .sc-hero-img{max-width:900px;width:100%;display:block;max-height:65vh;object-fit:contain;}
+    .sc-title-section{display:grid;grid-template-columns:1fr 2fr;gap:60px;padding:0 92px 60px;align-items:start;}
+    .sc-label{font-family:'DM Sans',sans-serif;font-weight:300;font-size:24px;color:var(--gold);text-transform:uppercase;margin-bottom:12px;line-height:1.2;}
+    .sc-headline{font-family:'Stackwitin',serif;font-weight:normal;font-size:100px;color:var(--cream);line-height:1.0;}
+    .sc-body{font-family:'DM Sans',sans-serif;font-weight:300;font-size:18px;color:#ffffff;line-height:1.75;}
+    .sc-body strong{font-weight:600;}
+    .sc-meta-row{display:flex;gap:60px;padding:0 92px 80px;align-items:flex-start;}
+    .sc-meta-col{flex:1;}
+    .sc-meta-label{font-family:'DM Sans',sans-serif;font-weight:500;font-size:16px;color:var(--gold);text-transform:uppercase;letter-spacing:5px;margin-bottom:8px;display:block;}
+    .sc-meta-value{font-family:'DM Sans',sans-serif;font-weight:300;font-size:18px;color:#ffffff;line-height:1.5;}
+    .sc-divider{display:flex;align-items:center;gap:24px;padding:0 92px;margin:20px 0;}
+    .sc-divider-line{flex:1;height:1px;background:rgba(196,150,101,0.3);}
+    .sc-divider-star{color:var(--gold);flex-shrink:0;line-height:1;}
+    .sc-section{display:grid;grid-template-columns:1fr 1fr;gap:60px;padding:60px 92px;align-items:start;}
+    .sc-section-headline{font-family:'Stackwitin',serif;font-weight:normal;font-size:72px;color:var(--cream);line-height:1.0;margin-bottom:24px;}
+    .sc-version-headline{font-family:'Stackwitin',serif;font-weight:normal;font-size:48px;color:var(--cream);line-height:1.0;margin-bottom:20px;}
+    .sc-sub-label{display:block;font-family:'DM Sans',sans-serif;font-weight:500;font-size:16px;color:var(--gold);text-transform:uppercase;letter-spacing:5px;margin-top:32px;margin-bottom:10px;}
+    .sc-body-sm{font-family:'DM Sans',sans-serif;font-weight:300;font-size:16px;color:#ffffff;line-height:1.6;}
+    .sc-body-sm strong{font-weight:600;}
+    .sc-img{width:100%;display:block;}
+    .sc-illus-img{width:100%;max-width:300px;display:block;margin:0 auto;}
+    .sc-brewing-video{width:100%;display:block;border-radius:12px;}
+    .sc-wireframe-img{width:85%;display:block;margin-top:16px;}
+    .sc-wireframe-label{display:block;font-family:'DM Sans',sans-serif;font-weight:500;font-size:13px;color:var(--gold);text-transform:uppercase;letter-spacing:4px;margin-top:24px;margin-bottom:0;}
+    .star-wrap{position:relative;}
+    .star-wrap img,.star-wrap video{position:relative;z-index:1;}
+    .sp{position:absolute;color:var(--gold);pointer-events:none;z-index:0;line-height:1;display:block;}
+    .sp-52{font-size:68px;}
+    .sp-31{font-size:40px;}
+    @keyframes sparkle{
+      0%{opacity:0.25;transform:scale(0.85);filter:drop-shadow(0 0 0px var(--gold));}
+      50%{opacity:1;transform:scale(1.2);filter:drop-shadow(0 0 8px var(--gold)) drop-shadow(0 0 16px rgba(196,150,101,0.5));}
+      100%{opacity:0.25;transform:scale(0.85);filter:drop-shadow(0 0 0px var(--gold));}
+    }
+    .headline-glow-wrap{display:flex;align-items:center;gap:12px;flex-wrap:nowrap;margin-bottom:24px;}
+    .headline-glow-wrap .sc-section-headline{margin-bottom:0;}
+    .glow-star-cluster{display:flex;flex-direction:column;align-items:flex-start;gap:2px;padding-bottom:8px;flex-shrink:0;}
+    .glow-star{color:var(--gold);line-height:1;animation:sparkle var(--dur,4s) ease-in-out infinite;animation-delay:var(--delay,0s);}
+    footer{background:var(--black);padding:36px 60px;display:flex;justify-content:center;align-items:center;}
+    footer p{font-size:11px;font-weight:300;letter-spacing:4px;text-transform:uppercase;color:rgba(245,240,234,0.22);}
+    .nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:4px;z-index:110;}
+    .nav-hamburger span{display:block;width:24px;height:2px;background:var(--cream);border-radius:2px;transition:transform 0.22s ease,opacity 0.22s ease;transform-origin:center;}
+    nav.nav-open .nav-hamburger span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+    nav.nav-open .nav-hamburger span:nth-child(2){opacity:0;transform:scaleX(0);}
+    nav.nav-open .nav-hamburger span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+    @media(max-width:1300px){
+      .sc-hero{padding:120px 60px 60px;}
+      .sc-title-section,.sc-meta-row,.sc-section,.sc-divider{padding-left:60px;padding-right:60px;}
+    }
+    @media(max-width:1200px){
+      .work-dropdown{width:420px;}
+      .work-panel{grid-template-columns:repeat(2,1fr);}
+      .sc-headline{font-size:80px;}
+    }
+    @media(max-width:900px){
+      .sc-title-section{grid-template-columns:1fr;gap:24px;}
+      .sc-section{grid-template-columns:1fr;gap:32px;}
+      .sc-section-headline{font-size:52px;}
+    }
+    @media(max-width:768px){
+      nav{padding:16px 20px;}
+      .nav-hamburger{display:flex;}
+      .nav-links{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(12,12,12,0.97);backdrop-filter:blur(20px);flex-direction:column;align-items:flex-start;justify-content:flex-start;padding:96px 32px 48px;gap:0;z-index:99;overflow-y:auto;opacity:0;pointer-events:none;transform:translateY(-10px);transition:opacity 0.25s ease,transform 0.25s ease;}
+      nav.nav-open .nav-links{opacity:1;pointer-events:all;transform:translateY(0);}
+      .nav-links>li{width:100%;}
+      .nav-links>li>a{display:block;font-size:28px;letter-spacing:4px;padding:18px 0;border-bottom:1px solid rgba(245,240,234,0.08);}
+      .nav-links>li:last-child>a{border-bottom:none;}
+      .nav-item--work>a{justify-content:space-between;width:100%;}
+      .nav-item--work.open>a{border-bottom:1px solid rgba(245,240,234,0.08);}
+      .work-dropdown{position:static;width:100%;background:transparent;border:none;border-radius:0;padding:16px 0 8px;backdrop-filter:none;opacity:1;pointer-events:all;transform:none;transition:none;display:none;}
+      .nav-item--work.open .work-dropdown{display:block;}
+      .work-tabs{flex-wrap:wrap;padding-bottom:12px;margin-bottom:12px;}
+      .work-panel{grid-template-columns:repeat(2,1fr);gap:12px;}
+      .sc-hero{padding:80px 20px 40px;}
+      .sc-title-section{grid-template-columns:1fr;gap:24px;padding:0 20px 40px;}
+      .sc-headline{font-size:56px;}
+      .sc-label{font-size:22px;}
+      .sc-section{grid-template-columns:1fr;gap:28px;padding:40px 20px;}
+      .sc-section-headline{font-size:40px;}
+      .sc-version-headline{font-size:32px;}
+      .sc-meta-row{flex-direction:column;gap:28px;padding:0 20px 48px;}
+      .sc-divider{padding:0 20px;}
+      .sp{display:none;}
+      footer{padding:28px;}
+    }
+    @media(max-width:480px){
+      .sc-headline{font-size:42px;}
+      .sc-section-headline{font-size:32px;}
+    }
+  </style>
+</head>
+<body>
+<!-- NAV -->
+<nav id="main-nav">
+  <a href="index.html" class="nav-logo-link"><img class="nav-logo" src="images/Logo.png" alt="Jennifer Cingatura" /></a>
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+  <ul class="nav-links">
+    <li class="nav-item--work">
+      <a href="index.html#work">Work</a>
+      <div class="work-dropdown">
+        <div class="work-tabs">
+          <button class="work-tab active" data-cat="mobile">Mobile</button>
+          <button class="work-tab" data-cat="web">Web</button>
+          <button class="work-tab" data-cat="print">Print</button>
+        </div>
+        <div class="work-panel active" data-cat="mobile">
+          <a class="work-item active" href="password.html?next=simplepractice.html">
+            <div class="work-item-img"><img src="images/SimplePractice.png" alt="SimplePractice" /></div>
+            <p class="work-item-company">SimplePractice</p>
+            <p class="work-item-project">Clinician Documentation</p>
+          </a>
+          <a class="work-item" href="index.html#case-mileplay">
+            <div class="work-item-img"><img src="images/United MilePlay Phone.png" alt="United MilePlay" /></div>
+            <p class="work-item-company">United Airlines</p>
+            <p class="work-item-project">Mileplay</p>
+          </a>
+          <a class="work-item" href="united-airlines-ds.html">
+            <div class="work-item-img"><img src="images/United Airlines.png" alt="United Airlines DS" /></div>
+            <p class="work-item-company">United Airlines</p>
+            <p class="work-item-project">Mobile Design System</p>
+          </a>
+          <a class="work-item" href="solofunds.html">
+            <div class="work-item-img"><img src="images/Solo Funds Phone.png" alt="Solo Funds" /></div>
+            <p class="work-item-company">Solo Funds</p>
+            <p class="work-item-project">Debit Card Verification</p>
+          </a>
+          <a class="work-item" href="tala-kyc.html">
+            <div class="work-item-img"><img src="images/Tala Phone.png" alt="Tala KYC" /></div>
+            <p class="work-item-company">Tala</p>
+            <p class="work-item-project">Know Your Customer</p>
+          </a>
+        </div>
+        <div class="work-panel" data-cat="web">
+          <a class="work-item" href="password.html?next=super.html">
+            <div class="work-item-img"><img src="images/Super.com.png" alt="Super.com" /></div>
+            <p class="work-item-company">Super.com</p>
+            <p class="work-item-project">Flights MVP</p>
+          </a>
+          <a class="work-item" href="index.html#case-tala-care">
+            <div class="work-item-img"><img src="images/Tala Desktop.png" alt="Tala CARE" /></div>
+            <p class="work-item-company">Tala</p>
+            <p class="work-item-project">Care Internal Tool</p>
+          </a>
+          <a class="work-item" href="password.html?next=ibisworld.html">
+            <div class="work-item-img"><img src="images/IBISWorld Desktop.png" alt="IBISWorld" /></div>
+            <p class="work-item-company">IBISWorld</p>
+            <p class="work-item-project">My IBISworld</p>
+          </a>
+          <a class="work-item" href="cemex-go.html">
+            <div class="work-item-img"><img src="images/Cemex Desktop.png" alt="Cemex" /></div>
+            <p class="work-item-company">Cemex</p>
+            <p class="work-item-project">Cemex Go</p>
+          </a>
+        </div>
+        <div class="work-panel" data-cat="print">
+          <a class="work-item" href="music-posters.html">
+            <div class="work-item-img"><img src="images/Music Posters.png" alt="Music Posters" /></div>
+            <p class="work-item-company">Music Artist Posters</p>
+            <p class="work-item-project">Print Posters</p>
+          </a>
+        </div>
+      </div>
+    </li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="resume.html">Resume</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="sc-hero">
+  <img src="images/Header - SP.png" alt="SimplePractice Clinician Documentation" class="sc-hero-img" />
+</section>
+
+<!-- TITLE -->
+<section class="sc-title-section">
+  <div>
+    <p class="sc-label">SimplePractice</p>
+    <h1 class="sc-headline">Client Documentation</h1>
+  </div>
+  <div>
+    <p class="sc-body">SimplePractice is a Santa Monica&ndash;based EHR startup serving mental health clinicians and their clients. I joined as a temporary contractor to help enhance the B2B iOS and Android clinician app by adding and improving client chart notes, diagnoses and treatment plans, app-wide filtering, and progress note functionality. Additionally, I led the iOS VoiceOver and Dynamic Type accessibility initiative, adding detailed annotations to ensure compliance with accessibility standards. This project extended beyond this single feature and improved accessibility across the entire clinician app. Maybe this project was the therapist I needed all along.</p>
+  </div>
+</section>
+
+<!-- META -->
+<div class="sc-meta-row">
+  <div class="sc-meta-col">
+    <span class="sc-meta-label">Role</span>
+    <p class="sc-meta-value">Senior Mobile Product Designer (Contract)</p>
+  </div>
+  <div class="sc-meta-col">
+    <span class="sc-meta-label">Duration</span>
+    <p class="sc-meta-value">3 months (Sep 2025 &ndash; Dec 2025)</p>
+  </div>
+  <div class="sc-meta-col">
+    <span class="sc-meta-label">Responsibilities</span>
+    <p class="sc-meta-value">Work with PM and lead designer to understand feasibility, and complex user problems. Partner with lead designer on usability testing sessions. Speak with engineers about flow and any other questions that arose. Design UX/UI. Document flows within Figma for handoffs. Provide iOS VoiceOver annotations and dynamic text guidance.</p>
+  </div>
+</div>
+
+<div class="sc-divider">
+  <div class="sc-divider-line"></div>
+  <span class="sc-divider-star"><svg width="96" height="96" viewBox="0 0 24 24" aria-hidden="true" style="display:block;flex-shrink:0"><path fill="currentColor" d="M11.629,10.859L11.991,0.250Q12.000,0.000,12.009,0.250L12.371,10.859L18.900,2.489Q19.053,2.292,18.913,2.499L12.971,11.295L23.172,8.361Q23.413,8.292,23.178,8.377L13.200,12.000L23.178,15.623Q23.413,15.708,23.172,15.639L12.971,12.705L18.913,21.501Q19.053,21.708,18.900,21.511L12.371,13.141L12.009,23.750Q12.000,24.000,11.991,23.750L11.629,13.141L5.100,21.511Q4.947,21.708,5.087,21.501L11.029,12.705L0.828,15.639Q0.587,15.708,0.822,15.623L10.800,12.000L0.822,8.377Q0.587,8.292,0.828,8.361L11.029,11.295L5.087,2.499Q4.947,2.292,5.100,2.489Z"/></svg></span>
+  <div class="sc-divider-line"></div>
+</div>
+
+<!-- BEFORE THE MAGIC -->
+<section class="sc-section">
+  <div>
+    <div class="headline-glow-wrap">
+      <h2 class="sc-section-headline">Before the magic</h2>
+      <div class="glow-star-cluster">
+        <span class="glow-star" style="font-size:1.0rem;align-self:flex-end;--dur:3.8s;--delay:0.4s;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:inline-block;vertical-align:middle"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
+        <span class="glow-star" style="font-size:1.9rem;--dur:4.2s;--delay:1.3s;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:inline-block;vertical-align:middle"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
+        <span class="glow-star" style="font-size:0.6rem;align-self:flex-end;--dur:3.4s;--delay:0.8s;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:inline-block;vertical-align:middle"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
+      </div>
+    </div>
+    <p class="sc-body">SimplePractice wanted to bring client notes, treatment plans, and progress notes from their existing EHR web app to mobile &mdash; features clinicians rely on before sessions, for team collaboration, and for maintaining client history.</p>
+    <span class="sc-sub-label">usability goals</span>
+    <p class="sc-body-sm">Ensure users can easily add, edit and view clients notes, progress notes and diagnoses treatment plans without having to log onto a computer. View and filter clientele history timelines, see upfront client diagnosis and treatment plans.</p>
+    <span class="sc-sub-label">business goals</span>
+    <p class="sc-body-sm">Give clients more attention during sessions by keeping clinicians away from a computer. Clinicians on the go can add, edit and view notes without needing their computer.</p>
+    <span class="sc-sub-label">Predicted outcome</span>
+    <p class="sc-body-sm">Clinicians will feel empowered and prepared to be able to see and address clients information before and after client sessions. Let&rsquo;s face it, most healthcare professionals are running around with their heads cut off.</p>
+  </div>
+  <div style="display:flex;justify-content:center;align-items:flex-start;">
+    <div class="star-wrap">
+      <span class="sp sp-52" style="top:-8px;right:-18px;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
+      <span class="sp sp-31" style="top:-12px;right:20px;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
+      <span class="sp sp-52" style="bottom:-18px;left:-40px;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
+      <span class="sp sp-31" style="bottom:8px;left:-12px;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
+      <img src="images/Before Magic.png" alt="Before the magic" class="sc-illus-img" />
+    </div>
+  </div>
+</section>
+
+<div class="sc-divider">
+  <div class="sc-divider-line"></div>
+  <span class="sc-divider-star"><svg width="96" height="96" viewBox="0 0 24 24" aria-hidden="true" style="display:block;flex-shrink:0"><path fill="currentColor" d="M11.629,10.859L11.991,0.250Q12.000,0.000,12.009,0.250L12.371,10.859L18.900,2.489Q19.053,2.292,18.913,2.499L12.971,11.295L23.172,8.361Q23.413,8.292,23.178,8.377L13.200,12.000L23.178,15.623Q23.413,15.708,23.172,15.639L12.971,12.705L18.913,21.501Q19.053,21.708,18.900,21.511L12.371,13.141L12.009,23.750Q12.000,24.000,11.991,23.750L11.629,13.141L5.100,21.511Q4.947,21.708,5.087,21.501L11.029,12.705L0.828,15.639Q0.587,15.708,0.822,15.623L10.800,12.000L0.822,8.377Q0.587,8.292,0.828,8.361L11.029,11.295L5.087,2.499Q4.947,2.292,5.100,2.489Z"/></svg></span>
+  <div class="sc-divider-line"></div>
+</div>
+
+<!-- BREWING -->
+<section class="sc-section">
+  <div>
+    <img src="images/Calendar - SP.png" alt="SimplePractice calendar" class="sc-img" />
+    <span class="sc-sub-label">About SimplePractice</span>
+  </div>
+  <div>
+    <div class="headline-glow-wrap">
+      <h2 class="sc-section-headline">Brewing up the design process</h2>
+      <div class="glow-star-cluster">
+        <span class="glow-star" style="font-size:1.0rem;align-self:flex-end;--dur:3.9s;--delay:0.3s;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:inline-block;vertical-align:middle"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
+        <span class="glow-star" style="font-size:1.9rem;--dur:4.5s;--delay:1.1s;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:inline-block;vertical-align:middle"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
+        <span class="glow-star" style="font-size:0.6rem;align-self:flex-end;--dur:3.2s;--delay:0.7s;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:inline-block;vertical-align:middle"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
+      </div>
+    </div>
+    <p class="sc-body">I gathered requirements and past research from my design lead before jumping straight into hi-fi screens, mapping both happy paths and edge case states along the way. Working within a legacy design system built on iOS and Material guidelines, I leaned into native patterns &mdash; the mobile team was lean (1 Android, 6 iOS) and wild innovation was not exactly on the menu. After presenting to the team and collecting feedback, I helped facilitate usability testing sessions with clinicians, iterated on the designs, and prepped a clean engineering handoff in Figma complete with Dev Mode and iOS VoiceOver and dynamic text annotations for Q1 2026 accessibility updates.</p>
+    <br />
+    <p class="sc-body">Was it a traditional end-to-end design process? Not quite &mdash; but when you&rsquo;re in a fast-moving environment, skipping the lengthy in-between stuff in favor of getting real work in front of real users faster is a feature, not a bug. The results speak for themselves. &#128528;</p>
+  </div>
+</section>
+
+<!-- ADD AND EDIT CLIENT CHART NOTE -->
+<section class="sc-section">
+  <div>
+    <h3 class="sc-version-headline">Add and Edit Client Chart Note</h3>
+    <p class="sc-body">To align with the web app, I added the ability to create, edit, and view chart notes directly from the client profile &mdash; a primary hub for clinicians. To ensure maximum efficiency between sessions, users can now quickly trigger a new note via the top-right action on iOS or the FAB on Android, keeping all essential client data in one place.</p>
+    <span class="sc-wireframe-label">Wireframes</span>
+    <img src="images/add edit note - SP.png" alt="Add and edit chart note wireframes" class="sc-wireframe-img" />
+  </div>
+  <div>
+    <video class="sc-brewing-video" src="videos/Simple - Add Chart Note.mp4" autoplay muted loop playsinline></video>
+  </div>
+</section>
+
+<!-- DOCUMENTATION FILTER -->
+<section class="sc-section">
+  <div>
+    <h3 class="sc-version-headline">Documentation Filter</h3>
+    <p class="sc-body">V1 included filtering and sorting by type, status, and timeframe to streamline billing and scheduling. This update introduced a &ldquo;reset&rdquo; option to improve the user experience, prompting a plan to standardize filter buttons across the mobile app in Q1 2026.</p>
+    <span class="sc-wireframe-label">Wireframes</span>
+    <img src="images/filter - SP.png" alt="Documentation filter wireframes" class="sc-wireframe-img" />
+  </div>
+  <div>
+    <video class="sc-brewing-video" src="videos/SImple - Filter.mp4" autoplay muted loop playsinline></video>
+  </div>
+</section>
+
+<!-- VIEW DIAGNOSIS AND TREATMENT PLAN -->
+<section class="sc-section">
+  <div>
+    <h3 class="sc-version-headline">View Diagnosis and Treatment Plan</h3>
+    <p class="sc-body">This section is &lsquo;read-only&rsquo; due to the complex regulatory and HIPAA requirements involved in modifying diagnoses or treatment plans on mobile. Despite these constraints, I advocated for placing this data front and center on the client profile. By surfacing these critical insights at a glance, I reduced the need for clinicians to dig through multiple screens during time-sensitive sessions.</p>
+    <span class="sc-wireframe-label">Wireframes</span>
+    <img src="images/diagnosis- SP.png" alt="View diagnosis wireframes" class="sc-wireframe-img" />
+  </div>
+  <div>
+    <video class="sc-brewing-video" src="videos/Simple - Plan.mp4" autoplay muted loop playsinline></video>
+  </div>
+</section>
+
+<!-- PROGRESS NOTE IOS UI UPDATES -->
+<section class="sc-section">
+  <div>
+    <h3 class="sc-version-headline">Progress Note iOS UI Updates</h3>
+    <p class="sc-body">I collaborated with the lead designer to update the clinician app UI for iOS as part of an on-going audit, improving the progress note layout by moving client information out of the oversized header while keeping it easily visible. We also supported bringing progress note sharing to mobile, aligning with the web experience for clinicians in states where mobile sharing is permitted.</p>
+    <span class="sc-wireframe-label">Wireframes</span>
+    <img src="images/Progress Notes - SP -iOS.png" alt="Progress note wireframes" class="sc-wireframe-img" />
+  </div>
+  <div>
+    <video class="sc-brewing-video" src="videos/Simple - Progress.mp4" autoplay muted loop playsinline></video>
+  </div>
+</section>
+
+<!-- iOS VOICEOVER -->
+<section class="sc-section">
+  <div>
+    <h3 class="sc-version-headline">iOS VoiceOver</h3>
+    <p class="sc-body">For the final handoff, I prepped detailed flowcharts and full design sets for iOS, Android, and iPad to ensure the engineers didn&rsquo;t have to play guessing games. I also handled the iOS VoiceOver accessibility annotations using CVS Health&rsquo;s cute little plugin and synced with the dev team for a smooth transition.</p>
+    <br />
+    <p class="sc-body">If you need a designer who actually speaks fluent mobile accessibility, I&rsquo;m your girly pop! &#128521;</p>
+  </div>
+  <div>
+    <img src="images/VO 1.png" alt="iOS VoiceOver annotations" class="sc-img" />
+  </div>
+</section>
+
+<div class="sc-divider">
+  <div class="sc-divider-line"></div>
+  <span class="sc-divider-star"><svg width="96" height="96" viewBox="0 0 24 24" aria-hidden="true" style="display:block;flex-shrink:0"><path fill="currentColor" d="M11.629,10.859L11.991,0.250Q12.000,0.000,12.009,0.250L12.371,10.859L18.900,2.489Q19.053,2.292,18.913,2.499L12.971,11.295L23.172,8.361Q23.413,8.292,23.178,8.377L13.200,12.000L23.178,15.623Q23.413,15.708,23.172,15.639L12.971,12.705L18.913,21.501Q19.053,21.708,18.900,21.511L12.371,13.141L12.009,23.750Q12.000,24.000,11.991,23.750L11.629,13.141L5.100,21.511Q4.947,21.708,5.087,21.501L11.029,12.705L0.828,15.639Q0.587,15.708,0.822,15.623L10.800,12.000L0.822,8.377Q0.587,8.292,0.828,8.361L11.029,11.295L5.087,2.499Q4.947,2.292,5.100,2.489Z"/></svg></span>
+  <div class="sc-divider-line"></div>
+</div>
+
+<!-- TIME TO SEE IF THE MAGIC HOLDS -->
+<section class="sc-section">
+  <div style="display:flex;justify-content:center;align-items:flex-start;">
+    <div class="star-wrap">
+      <span class="sp sp-52" style="top:-8px;left:-18px;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
+      <span class="sp sp-31" style="top:-12px;left:20px;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
+      <span class="sp sp-52" style="bottom:-18px;right:-40px;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
+      <span class="sp sp-31" style="bottom:8px;right:-12px;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
+      <img src="images/Magic Holds.png" alt="Time to see if the magic holds" class="sc-illus-img" />
+    </div>
+  </div>
+  <div>
+    <div class="headline-glow-wrap">
+      <h2 class="sc-section-headline">Time to see if the magic holds</h2>
+      <div class="glow-star-cluster">
+        <span class="glow-star" style="font-size:1.0rem;align-self:flex-end;--dur:4.1s;--delay:0.6s;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:inline-block;vertical-align:middle"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
+        <span class="glow-star" style="font-size:1.9rem;--dur:4.4s;--delay:0.3s;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:inline-block;vertical-align:middle"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
+        <span class="glow-star" style="font-size:0.6rem;align-self:flex-end;--dur:3.3s;--delay:1.5s;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:inline-block;vertical-align:middle"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
+      </div>
+    </div>
+    <p class="sc-body">User testing was done using a moderated session on Zoom with 5 participants who owned their practice or was apart of a large scale practice.</p>
+    <span class="sc-sub-label">it&rsquo;s like i can read minds</span>
+    <p class="sc-body-sm">Most users felt the design was needed and that the experience overall hit the nail on the head when it came to the UX. My ego felt great being validated.</p>
+    <span class="sc-sub-label">k.i.s.s (keep it simple, stupid)</span>
+    <p class="sc-body-sm">We asked about content naming systems for this feature. Most users gave us the same answer of a naming convention. So we rolled with the punches on this feature being called &lsquo;documentation&rsquo; for ease.</p>
+    <span class="sc-sub-label">I can&rsquo;t stop winning!</span>
+    <p class="sc-body-sm">Clinicians responded well to having diagnosis and treatment plan info upfront on the client page, appointment badges on appointment rows, and the ability to filter documentation &mdash; with requests to expand filtering in the future. The filter reset pattern established here was strong enough to roll out across other sections of the app in Q1 2026.</p>
+  </div>
+</section>
+
+<div class="sc-divider">
+  <div class="sc-divider-line"></div>
+  <span class="sc-divider-star"><svg width="96" height="96" viewBox="0 0 24 24" aria-hidden="true" style="display:block;flex-shrink:0"><path fill="currentColor" d="M11.629,10.859L11.991,0.250Q12.000,0.000,12.009,0.250L12.371,10.859L18.900,2.489Q19.053,2.292,18.913,2.499L12.971,11.295L23.172,8.361Q23.413,8.292,23.178,8.377L13.200,12.000L23.178,15.623Q23.413,15.708,23.172,15.639L12.971,12.705L18.913,21.501Q19.053,21.708,18.900,21.511L12.371,13.141L12.009,23.750Q12.000,24.000,11.991,23.750L11.629,13.141L5.100,21.511Q4.947,21.708,5.087,21.501L11.029,12.705L0.828,15.639Q0.587,15.708,0.822,15.623L10.800,12.000L0.822,8.377Q0.587,8.292,0.828,8.361L11.029,11.295L5.087,2.499Q4.947,2.292,5.100,2.489Z"/></svg></span>
+  <div class="sc-divider-line"></div>
+</div>
+
+<!-- THE FINISHED POTION -->
+<section class="sc-section">
+  <div>
+    <div class="headline-glow-wrap">
+      <h2 class="sc-section-headline">The finished potion</h2>
+      <div class="glow-star-cluster">
+        <span class="glow-star" style="font-size:1.0rem;align-self:flex-end;--dur:4.0s;--delay:0.7s;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:inline-block;vertical-align:middle"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
+        <span class="glow-star" style="font-size:1.9rem;--dur:3.5s;--delay:0.2s;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:inline-block;vertical-align:middle"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
+        <span class="glow-star" style="font-size:0.6rem;align-self:flex-end;--dur:4.8s;--delay:1.2s;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:inline-block;vertical-align:middle"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
+      </div>
+    </div>
+    <p class="sc-body">Client Documentation was slated for launch in Q1 of 2026. Since my contract wrapped before then, here are my hot take predictions instead.</p>
+    <span class="sc-sub-label">It&rsquo;s all good</span>
+    <p class="sc-body-sm">Adoption across the board likely, with some hiccups from clinicians getting used to the new experience. This is based on the information seen in usability testing.</p>
+    <span class="sc-sub-label">Jot this down</span>
+    <p class="sc-body-sm">Merging SimplePractice&rsquo;s already existing AI note taker feature for writing chart notes and progress notes to help clinicians process clientele information. This is also dependent on client consent too.</p>
+    <span class="sc-sub-label">I see the vision</span>
+    <p class="sc-body-sm">This was a version 1 feature. SimplePractice has multiple progress note types they still need to convert over to mobile. Filtering will become more robust. Seeing current chart notes or most recent progress notes embedded into the upcoming home page before appointments. Endless possibilities.</p>
+  </div>
+  <div style="display:flex;justify-content:center;align-items:flex-start;">
+    <div class="star-wrap">
+      <span class="sp sp-52" style="top:-8px;right:-18px;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
+      <span class="sp sp-31" style="top:-12px;right:20px;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
+      <span class="sp sp-52" style="bottom:-18px;left:-40px;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
+      <span class="sp sp-31" style="bottom:8px;left:-12px;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
+      <img src="images/Finished potion.png" alt="The finished potion" class="sc-illus-img" />
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>&copy; 2024 Jennifer Cingatura &mdash; All rights reserved</p>
+</footer>
+
+<script>
+  const nav = document.getElementById('main-nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 20);
+  });
+  const workItem = document.querySelector('.nav-item--work');
+  const workLink = workItem ? workItem.querySelector('a') : null;
+  if (workLink) {
+    workLink.addEventListener('click', e => {
+      e.preventDefault();
+      workItem.classList.toggle('open');
+    });
+    document.addEventListener('click', e => {
+      if (!workItem.contains(e.target)) workItem.classList.remove('open');
+    });
+  }
+  document.querySelectorAll('.work-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      const cat = tab.dataset.cat;
+      tab.closest('.work-dropdown').querySelectorAll('.work-tab').forEach(t => t.classList.remove('active'));
+      tab.closest('.work-dropdown').querySelectorAll('.work-panel').forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      tab.closest('.work-dropdown').querySelector(`.work-panel[data-cat="${cat}"]`).classList.add('active');
+    });
+  });
+  const hamburger = document.getElementById('nav-hamburger');
+  if (hamburger) {
+    hamburger.addEventListener('click', () => nav.classList.toggle('nav-open'));
+  }
+</script>
+</body>
+</html>
