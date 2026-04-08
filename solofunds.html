@@ -111,7 +111,7 @@
     @media(max-width:768px){
       nav{padding:16px 20px;}
       .nav-hamburger{display:flex;}
-      .nav-links{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(12,12,12,0.97);backdrop-filter:blur(20px);flex-direction:column;align-items:flex-start;justify-content:flex-start;padding:96px 32px 48px;gap:0;z-index:99;overflow-y:auto;opacity:0;pointer-events:none;transform:translateY(-10px);transition:opacity 0.25s ease,transform 0.25s ease;}
+      .nav-links{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(12,12,12,0.97);backdrop-filter:blur(20px);flex-direction:column;align-items:flex-start;justify-content:flex-start;padding:96px 32px 48px;gap:0;z-index:99;overflow-y:scroll;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;height:100vh;opacity:0;pointer-events:none;transform:translateY(-10px);transition:opacity 0.25s ease,transform 0.25s ease;}
       nav.nav-open .nav-links{opacity:1;pointer-events:all;transform:translateY(0);}
       .nav-links>li{width:100%;}
       .nav-links>li>a{display:block;font-size:28px;letter-spacing:4px;padding:18px 0;border-bottom:1px solid rgba(245,240,234,0.08);}
@@ -478,7 +478,10 @@
 
   // HAMBURGER
   const hamburger = document.getElementById('nav-hamburger');
-  hamburger.addEventListener('click', () => nav.classList.toggle('nav-open'));
+  hamburger.addEventListener('click', () => {
+    nav.classList.toggle('nav-open');
+    document.body.style.overflow = nav.classList.contains('nav-open') ? 'hidden' : '';
+  });
 
   const workItem = document.querySelector('.nav-item--work');
   const workLink = workItem ? workItem.querySelector('a') : null;

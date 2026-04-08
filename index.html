@@ -762,7 +762,10 @@
         padding: 96px 32px 48px;
         gap: 0;
         z-index: 99;
-        overflow-y: auto; /* scrollable when Work expands */
+        overflow-y: scroll;
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior: contain;
+        height: 100vh;
         /* Hidden state — smooth fade + slide */
         opacity: 0;
         pointer-events: none;
@@ -1186,13 +1189,14 @@
       e.stopPropagation();
       nav.classList.toggle('nav-open');
       hamburger.setAttribute('aria-label', nav.classList.contains('nav-open') ? 'Close menu' : 'Open menu');
+      document.body.style.overflow = nav.classList.contains('nav-open') ? 'hidden' : '';
     });
 
     // Close mobile nav when a non-Work nav link is tapped
     document.querySelectorAll('.nav-links > li > a').forEach(link => {
       link.addEventListener('click', function() {
         if (window.innerWidth <= 768 && !this.closest('.nav-item--work')) {
-          nav.classList.remove('nav-open');
+          nav.classList.remove('nav-open'); document.body.style.overflow = '';
         }
       });
     });
