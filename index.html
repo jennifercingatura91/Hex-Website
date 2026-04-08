@@ -730,6 +730,10 @@
       .about-headline { font-size: 48px; }
       .about-body { grid-template-columns: 1fr; }
 
+      /* Stars below headline instead of floating right (prevents horizontal overflow) */
+      .about-headline-wrap { display: block; }
+      .about-deco-star { position: static; display: inline-block; margin-right: 8px; margin-top: 20px; vertical-align: middle; }
+
       .work-section,
       .contact-section,
       .section-divider,
