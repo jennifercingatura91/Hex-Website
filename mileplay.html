@@ -66,7 +66,7 @@
     .sc-illus-img{width:100%;max-width:300px;display:block;margin:0 auto;}
     .sc-brewing-img{width:445px;height:406px;object-fit:cover;display:block;}
     .sc-video{width:100%;max-width:351px;display:block;border-radius:12px;margin:0 auto;}
-    .sc-wireframe-img{width:90%;display:block;margin-top:16px;}
+    .sc-wireframe-img{width:67%;display:block;margin-top:16px;}
     .sc-wireframe-label{display:block;font-family:'DM Sans',sans-serif;font-weight:500;font-size:13px;color:var(--gold);text-transform:uppercase;letter-spacing:4px;margin-bottom:0;margin-top:24px;}
     .sc-version-headline{font-family:'Stackwitin',serif;font-weight:normal;font-size:48px;color:var(--cream);line-height:1.0;margin-bottom:20px;}
     .sc-stat{font-family:'Stackwitin',serif;font-size:56px;color:var(--gold);line-height:1.0;margin-bottom:8px;}
@@ -400,13 +400,6 @@
   <img src="images/Mileplay - UX Flows.png" alt="UX Flow Chart" class="sc-img" />
 </div>
 
-<!-- DIVIDER 5 -->
-<div class="sc-divider">
-  <div class="sc-divider-line"></div>
-  <span class="sc-divider-star"><svg width="96" height="96" viewBox="0 0 24 24" aria-hidden="true" style="display:block;flex-shrink:0"><path fill="currentColor" d="M11.629,10.859L11.991,0.250Q12.000,0.000,12.009,0.250L12.371,10.859L18.900,2.489Q19.053,2.292,18.913,2.499L12.971,11.295L23.172,8.361Q23.413,8.292,23.178,8.377L13.200,12.000L23.178,15.623Q23.413,15.708,23.172,15.639L12.971,12.705L18.913,21.501Q19.053,21.708,18.900,21.511L12.371,13.141L12.009,23.750Q12.000,24.000,11.991,23.750L11.629,13.141L5.100,21.511Q4.947,21.708,5.087,21.501L11.029,12.705L0.828,15.639Q0.587,15.708,0.822,15.623L10.800,12.000L0.822,8.377Q0.587,8.292,0.828,8.361L11.029,11.295L5.087,2.499Q4.947,2.292,5.100,2.489Z"/></svg></span>
-  <div class="sc-divider-line"></div>
-</div>
-
 <!-- GAME CHALLENGE CARDS -->
 <div class="sc-section sc-cards-section">
   <div>
@@ -415,24 +408,24 @@
   </div>
   <div class="sc-cards-row">
     <div>
-      <span class="sc-card-label">Stay the course</span>
       <video class="sc-card-video" autoplay loop muted playsinline>
         <source src="videos/United - STC - Card.mp4" type="video/mp4" />
       </video>
+      <span class="sc-card-label">Stay the course</span>
       <p class="sc-card-body">Complete the same activity multiple times to snag the big reward. Given the repetitive nature of these challenges, we used a numerical tracking system so customers can easily see exactly how many reps they have left.</p>
     </div>
     <div>
-      <span class="sc-card-label">Level up</span>
       <video class="sc-card-video" autoplay loop muted playsinline>
         <source src="videos/United - LU - Card.mp4" type="video/mp4" />
       </video>
+      <span class="sc-card-label">Level up</span>
       <p class="sc-card-body">Complete activities to win rewards as you go, plus a bonus for finishing the set. In Level Up challenges, users earn miles for every game completed. We designed a segmented progress line with numerical annotations to help them visually track their mounting rewards.</p>
     </div>
     <div>
-      <span class="sc-card-label">Do it all</span>
       <video class="sc-card-video" autoplay loop muted playsinline>
         <source src="videos/United - DIA - Card.mp4" type="video/mp4" />
       </video>
+      <span class="sc-card-label">Do it all</span>
       <p class="sc-card-body">Complete every activity to win the prize. In this challenge, users tackle unique tasks but only unlock the reward at the very end. We utilized system icons to clearly represent which activities are in progress and which are still waiting to be tackled.</p>
     </div>
   </div>
@@ -608,6 +601,18 @@
       if (!workItem.contains(e.target)) workItem.classList.remove('open');
     });
   }
+
+  // Ensure work-item links navigate correctly on mobile
+  document.querySelectorAll('.work-item').forEach(item => {
+    item.addEventListener('click', function(e) {
+      e.preventDefault();
+      const href = this.getAttribute('href');
+      if (href) {
+        nav.classList.remove('nav-open');
+        window.location.href = href;
+      }
+    });
+  });
 
   // TABS
   document.querySelectorAll('.work-tab').forEach(tab => {
