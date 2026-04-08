@@ -39,13 +39,13 @@
     .work-item{text-decoration:none;display:flex;flex-direction:column;gap:8px;transition:transform 0.18s;}
     .work-item:hover{transform:translateY(-3px);}
     .work-item-img{width:100%;aspect-ratio:4/3;border-radius:10px;overflow:hidden;background:#2c2c2c;}
-    .work-item-img img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;}
+    .work-item-img img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;}
     .work-item-company{font-family:'Stackwitin',serif;font-size:16px;color:var(--cream);line-height:1.1;}
     .work-item-project{font-size:10px;font-weight:300;letter-spacing:2px;text-transform:uppercase;color:var(--gray);margin-top:-4px;}
     .sc-hero{display:flex;justify-content:center;padding:120px 92px 60px;}
     .sc-hero-img{max-width:900px;width:100%;display:block;}
     .sc-title-section{display:grid;grid-template-columns:1fr 2fr;gap:60px;padding:0 92px 60px;align-items:start;}
-    .sc-label{font-family:'DM Sans',sans-serif;font-weight:300;font-size:24px;color:var(--gold);text-transform:uppercase;margin-bottom:12px;line-height:1.2;}
+    .sc-label{font-family:'DM Sans',sans-serif;font-weight:300;font-size:24px;color:var(--gold);text-transform:uppercase;letter-spacing:5px;margin-bottom:12px;line-height:1.2;}
     .sc-headline{font-family:'Stackwitin',serif;font-weight:normal;font-size:100px;color:var(--cream);line-height:1.0;}
     .sc-body{font-family:'DM Sans',sans-serif;font-weight:300;font-size:18px;color:#ffffff;line-height:1.75;}
     .sc-body strong{font-weight:600;}
@@ -331,81 +331,86 @@
 <!-- USER JOURNEY MAP -->
 <div class="sc-section">
   <div>
-    <div class="headline-glow-wrap">
-      <h2 class="sc-section-headline">User Journey Map</h2>
-      <div class="glow-star-cluster">
-        <span class="glow-star" style="font-size:1.0rem;align-self:flex-end;--dur:3.9s;--delay:0.5s;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:inline-block;vertical-align:middle"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
-        <span class="glow-star" style="font-size:1.9rem;--dur:4.4s;--delay:1.0s;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:inline-block;vertical-align:middle"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
-        <span class="glow-star" style="font-size:0.6rem;align-self:flex-end;--dur:3.3s;--delay:0.7s;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:inline-block;vertical-align:middle"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
-      </div>
-    </div>
+    <h3 class="sc-version-headline">User Journey Map</h3>
     <p class="sc-body">I created a detailed journey map for customer support by synthesizing insights from Design Thinking sessions, customer advocate interviews, and past CARE project research. The map highlighted pain points in support interactions, particularly stress during customer calls due to platform limitations and inconsistent terminology between the customer app and advocate tools. It aimed to improve advocate efficiency and reduce call-related anxiety.</p>
   </div>
-  <img src="images/Tala - CARE - Journey Map.png" alt="User Journey Map" class="sc-img" />
+  <div class="star-wrap">
+    <span class="sp sp-31" style="top:0px;right:24px;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
+    <span class="sp sp-52" style="top:28px;right:0px;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
+    <span class="sp sp-52" style="bottom:-18px;right:4px;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
+    <span class="sp sp-31" style="top:0px;left:24px;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
+    <span class="sp sp-52" style="top:28px;left:0px;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
+    <span class="sp sp-31" style="bottom:-8px;left:4px;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
+    <img src="images/Tala - CARE - Journey Map.png" alt="User Journey Map" class="sc-img" />
+  </div>
 </div>
 
 <!-- MISSING PAYMENT FLOWS -->
 <div class="sc-section">
   <div>
-    <div class="headline-glow-wrap">
-      <h2 class="sc-section-headline">Missing Payment Flows</h2>
-      <div class="glow-star-cluster">
-        <span class="glow-star" style="font-size:1.0rem;align-self:flex-end;--dur:4.1s;--delay:0.3s;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:inline-block;vertical-align:middle"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
-        <span class="glow-star" style="font-size:1.9rem;--dur:3.6s;--delay:0.9s;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:inline-block;vertical-align:middle"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
-        <span class="glow-star" style="font-size:0.6rem;align-self:flex-end;--dur:4.7s;--delay:1.3s;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:inline-block;vertical-align:middle"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
-      </div>
-    </div>
+    <h3 class="sc-version-headline">Missing Payment Flows</h3>
     <p class="sc-body">Missing payments was created to help advocate research and apply payments to customers&rsquo; accounts. This feature was built in due to the fact customers had issues with their apps pulling from their banks so they would call in to make sure payments would go through.</p>
   </div>
-  <img src="images/Tala - CARE - Missing Payments.png" alt="Missing Payment Flows" class="sc-img" />
+  <div class="star-wrap">
+    <span class="sp sp-31" style="top:0px;right:24px;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
+    <span class="sp sp-52" style="top:28px;right:0px;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
+    <span class="sp sp-52" style="bottom:-18px;right:4px;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
+    <span class="sp sp-31" style="top:0px;left:24px;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
+    <span class="sp sp-52" style="top:28px;left:0px;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
+    <span class="sp sp-31" style="bottom:-8px;left:4px;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
+    <img src="images/Tala - CARE - Missing Payments.png" alt="Missing Payment Flows" class="sc-img" />
+  </div>
 </div>
 
 <!-- KNOW YOUR CUSTOMER -->
 <div class="sc-section">
   <div>
-    <div class="headline-glow-wrap">
-      <h2 class="sc-section-headline">Know Your Customer</h2>
-      <div class="glow-star-cluster">
-        <span class="glow-star" style="font-size:1.0rem;align-self:flex-end;--dur:3.7s;--delay:0.4s;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:inline-block;vertical-align:middle"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
-        <span class="glow-star" style="font-size:1.9rem;--dur:4.6s;--delay:1.1s;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:inline-block;vertical-align:middle"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
-        <span class="glow-star" style="font-size:0.6rem;align-self:flex-end;--dur:3.4s;--delay:0.8s;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:inline-block;vertical-align:middle"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
-      </div>
-    </div>
+    <h3 class="sc-version-headline">Know Your Customer</h3>
     <p class="sc-body">To approve loans, Tala utilized a KYC flow within the customer app that populated data into the CARE platform for advocate review. To streamline this process, developers integrated automated detection to flag discrepancies in user-submitted photos for easier approval or denial.</p>
   </div>
-  <img src="images/Tala - CARE - KYC.png" alt="Know Your Customer" class="sc-img" />
+  <div class="star-wrap">
+    <span class="sp sp-31" style="top:0px;right:24px;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
+    <span class="sp sp-52" style="top:28px;right:0px;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
+    <span class="sp sp-52" style="bottom:-18px;right:4px;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
+    <span class="sp sp-31" style="top:0px;left:24px;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
+    <span class="sp sp-52" style="top:28px;left:0px;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
+    <span class="sp sp-31" style="bottom:-8px;left:4px;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
+    <img src="images/Tala - CARE - KYC.png" alt="Know Your Customer" class="sc-img" />
+  </div>
 </div>
 
 <!-- FRAUD REPORT -->
 <div class="sc-section">
   <div>
-    <div class="headline-glow-wrap">
-      <h2 class="sc-section-headline">Fraud Report</h2>
-      <div class="glow-star-cluster">
-        <span class="glow-star" style="font-size:1.0rem;align-self:flex-end;--dur:4.3s;--delay:0.6s;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:inline-block;vertical-align:middle"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
-        <span class="glow-star" style="font-size:1.9rem;--dur:3.8s;--delay:0.2s;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:inline-block;vertical-align:middle"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
-        <span class="glow-star" style="font-size:0.6rem;align-self:flex-end;--dur:4.5s;--delay:1.0s;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:inline-block;vertical-align:middle"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
-      </div>
-    </div>
+    <h3 class="sc-version-headline">Fraud Report</h3>
     <p class="sc-body">Fraud reports was a new feature that was built to flag customers who broke protocol with Tala&rsquo;s rules on loans or fake customers signed up using stolen information. Customers could be easily flagged by an advocate upon request or from company information.</p>
   </div>
-  <img src="images/Tala - CARE - Fraud.png" alt="Fraud Report" class="sc-img" />
+  <div class="star-wrap">
+    <span class="sp sp-31" style="top:0px;right:24px;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
+    <span class="sp sp-52" style="top:28px;right:0px;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
+    <span class="sp sp-52" style="bottom:-18px;right:4px;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
+    <span class="sp sp-31" style="top:0px;left:24px;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
+    <span class="sp sp-52" style="top:28px;left:0px;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
+    <span class="sp sp-31" style="bottom:-8px;left:4px;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
+    <img src="images/Tala - CARE - Fraud.png" alt="Fraud Report" class="sc-img" />
+  </div>
 </div>
 
 <!-- CARE REBRAND -->
 <div class="sc-section">
   <div>
-    <div class="headline-glow-wrap">
-      <h2 class="sc-section-headline">CARE Rebrand</h2>
-      <div class="glow-star-cluster">
-        <span class="glow-star" style="font-size:1.0rem;align-self:flex-end;--dur:3.5s;--delay:0.3s;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:inline-block;vertical-align:middle"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
-        <span class="glow-star" style="font-size:1.9rem;--dur:4.8s;--delay:1.2s;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:inline-block;vertical-align:middle"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
-        <span class="glow-star" style="font-size:0.6rem;align-self:flex-end;--dur:3.6s;--delay:0.9s;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:inline-block;vertical-align:middle"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
-      </div>
-    </div>
+    <h3 class="sc-version-headline">CARE Rebrand</h3>
     <p class="sc-body">As part of the Tala Design System build, I wanted to include the CARE product to reflect what Tala was doing on it&rsquo;s customer app.<br><br>I updated colors, fonts, and iconography to align with the new rebrand. I wanted to show the CARE team this concept and to analyze, incorporating layout enhancements based on post-launch feedback from Advocates.</p>
   </div>
-  <img src="images/Tala - CARE - Rebrand.png" alt="CARE Rebrand" class="sc-img" />
+  <div class="star-wrap">
+    <span class="sp sp-31" style="top:0px;right:24px;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
+    <span class="sp sp-52" style="top:28px;right:0px;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
+    <span class="sp sp-52" style="bottom:-18px;right:4px;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
+    <span class="sp sp-31" style="top:0px;left:24px;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
+    <span class="sp sp-52" style="top:28px;left:0px;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
+    <span class="sp sp-31" style="bottom:-8px;left:4px;"><svg width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path fill="currentColor" d="M11.576,11.576L11.991,0.250Q12.000,0.000,12.009,0.250L12.424,11.576L23.750,11.991Q24.000,12.000,23.750,12.009L12.424,12.424L12.009,23.750Q12.000,24.000,11.991,23.750L11.576,12.424L0.250,12.009Q0.000,12.000,0.250,11.991Z"/></svg></span>
+    <img src="images/Tala - CARE - Rebrand.png" alt="CARE Rebrand" class="sc-img" />
+  </div>
 </div>
 
 <!-- DIVIDER 3 -->
