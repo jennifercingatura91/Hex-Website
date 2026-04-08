@@ -480,14 +480,17 @@
   const hamburger = document.getElementById('nav-hamburger');
   hamburger.addEventListener('click', () => nav.classList.toggle('nav-open'));
 
-  // WORK DROPDOWN (desktop)
   const workItem = document.querySelector('.nav-item--work');
-  workItem.querySelector('a').addEventListener('click', e => {
-    if (window.innerWidth > 768) { e.preventDefault(); workItem.classList.toggle('open'); }
-  });
-  document.addEventListener('click', e => {
-    if (!workItem.contains(e.target)) workItem.classList.remove('open');
-  });
+  const workLink = workItem ? workItem.querySelector('a') : null;
+  if (workLink) {
+    workLink.addEventListener('click', e => {
+      e.preventDefault();
+      workItem.classList.toggle('open');
+    });
+    document.addEventListener('click', e => {
+      if (!workItem.contains(e.target)) workItem.classList.remove('open');
+    });
+  }
 
   // TABS
   document.querySelectorAll('.work-tab').forEach(tab => {
