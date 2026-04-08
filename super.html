@@ -4,6 +4,18 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Super.com Flights MVP — Jennifer Cingatura</title>
+  <style id="pw-hide">html{display:none!important;}</style>
+  <script>
+    (function(){
+      if (sessionStorage.getItem('pw:super.html') !== '1') {
+        document.documentElement.style.display='';
+        window.location.replace('password.html?next=super.html');
+      } else {
+        var s=document.getElementById('pw-hide');
+        if(s) s.parentNode.removeChild(s);
+      }
+    })();
+  </script>
 
   <style>
     @font-face {
