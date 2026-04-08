@@ -588,7 +588,9 @@
         </div>
       </div>
 
-      <form class="contact-form" onsubmit="handleSubmit(event)">
+      <form class="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" data-netlify-recaptcha="true" onsubmit="handleSubmit(event)">
+        <input type="hidden" name="form-name" value="contact" />
+        <p style="display:none"><label>Don't fill this out: <input name="bot-field" /></label></p>
         <div class="form-field">
           <label for="name">Name</label>
           <input type="text" id="name" name="name" placeholder="What does your mom call you?" required />
@@ -601,6 +603,7 @@
           <label for="message">Message</label>
           <textarea id="message" name="message" placeholder="Don't send a message about my car's extended warranty" required></textarea>
         </div>
+        <div data-netlify-recaptcha="true" style="margin-bottom:16px;"></div>
         <button type="submit" class="submit-btn">Submit</button>
       </form>
 
@@ -661,13 +664,29 @@
       });
     });
 
-    // Form submit
+    // Form submit → Netlify Forms
     function handleSubmit(e) {
       e.preventDefault();
-      const btn = e.target.querySelector('.submit-btn');
-      btn.textContent = 'Sent ✦';
-      btn.style.background = '#7C7C7C';
+      const form = e.target;
+      const btn  = form.querySelector('.submit-btn');
+      btn.textContent = 'Sending…';
       btn.disabled = true;
+
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(new FormData(form)).toString()
+      })
+      .then(() => {
+        btn.textContent = 'Sent ✦';
+        btn.style.background = '#7C7C7C';
+        form.reset();
+      })
+      .catch(() => {
+        btn.textContent = 'Something went wrong — try again';
+        btn.style.background = '#7C7C7C';
+        btn.disabled = false;
+      });
     }
   </script>
 
