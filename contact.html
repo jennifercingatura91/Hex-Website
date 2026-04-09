@@ -633,8 +633,10 @@
           <label for="message">Message</label>
           <textarea id="message" name="message" placeholder="Don't send a message about my car's extended warranty" required></textarea>
         </div>
-        <div data-netlify-recaptcha="true" style="margin-bottom:16px;"></div>
-        <button type="submit" class="submit-btn">Submit</button>
+        <div style="display:flex; align-items:center; gap:24px; flex-wrap:wrap;">
+          <div data-netlify-recaptcha="true"></div>
+          <button type="submit" class="submit-btn">Submit</button>
+        </div>
       </form>
 
     </div>
