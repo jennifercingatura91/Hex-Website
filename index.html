@@ -448,6 +448,14 @@
       padding: 80px 60px 100px;
     }
 
+    .home-tabs {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 36px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(196, 150, 101, 0.2);
+    }
+
     .tarot-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -1043,9 +1051,15 @@
 
   <!-- ── CASE STUDIES ── -->
   <section class="work-section" id="work">
+    <div class="home-tabs">
+      <button class="work-tab active" data-filter="all">All</button>
+      <button class="work-tab" data-filter="mobile">Mobile</button>
+      <button class="work-tab" data-filter="web">Web</button>
+      <button class="work-tab" data-filter="print">Print</button>
+    </div>
     <div class="tarot-grid">
 
-      <div class="tarot-card" id="case-simplepractice" onclick="window.location.href='password.html?next=simplepractice.html'" style="cursor:pointer;">
+      <div class="tarot-card" id="case-simplepractice" data-cat="mobile" onclick="window.location.href='password.html?next=simplepractice.html'" style="cursor:pointer;">
         <div class="tarot-image-wrap">
           <img src="images/Simplepractice - FINAL.png" alt="SimplePractice" />
         </div>
@@ -1054,7 +1068,7 @@
         <p class="tarot-category">Clinician Documentation</p>
       </div>
 
-      <div class="tarot-card" id="case-super" onclick="window.location.href='password.html?next=super.html'" style="cursor:pointer;">
+      <div class="tarot-card" id="case-super" data-cat="web" onclick="window.location.href='password.html?next=super.html'" style="cursor:pointer;">
         <div class="tarot-image-wrap">
           <img src="images/Super.com - FINAL.png" alt="Super.com" />
         </div>
@@ -1063,7 +1077,7 @@
         <p class="tarot-category">Flights MVP</p>
       </div>
 
-      <a class="tarot-card" href="mileplay.html" id="case-mileplay">
+      <a class="tarot-card" href="mileplay.html" id="case-mileplay" data-cat="mobile">
         <div class="tarot-image-wrap">
           <img src="images/United MilePlay - FINAL.png" alt="United Airlines MilePlay" />
         </div>
@@ -1072,7 +1086,7 @@
         <p class="tarot-category">Mileplay</p>
       </a>
 
-      <a class="tarot-card" href="united-airlines-ds.html" id="case-united-ds">
+      <a class="tarot-card" href="united-airlines-ds.html" id="case-united-ds" data-cat="mobile">
         <div class="tarot-image-wrap">
           <img src="images/United Airlines DA - FINAL.png" alt="United Airlines DS" />
         </div>
@@ -1081,7 +1095,7 @@
         <p class="tarot-category">Native Mobile Design System</p>
       </a>
 
-      <a class="tarot-card" id="case-solofunds" href="solofunds.html">
+      <a class="tarot-card" id="case-solofunds" data-cat="mobile" href="solofunds.html">
         <div class="tarot-image-wrap">
           <img src="images/Solo Funds - FINAL.png" alt="Solo Funds" />
         </div>
@@ -1090,7 +1104,7 @@
         <p class="tarot-category">Debit Card Verification</p>
       </a>
 
-      <a class="tarot-card" id="case-tala-kyc" href="tala-kyc.html">
+      <a class="tarot-card" id="case-tala-kyc" data-cat="mobile" href="tala-kyc.html">
         <div class="tarot-image-wrap">
           <img src="images/Tala KYC - FINAL.png" alt="Tala KYC" style="transform:scale(0.86);transform-origin:center;" />
         </div>
@@ -1099,7 +1113,7 @@
         <p class="tarot-category">Know Your Customer</p>
       </a>
 
-      <a class="tarot-card" href="tala-care.html" id="case-tala-care">
+      <a class="tarot-card" href="tala-care.html" id="case-tala-care" data-cat="web">
         <div class="tarot-image-wrap">
           <img src="images/Tala CARE - FINAL.png" alt="Tala CARE" />
         </div>
@@ -1108,7 +1122,7 @@
         <p class="tarot-category">Care Internal Tool</p>
       </a>
 
-      <div class="tarot-card" id="case-ibisworld" onclick="window.location.href='password.html?next=ibisworld.html'" style="cursor:pointer;">
+      <div class="tarot-card" id="case-ibisworld" data-cat="web" onclick="window.location.href='password.html?next=ibisworld.html'" style="cursor:pointer;">
         <div class="tarot-image-wrap">
           <img src="images/IBISWorld - FINAL.png" alt="IBISWorld" />
         </div>
@@ -1117,7 +1131,7 @@
         <p class="tarot-category">My IBISworld</p>
       </div>
 
-      <a class="tarot-card" id="case-cemex" href="cemex-go.html">
+      <a class="tarot-card" id="case-cemex" data-cat="web" href="cemex-go.html">
         <div class="tarot-image-wrap">
           <img src="images/Cemex FINAL.png" alt="Cemex" />
         </div>
@@ -1126,7 +1140,7 @@
         <p class="tarot-category">Cemex Go</p>
       </a>
 
-      <a class="tarot-card tarot-card--center" id="case-music" href="music-posters.html" style="text-decoration:none;cursor:pointer;">
+      <a class="tarot-card tarot-card--center" id="case-music" data-cat="print" href="music-posters.html" style="text-decoration:none;cursor:pointer;">
         <div class="tarot-image-wrap">
           <img src="images/Music Posters.png" alt="Music Posters" />
         </div>
@@ -1217,6 +1231,18 @@
   </footer>
 
   <script>
+    // Home page work tabs
+    document.querySelectorAll('.home-tabs .work-tab').forEach(function(tab) {
+      tab.addEventListener('click', function() {
+        document.querySelectorAll('.home-tabs .work-tab').forEach(function(t) { t.classList.remove('active'); });
+        tab.classList.add('active');
+        var filter = tab.getAttribute('data-filter');
+        document.querySelectorAll('.tarot-grid [data-cat]').forEach(function(card) {
+          card.style.display = (filter === 'all' || card.getAttribute('data-cat') === filter) ? '' : 'none';
+        });
+      });
+    });
+
     // Nav scroll
     const nav = document.getElementById('main-nav');
     window.addEventListener('scroll', () => {
