@@ -479,6 +479,15 @@
       margin-bottom: 24px;
     }
 
+    .home-tabs .work-tab.active {
+      background: var(--gold);
+      color: #0b0a0d;
+    }
+
+    .home-tabs .work-tab:hover:not(.active) {
+      color: var(--gold);
+    }
+
     .home-tabs {
       display: flex;
       gap: 4px;
@@ -2137,8 +2146,8 @@
       }
     });
 
-    // Work dropdown tab switching
-    const workTabs = document.querySelectorAll('.work-tab');
+    // Work dropdown tab switching (scoped to nav dropdown only)
+    const workTabs = document.querySelectorAll('.work-tabs .work-tab');
     const workPanels = document.querySelectorAll('.work-panel');
 
     workTabs.forEach(tab => {
