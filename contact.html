@@ -44,7 +44,7 @@
 
     :root {
       --cream:    #F5F0EA;
-      --charcoal: #212121;
+      --charcoal: #0b0a0d;
       --gray:     #7C7C7C;
       --gold:     #C49665;
       --black: #0b0a0d;
@@ -91,8 +91,9 @@
       background: rgba(0, 0, 0, 0.92);
     }
 
-    .nav-logo-link { display: block; line-height: 0; }
-    .nav-logo { height: 36px; width: auto; display: block; }
+    .nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;}
+    .brand-mark{width:24px;height:24px;color:var(--gold);flex-shrink:0;}
+    .brand-name{font-family:'Stacktwin',serif;font-size:22px;font-weight:400;color:rgb(245,240,234);letter-spacing:0.5px;}
 
     .nav-links { display: flex; gap: 40px; list-style: none; align-items: center; }
 
@@ -106,7 +107,7 @@
       transition: color 0.2s;
     }
 
-    .nav-links a:hover { color: var(--gray); }
+    .nav-links a:hover{color:var(--gold);}
     .nav-links a.active { color: var(--gold); }
 
     /* ── WORK DROPDOWN ── */
@@ -492,8 +493,17 @@
 
   <!-- ── NAV ── -->
   <nav id="main-nav">
-    <a href="index.html" class="nav-logo-link">
-      <img class="nav-logo" src="images/Logo.png" alt="Jennifer Cingatura" />
+    <a href="index.html" class="nav-brand">
+      <svg class="brand-mark" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="9" cy="9" r="4.5"/>
+        <circle cx="9" cy="9" r="1.4" fill="currentColor" stroke="none"/>
+        <path d="M12.2 12.2 L26 26"/>
+        <path d="M19 19 L21.5 16.5"/>
+        <path d="M22 22 L24.5 19.5"/>
+        <path d="M26 26 L28 28"/>
+        <path d="M28 28 l-1.2 -.3 M28 28 l.3 -1.2"/>
+      </svg>
+      <span class="brand-name">Jennifer Cingatura</span>
     </a>
     <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu">
       <span></span><span></span><span></span>

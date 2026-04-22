@@ -32,17 +32,18 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    :root{--cream:#F5F0EA;--charcoal:#212121;--gray:#7C7C7C;--gold:#C49665;--black: #0b0a0d;}
+    :root{--cream:#F5F0EA;--charcoal:#0b0a0d;--gray:#7C7C7C;--gold:#C49665;--black: #0b0a0d;}
     html{scroll-behavior:smooth;}
     body{background:var(--charcoal);font-family:'DM Sans',sans-serif;font-weight:300;overflow-x:hidden;}
     nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:20px 60px;}
     nav::before{content:'';position:absolute;inset:0;background:rgba(33,33,33,0.7);backdrop-filter:blur(14px);transition:background 0.3s;z-index:-1;pointer-events:none;}
     nav.scrolled::before{background:rgba(0,0,0,0.92);}
-    .nav-logo-link{display:block;line-height:0;}
-    .nav-logo{height:36px;width:auto;display:block;}
+    .nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;}
+    .brand-mark{width:24px;height:24px;color:var(--gold);flex-shrink:0;}
+    .brand-name{font-family:'Stacktwin',serif;font-size:22px;font-weight:400;color:rgb(245,240,234);letter-spacing:0.5px;}
     .nav-links{display:flex;gap:40px;list-style:none;align-items:center;}
     .nav-links a{color:var(--cream);text-decoration:none;font-size:13px;font-weight:300;letter-spacing:5px;text-transform:uppercase;transition:color 0.2s;}
-    .nav-links a:hover{color:var(--gray);}
+    .nav-links a:hover{color:var(--gold);}
     .nav-links a.active{color:var(--gold);}
     .nav-item--work{position:relative;}
     .nav-item--work>a{display:flex;align-items:center;gap:6px;}
@@ -167,7 +168,18 @@
 <body>
 <!-- NAV -->
 <nav id="main-nav">
-  <a href="index.html" class="nav-logo-link"><img class="nav-logo" src="images/Logo.png" alt="Jennifer Cingatura" /></a>
+  <a href="index.html" class="nav-brand">
+      <svg class="brand-mark" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="9" cy="9" r="4.5"/>
+        <circle cx="9" cy="9" r="1.4" fill="currentColor" stroke="none"/>
+        <path d="M12.2 12.2 L26 26"/>
+        <path d="M19 19 L21.5 16.5"/>
+        <path d="M22 22 L24.5 19.5"/>
+        <path d="M26 26 L28 28"/>
+        <path d="M28 28 l-1.2 -.3 M28 28 l.3 -1.2"/>
+      </svg>
+      <span class="brand-name">Jennifer Cingatura</span>
+    </a>
   <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
   <ul class="nav-links">
     <li class="nav-item--work">
