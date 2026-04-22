@@ -910,6 +910,683 @@
     img[src*="IBISWorld - FINAL"],
     img[src*="Cemex FINAL"] { width:85%; height:85%; }
   </style>
+
+  <!-- ===== REFERENCE HERO STYLES (overrides) ===== -->
+  <style>
+  @font-face {
+    font-family: 'Stacktwin';
+    src: url('fonts/Stacktwin.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+  :root {
+    --bg: #0b0a0d;
+    --bg-2: #131217;
+    --ink: #ece5d3;
+    --ink-dim: rgba(236, 229, 211, 0.72);
+    --gold: #c9a86a;
+    --gold-soft: #a98a52;
+    --gold-glow: rgba(224, 188, 120, 0.9);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', system-ui, sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Subtle vignette + grain */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 50% 40%, rgba(201, 168, 106, 0.08) 0%, transparent 55%),
+      radial-gradient(ellipse at 80% 110%, rgba(201, 168, 106, 0.05) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 50%, transparent 40%, rgba(0, 0, 0, 0.55) 100%);
+    pointer-events: none;
+    z-index: 1;
+  }
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image:
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.9  0 0 0 0 0.85  0 0 0 0 0.7  0 0 0 0.08 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    opacity: 0.35;
+    mix-blend-mode: overlay;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .page { position: relative; z-index: 3; }
+
+  /* ---------- NAV ---------- */
+  nav.top {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 34px 56px;
+    z-index: 20;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .brand-mark {
+    width: 32px; height: 32px;
+    color: var(--gold);
+    flex-shrink: 0;
+  }
+  .brand-name {
+    font-family: 'Stacktwin', 'Cormorant Garamond', serif;
+    font-size: 22px;
+    color: var(--ink);
+    letter-spacing: 0.5px;
+  }
+  .navlinks {
+    display: flex;
+    gap: 52px;
+  }
+  .navlinks a {
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 0.32em;
+    font-weight: 400;
+    position: relative;
+    padding: 6px 0;
+    transition: color 0.3s ease;
+  }
+  .navlinks a::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    height: 1px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+  }
+  .navlinks a:hover { color: var(--gold); }
+  .navlinks a:hover::after { transform: scaleX(1); }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 120px 56px 80px;
+    overflow: hidden;
+  }
+
+  .hero-inner {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 40px;
+    max-width: 1480px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .hero-copy {
+    padding-top: 40px;
+  }
+  .eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.42em;
+    color: var(--ink-dim);
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+  .eyebrow .divider {
+    width: 48px;
+    height: 1px;
+    background: var(--gold-soft);
+  }
+  .display {
+    font-family: 'Stacktwin', serif;
+    font-size: clamp(56px, 9vw, 138px);
+    line-height: 0.95;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+    margin-bottom: 36px;
+    text-shadow: 0 0 40px rgba(201, 168, 106, 0.08);
+  }
+  .sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-style: italic;
+    color: var(--ink-dim);
+    max-width: 440px;
+    line-height: 1.5;
+    margin-bottom: 44px;
+  }
+  .cta-row {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+  }
+  .cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 28px;
+    border: 1px solid var(--gold-soft);
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    background: transparent;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+  .cta:hover {
+    background: rgba(201, 168, 106, 0.08);
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+  .cta .arrow { transition: transform 0.3s ease; }
+  .cta:hover .arrow { transform: translateX(4px); }
+
+  .scroll-hint {
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    color: var(--ink-dim);
+    text-transform: uppercase;
+  }
+
+  /* ---------- ILLUSTRATION ---------- */
+  .illo-wrap {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 3 / 4;
+    max-height: 80vh;
+  }
+  .illo {
+    width: 100%;
+    height: 100%;
+    color: var(--gold);
+    filter: drop-shadow(0 0 24px rgba(201, 168, 106, 0.15));
+  }
+  .illo .line { stroke: currentColor; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .illo .fill-accent { fill: currentColor; }
+
+  /* Illustration breathing glow */
+  @keyframes breathe {
+    0%, 100% { filter: drop-shadow(0 0 24px rgba(201, 168, 106, 0.15)); }
+    50% { filter: drop-shadow(0 0 36px rgba(201, 168, 106, 0.28)); }
+  }
+  .illo { animation: breathe 6s ease-in-out infinite; }
+
+  /* Wand tip sparkle */
+  @keyframes wandPulse {
+    0%, 100% { opacity: 0.6; transform-origin: center; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.15); }
+  }
+  .wand-tip { transform-box: fill-box; animation: wandPulse 2.4s ease-in-out infinite; }
+
+  /* ---------- STARS ---------- */
+  .stars {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 4;
+  }
+  .star {
+    position: absolute;
+    color: var(--gold);
+    opacity: 0;
+    animation: starTwinkle var(--dur, 4s) ease-in-out infinite;
+    animation-delay: var(--delay, 0s);
+    transform-origin: center;
+  }
+  .star svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    filter: drop-shadow(0 0 6px var(--gold-glow)) drop-shadow(0 0 14px rgba(224, 188, 120, 0.5));
+  }
+  @keyframes starTwinkle {
+    0%, 100% { opacity: 0; transform: scale(0.6) rotate(0deg); }
+    40% { opacity: 1; transform: scale(1) rotate(8deg); }
+    60% { opacity: 0.85; transform: scale(1.05) rotate(-4deg); }
+  }
+
+  /* ---------- FOOTER STRIP ---------- */
+  .footer-strip {
+    position: absolute;
+    bottom: 28px;
+    left: 56px;
+    right: 56px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+    z-index: 10;
+  }
+  .footer-strip .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--gold);
+    box-shadow: 0 0 8px var(--gold-glow);
+    display: inline-block;
+    margin-right: 12px;
+    vertical-align: middle;
+    animation: dotPulse 2s ease-in-out infinite;
+  }
+  @keyframes dotPulse {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; box-shadow: 0 0 14px var(--gold-glow); }
+  }
+
+  /* Corner ornaments */
+  .corner {
+    position: absolute;
+    width: 42px; height: 42px;
+    color: var(--gold-soft);
+    opacity: 0.6;
+    z-index: 5;
+  }
+  .corner.tl { top: 86px; left: 56px; }
+  .corner.tr { top: 86px; right: 56px; transform: scaleX(-1); }
+  .corner.bl { bottom: 86px; left: 56px; transform: scaleY(-1); }
+  .corner.br { bottom: 86px; right: 56px; transform: scale(-1, -1); }
+
+  /* ---------- FIGMA-ACCURATE BODY (below hero) ---------- */
+  /* Fixed 1440px frame to mirror Figma exactly. */
+  .figma-frame {
+    position: relative;
+    width: 1440px;
+    margin: 0 auto;
+    color: var(--ink);
+    font-family: 'DM Sans', 'Inter', sans-serif;
+    padding-top: 60px;
+  }
+  .figma-frame * { box-sizing: border-box; }
+
+  /* Divider row with star between two gold lines (Figma: 317-1088, top 1574-1670) */
+  .fx-divider {
+    width: 771px;
+    height: 96px;
+    margin: 0 auto;
+    position: relative;
+  }
+  .fx-divider .seg {
+    position: absolute;
+    top: 48px;
+    width: 306px;
+    height: 2px;
+    background: rgb(196,150,101);
+  }
+  .fx-divider .seg.left  { left: 0; }
+  .fx-divider .seg.right { left: 465px; }
+  .fx-divider .big-star {
+    position: absolute;
+    left: 342px;
+    top: 0;
+    width: 96px;
+    height: 96px;
+    color: rgb(196,150,101);
+  }
+
+  /* Section header title (Stacktwin huge) */
+  .fx-bighead {
+    width: 1134px;
+    margin: 0 auto;
+    font-family: 'Stacktwin', serif;
+    font-size: 100px;
+    line-height: 1;
+    color: var(--ink);
+    text-align: left;
+  }
+
+  /* Company tag row (Tala ✦ Solo Funds ✦ …) */
+  .fx-companies {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 36px;
+    padding-left: 114px;
+  }
+  .fx-companies span {
+    font-family: 'DM Sans', 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 18px;
+    color: #fff;
+    line-height: 1;
+  }
+  .fx-companies .co-star {
+    width: 16px; height: 16px;
+    color: rgb(218,188,119);
+    margin: 0 4px;
+    flex-shrink: 0;
+  }
+
+  /* About / company paragraphs (Stacktwin 200 in Figma for paragraphs — that's wrong visually; Figma uses it but we use DM Sans for body copy from references). We'll render the long paragraphs in DM Sans. */
+  .fx-para-block {
+    margin: 100px auto 0;
+    width: 1134px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+  .fx-para-block p {
+    font-family: 'DM Sans', 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 1.6;
+    color: var(--ink);
+    max-width: 1134px;
+  }
+  .fx-para-block p.lead {
+    color: rgb(196,150,101);
+    font-style: italic;
+  }
+
+  /* Case-study grid: 3 cols × N rows, 412×550 cards, 50px radius */
+  .fx-casegrid {
+    display: grid;
+    grid-template-columns: repeat(3, 412px);
+    gap: 22px 22px;
+    width: 1270px;
+    margin: 120px auto 0;
+    justify-content: center;
+  }
+  .fx-case {
+    position: relative;
+    width: 412px;
+    height: 550px;
+    border-radius: 50px;
+    border: 3px solid rgb(196,150,101);
+    overflow: hidden;
+    text-decoration: none;
+    display: block;
+    background: transparent;
+    transition: box-shadow 0.3s ease;
+  }
+  .fx-case:hover { box-shadow: 0 0 40px rgba(201, 168, 106, 0.25); }
+
+  .fx-case .fx-device {
+    position: absolute;
+    left: 50%;
+    top: 45px;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 320px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .fx-case .fx-star {
+    position: absolute;
+    left: 50%;
+    top: 365px;
+    transform: translateX(-50%);
+    width: 63px;
+    height: 62px;
+    color: rgb(196,150,101);
+  }
+  .fx-case .fx-title {
+    position: absolute;
+    left: 0; right: 0;
+    top: 430px;
+    text-align: center;
+    font-family: 'Stacktwin', serif;
+    font-size: 48px;
+    line-height: 1;
+    color: rgb(196,150,101);
+  }
+  .fx-case .fx-sub {
+    position: absolute;
+    left: 0; right: 0;
+    top: 492px;
+    text-align: center;
+    font-family: 'DM Sans', 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 1;
+    color: rgb(245,240,234);
+  }
+
+  /* Device mock shells */
+  .fx-phone {
+    border-radius: 22px;
+    background: #1a1820 center / cover no-repeat;
+    border: 2px solid #2a2730;
+    box-shadow: 0 18px 30px rgba(0,0,0,0.45);
+    position: relative;
+  }
+  .fx-phone::before {
+    content:""; position:absolute; top:8px; left:50%;
+    transform: translateX(-50%);
+    width:34px; height:4px; border-radius:2px; background:#2a2730;
+  }
+  .fx-desktop {
+    background: #151217;
+    border-radius: 10px 10px 2px 2px;
+    border: 2px solid #2a2730;
+    padding: 14px 10px 10px;
+    box-shadow: 0 18px 30px rgba(0,0,0,0.45);
+    position: relative;
+  }
+  .fx-desktop::after {
+    content:""; position:absolute; bottom:-12px; left:50%;
+    transform: translateX(-50%);
+    width: 130px; height: 12px; background:#2a2730;
+    border-radius: 0 0 6px 6px;
+  }
+  .fx-desktop .fx-screen {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: top center;
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .fx-device-row {
+    display: flex; gap: 12px; align-items: center;
+  }
+
+  /* Services row */
+  .fx-services-title {
+    margin: 140px auto 40px;
+    width: 1134px;
+    font-family: 'Stacktwin', serif;
+    font-size: 72px;
+    line-height: 1;
+    color: var(--ink);
+    text-align: center;
+  }
+  .fx-services-sub {
+    text-align: center;
+    font-family: 'DM Sans', 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 0.35em;
+    color: rgb(196,150,101);
+    text-transform: uppercase;
+    margin-bottom: 60px;
+  }
+  .fx-services {
+    display: grid;
+    grid-template-columns: repeat(3, 136px);
+    gap: 16px;
+    width: 440px;
+    margin: 0 auto;
+  }
+  .fx-svc {
+    width: 136px;
+    height: 157px;
+    border-radius: 25px;
+    border: 2px solid rgb(196,150,101);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 10px;
+    gap: 10px;
+  }
+  .fx-svc .fx-svc-icon {
+    width: 64px; height: 64px;
+    display: flex; align-items: center; justify-content: center;
+    color: rgb(196,150,101);
+  }
+  .fx-svc .fx-svc-label {
+    font-family: 'DM Sans', 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 1.1;
+    letter-spacing: 2px;
+    color: rgb(196,150,101);
+    text-align: center;
+    text-transform: none;
+    white-space: pre-line;
+  }
+
+  /* Contact section */
+  .fx-contact {
+    width: 1280px;
+    margin: 160px auto 120px;
+    display: grid;
+    grid-template-columns: 536px 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .fx-contact .fx-contact-copy h2 {
+    font-family: 'Stacktwin', serif;
+    font-size: 72px;
+    line-height: 1;
+    color: #fff;
+    margin-bottom: 28px;
+  }
+  .fx-contact .fx-contact-copy p {
+    font-family: 'DM Sans', 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 1.55;
+    color: var(--ink);
+    max-width: 440px;
+  }
+  .fx-form {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    width: 679px;
+  }
+  .fx-field {
+    border-bottom: 1px solid rgb(245,240,234);
+    padding-bottom: 8px;
+  }
+  .fx-field label {
+    display: block;
+    font-family: 'DM Sans', 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: 5px;
+    color: #fff;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+  .fx-field input,
+  .fx-field textarea {
+    width: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #fff;
+    font-family: 'DM Sans', 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: 3px;
+    padding: 8px 0;
+    resize: none;
+  }
+  .fx-field input::placeholder,
+  .fx-field textarea::placeholder {
+    color: rgb(124,124,124);
+  }
+  .fx-submit {
+    align-self: flex-end;
+    background: rgb(196,150,101);
+    color: rgb(33,33,33);
+    border: none;
+    width: 200px;
+    height: 48px;
+    border-radius: 100px;
+    font-family: 'DM Sans', 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: 3px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .fx-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px rgba(201, 168, 106, 0.5);
+  }
+
+  .page-footer {
+    text-align: center;
+    padding: 40px 28px;
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+    border-top: 1px solid rgba(201, 168, 106, 0.15);
+  }
+
+  .section-stars {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Responsive scaling is applied via JS (see bottom of body) to avoid calc() issues. */
+  .figma-frame { transform-origin: top center; }
+  .figma-scale-wrap { overflow: hidden; }
+
+  @media (max-width: 900px) {
+    nav.top { padding: 24px 28px; }
+    .navlinks { gap: 22px; }
+    .navlinks a { font-size: 10px; letter-spacing: 0.24em; }
+    .hero { padding: 110px 28px 80px; }
+    .hero-inner { grid-template-columns: 1fr; gap: 10px; }
+    .hero-copy { order: 2; padding-top: 0; }
+    .illo-wrap { order: 1; max-height: 46vh; }
+    .corner { display: none; }
+  }
+</style>
+
+  <style>
+    /* FINAL OVERRIDES — lock hero typography to reference */
+    .hero .eyebrow-text { color: #C49665 !important; font-family: 'DM Sans', sans-serif !important; font-weight: 500 !important; letter-spacing: 0.38em !important; }
+    .hero .eyebrow-rule { background: #C49665 !important; }
+    .hero .hero-sub { font-family: 'DM Sans', sans-serif !important; font-style: normal !important; font-weight: 300 !important; font-size: 18px !important; color: #C49665 !important; line-height: 1.55 !important; }
+    .hero .hero-title { font-family: 'Stacktwin', serif !important; font-size: clamp(88px, 11vw, 180px) !important; line-height: 0.92 !important; letter-spacing: 0 !important; color: #F5F0EA !important; }
+    .hero .scroll-hint { color: rgba(245,240,234,0.55) !important; }
+  </style>
 </head>
 <body>
 
@@ -1041,137 +1718,154 @@
   </nav>
 
   <!-- ── HERO ── -->
-  <section class="hero" id="hero">
+  <section class="hero">
 
-    <!-- Corner ornaments -->
-    <div class="hero-corner hero-corner--tl" aria-hidden="true"><svg viewBox="0 0 42 42" fill="none" stroke="currentColor" stroke-width="0.8"><path d="M1 41 L1 1 L41 1"/><path d="M7 36 L7 7 L36 7"/></svg></div>
-    <div class="hero-corner hero-corner--tr" aria-hidden="true"><svg viewBox="0 0 42 42" fill="none" stroke="currentColor" stroke-width="0.8"><path d="M41 41 L41 1 L1 1"/><path d="M35 36 L35 7 L6 7"/></svg></div>
-    <div class="hero-corner hero-corner--bl" aria-hidden="true"><svg viewBox="0 0 42 42" fill="none" stroke="currentColor" stroke-width="0.8"><path d="M1 1 L1 41 L41 41"/><path d="M7 6 L7 35 L36 35"/></svg></div>
-    <div class="hero-corner hero-corner--br" aria-hidden="true"><svg viewBox="0 0 42 42" fill="none" stroke="currentColor" stroke-width="0.8"><path d="M41 1 L41 41 L1 41"/><path d="M35 6 L35 35 L6 35"/></svg></div>
+    <!-- STAR LAYER (behind content) -->
+    <div class="stars" id="stars"></div>
 
-    <!-- Procedural star field -->
-    <div class="hero-stars" id="hero-star-field" aria-hidden="true"></div>
-
-    <!-- Two-column grid -->
-    <div class="hero-grid">
-
-      <!-- Left: copy -->
+    <div class="hero-inner">
+      <!-- COPY -->
       <div class="hero-copy">
-        <div class="hero-eyebrow">
-          <span class="eyebrow-rule"></span>
-          <span class="eyebrow-text">Los Angeles Based Design Witch</span>
+        <div class="eyebrow">
+          <span class="divider"></span>
+          <span>LOS ANGELES BASED DESIGN WITCH</span>
         </div>
-        <h1 class="hero-title">Jennifer<br>Cingatura</h1>
-        <p class="hero-sub">Conjuring digital products, brand rituals, and quiet interfaces from the ether &mdash; one well-lit pixel at a time.</p>
-        <span class="scroll-hint">&#8595; SCROLL</span>
+        <h1 class="display">Jennifer<br/>Cingatura</h1>
+        <p class="sub">
+          Conjuring digital products, brand rituals, and quiet interfaces from the ether — one well-lit pixel at a time.
+        </p>
+        <div class="cta-row">
+          <span class="scroll-hint">↓ SCROLL</span>
+        </div>
       </div>
 
-      <!-- Right: illustration -->
-      <div class="hero-illo-wrap">
-        <svg class="illo" viewBox="0 0 600 800" fill="none" stroke="currentColor" stroke-width="1.2" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <!-- Outer oval frame -->
-          <ellipse cx="300" cy="420" rx="240" ry="335"/>
-          <!-- Inner oval whisper -->
-          <ellipse cx="300" cy="420" rx="222" ry="317" opacity="0.4"/>
-          <!-- Top sparkle -->
-          <path d="M300 73 C301 82,301 82,310 85 C301 88,301 88,300 97 C299 88,299 88,290 85 C299 82,299 82,300 73 Z" fill="currentColor" stroke="none"/>
-          <!-- Radiant rays (solid) -->
-          <g stroke-width="1" stroke-linecap="round">
-            <line x1="300" y1="200" x2="262" y2="254"/>
-            <line x1="300" y1="200" x2="274" y2="256"/>
-            <line x1="300" y1="200" x2="287" y2="258"/>
-            <line x1="300" y1="200" x2="300" y2="260"/>
-            <line x1="300" y1="200" x2="313" y2="258"/>
-            <line x1="300" y1="200" x2="326" y2="256"/>
-            <line x1="300" y1="200" x2="338" y2="254"/>
+      <!-- ILLUSTRATION -->
+      <div class="illo-wrap">
+        <svg class="illo" viewBox="0 0 600 800" fill="none" aria-hidden="true">
+          <!-- outer oval frame -->
+          <rect class="line" x="60" y="60" width="480" height="680" rx="240" ry="240" stroke-width="1.4"/>
+          <!-- inner whisper rule -->
+          <rect class="line" x="78" y="78" width="444" height="644" rx="222" ry="222" stroke-width="0.5" opacity="0.4"/>
+
+          <!-- top sparkle inside frame -->
+          <g class="wand-tip" style="transform-origin: 300px 150px">
+            <path class="line" d="M300 130 L300 170 M280 150 L320 150 M290 140 L310 160 M310 140 L290 160" stroke-width="1"/>
           </g>
-          <!-- Radiant rays (dashed shorter) -->
-          <g stroke-width="0.8" stroke-dasharray="3,4" stroke-linecap="round" opacity="0.55">
-            <line x1="300" y1="210" x2="255" y2="252"/>
-            <line x1="300" y1="210" x2="268" y2="254"/>
-            <line x1="300" y1="210" x2="332" y2="254"/>
-            <line x1="300" y1="210" x2="345" y2="252"/>
+
+          <!-- radiant rays above computer (arc, like the reference) -->
+          <g stroke="currentColor" stroke-width="1" stroke-linecap="round" fill="none" opacity="0.85">
+            <!-- arc of rays centered at (300, 420) radius ~130 -->
+            <g>
+              <line x1="300" y1="200" x2="300" y2="240"/>
+              <line x1="260" y1="210" x2="270" y2="248"/>
+              <line x1="220" y1="228" x2="240" y2="262"/>
+              <line x1="186" y1="254" x2="212" y2="282"/>
+              <line x1="158" y1="286" x2="192" y2="306"/>
+              <line x1="340" y1="210" x2="330" y2="248"/>
+              <line x1="380" y1="228" x2="360" y2="262"/>
+              <line x1="414" y1="254" x2="388" y2="282"/>
+              <line x1="442" y1="286" x2="408" y2="306"/>
+              <!-- shorter dashed rays -->
+              <line x1="240" y1="200" x2="252" y2="228" stroke-dasharray="2 4"/>
+              <line x1="360" y1="200" x2="348" y2="228" stroke-dasharray="2 4"/>
+              <line x1="200" y1="214" x2="222" y2="240" stroke-dasharray="2 4"/>
+              <line x1="400" y1="214" x2="378" y2="240" stroke-dasharray="2 4"/>
+              <line x1="170" y1="236" x2="198" y2="258" stroke-dasharray="2 4"/>
+              <line x1="430" y1="236" x2="402" y2="258" stroke-dasharray="2 4"/>
+            </g>
           </g>
-          <!-- Wand shaft -->
-          <line x1="300" y1="183" x2="300" y2="318" stroke-width="1.4"/>
-          <!-- Wand grip bands -->
-          <line x1="289" y1="292" x2="311" y2="292" stroke-width="1"/>
-          <line x1="289" y1="302" x2="311" y2="302" stroke-width="1"/>
-          <line x1="289" y1="312" x2="311" y2="312" stroke-width="1"/>
-          <!-- Grip rect -->
-          <rect x="292" y="296" width="16" height="20" rx="1" stroke-width="0.8"/>
-          <!-- Wand star tip -->
-          <g class="wand-tip">
-          <path d="M300 155 C302 170,302 170,318 175 C302 180,302 180,300 195 C298 180,298 180,282 175 C298 170,298 170,300 155 Z" fill="currentColor" stroke="none"/>
-          <circle cx="300" cy="175" r="4.5" fill="currentColor" stroke="none"/>
+
+          <!-- WAND emerging from screen -->
+          <g>
+            <!-- wand shaft: from screen interior (300, 420) up to (300, 188) but bent slightly -->
+            <path class="line" d="M300 420 L300 188" stroke-width="1.6"/>
+            <!-- wand bands -->
+            <line class="line" x1="292" y1="260" x2="308" y2="260" stroke-width="1.2"/>
+            <line class="line" x1="292" y1="300" x2="308" y2="300" stroke-width="1.2"/>
+            <line class="line" x1="292" y1="340" x2="308" y2="340" stroke-width="1.2"/>
+            <!-- wand handle/grip near screen -->
+            <rect class="line" x="294" y="400" width="12" height="26" stroke-width="1.2"/>
+            <!-- wand tip star (4-point) -->
+            <g transform="translate(300 178)">
+              <path class="line" d="M0 -22 C 2 -6, 2 -6, 18 0 C 2 6, 2 6, 0 22 C -2 6, -2 6, -18 0 C -2 -6, -2 -6, 0 -22 Z" stroke-width="1.2"/>
+              <circle cx="0" cy="0" r="3" fill="currentColor" stroke="none"/>
+            </g>
           </g>
-          <!-- Laptop screen outer -->
-          <rect x="182" y="318" width="236" height="150" rx="9" stroke-width="1.2"/>
-          <!-- Laptop screen bezel -->
-          <rect x="192" y="327" width="216" height="132" rx="6" stroke-width="0.8" opacity="0.65"/>
-          <!-- Camera dot -->
-          <circle cx="300" cy="323" r="3" stroke-width="0.8"/>
-          <!-- Eye glyph on screen -->
-          <g transform="translate(300,392)">
-            <path d="M-28 0 C-14,-17 14,-17 28,0 C14,17 -14,17 -28,0 Z" stroke-width="1" opacity="0.8"/>
-            <circle cx="0" cy="0" r="10" stroke-width="1" opacity="0.8"/>
-            <line x1="0" y1="-5" x2="0" y2="5" stroke-width="0.7" opacity="0.9"/>
-            <line x1="-5" y1="0" x2="5" y2="0" stroke-width="0.7" opacity="0.9"/>
+
+          <!-- COMPUTER (laptop) -->
+          <g>
+            <!-- screen body -->
+            <rect class="line" x="180" y="380" width="240" height="150" rx="10" stroke-width="1.4"/>
+            <!-- screen bezel inner -->
+            <rect class="line" x="196" y="396" width="208" height="118" rx="4" stroke-width="0.8" opacity="0.7"/>
+            <!-- camera dot -->
+            <circle class="line" cx="300" cy="388" r="1.2" stroke-width="0.8"/>
+
+            <!-- "content" on the screen: eye glyph (callback to ref) -->
+            <g opacity="0.9">
+              <!-- almond eye shape -->
+              <path class="line" d="M240 455 Q 300 420 360 455 Q 300 490 240 455 Z" stroke-width="1"/>
+              <circle class="line" cx="300" cy="455" r="14" stroke-width="1"/>
+              <!-- tiny sparkle inside iris -->
+              <path class="line" d="M300 449 L300 461 M294 455 L306 455" stroke-width="0.8"/>
+              <!-- side tick-marks (code-like) -->
+              <line class="line" x1="210" y1="410" x2="224" y2="410" stroke-width="0.8" opacity="0.7"/>
+              <line class="line" x1="210" y1="416" x2="220" y2="416" stroke-width="0.8" opacity="0.7"/>
+              <line class="line" x1="210" y1="498" x2="226" y2="498" stroke-width="0.8" opacity="0.7"/>
+              <line class="line" x1="210" y1="504" x2="218" y2="504" stroke-width="0.8" opacity="0.7"/>
+              <line class="line" x1="376" y1="410" x2="390" y2="410" stroke-width="0.8" opacity="0.7"/>
+              <line class="line" x1="380" y1="416" x2="390" y2="416" stroke-width="0.8" opacity="0.7"/>
+              <line class="line" x1="374" y1="498" x2="390" y2="498" stroke-width="0.8" opacity="0.7"/>
+              <line class="line" x1="382" y1="504" x2="390" y2="504" stroke-width="0.8" opacity="0.7"/>
+            </g>
+
+            <!-- hinge -->
+            <line class="line" x1="172" y1="535" x2="428" y2="535" stroke-width="1.2"/>
+            <!-- keyboard base (trapezoid) -->
+            <path class="line" d="M150 540 L450 540 L470 570 L130 570 Z" stroke-width="1.4"/>
+            <!-- trackpad notch -->
+            <path class="line" d="M278 540 L322 540 L324 546 L276 546 Z" stroke-width="0.9" opacity="0.8"/>
+            <!-- keyboard line hints -->
+            <line class="line" x1="160" y1="552" x2="440" y2="552" stroke-width="0.5" opacity="0.4"/>
+            <line class="line" x1="156" y1="560" x2="444" y2="560" stroke-width="0.5" opacity="0.4"/>
           </g>
-          <!-- Corner code ticks inside bezel -->
-          <g opacity="0.65" stroke-width="0.7">
-            <path d="M199 334 L199 342 L207 342"/>
-            <path d="M401 334 L401 342 L393 342"/>
-            <path d="M199 451 L199 443 L207 443"/>
-            <path d="M401 451 L401 443 L393 443"/>
+
+          <!-- tiny sparkle near wand tip -->
+          <g opacity="0.9">
+            <path class="line" d="M340 210 L340 222 M334 216 L346 216" stroke-width="0.9"/>
+            <path class="line" d="M252 240 L252 250 M247 245 L257 245" stroke-width="0.9"/>
+            <path class="line" d="M300 590 L300 602 M294 596 L306 596" stroke-width="0.9"/>
           </g>
-          <!-- Hinge line -->
-          <line x1="182" y1="468" x2="418" y2="468" stroke-width="1" opacity="0.75"/>
-          <!-- Keyboard base trapezoid -->
-          <path d="M166 470 L434 470 L454 524 L146 524 Z" stroke-width="1.2"/>
-          <!-- Trackpad -->
-          <rect x="273" y="490" width="54" height="24" rx="3" stroke-width="0.8" opacity="0.55"/>
-          <!-- Key row hints -->
-          <line x1="176" y1="480" x2="424" y2="480" stroke-width="0.5" opacity="0.35"/>
-          <line x1="180" y1="488" x2="420" y2="488" stroke-width="0.5" opacity="0.35"/>
-          <!-- Small sparkles around wand tip -->
-          <g stroke-width="0.9" stroke-linecap="round" opacity="0.75">
-            <line x1="270" y1="148" x2="270" y2="154"/><line x1="267" y1="151" x2="273" y2="151"/>
-            <line x1="330" y1="148" x2="330" y2="154"/><line x1="327" y1="151" x2="333" y2="151"/>
-            <line x1="260" y1="180" x2="260" y2="186"/><line x1="257" y1="183" x2="263" y2="183"/>
-            <line x1="340" y1="177" x2="340" y2="183"/><line x1="337" y1="180" x2="343" y2="180"/>
-            <!-- Below laptop -->
-            <line x1="256" y1="538" x2="256" y2="544"/><line x1="253" y1="541" x2="259" y2="541"/>
-            <line x1="344" y1="538" x2="344" y2="544"/><line x1="341" y1="541" x2="347" y2="541"/>
+
+          <!-- curved word mark at bottom: "DESIGN · WITCH" -->
+          <defs>
+            <path id="arcBottom" d="M 150 660 A 180 180 0 0 0 450 660" />
+          </defs>
+
+
+          <!-- small center dot under computer, matches reference -->
+          <g transform="translate(300 620)">
+            <path class="line" d="M0 -8 L0 8 M-8 0 L8 0 M-5 -5 L5 5 M-5 5 L5 -5" stroke-width="0.7" opacity="0.7"/>
           </g>
-          <!-- Compass rosette ~60px below keyboard -->
-          <g transform="translate(300,594)" stroke-width="0.9" opacity="0.65">
-            <circle cx="0" cy="0" r="22" stroke-width="0.8"/>
-            <circle cx="0" cy="0" r="8" stroke-width="0.7"/>
-            <line x1="0" y1="-22" x2="0" y2="-8"/>
-            <line x1="0" y1="8" x2="0" y2="22"/>
-            <line x1="-22" y1="0" x2="-8" y2="0"/>
-            <line x1="8" y1="0" x2="22" y2="0"/>
-            <line x1="-14" y1="-14" x2="-7" y2="-7" opacity="0.5"/>
-            <line x1="14" y1="-14" x2="7" y2="-7" opacity="0.5"/>
-            <line x1="-14" y1="14" x2="-7" y2="7" opacity="0.5"/>
-            <line x1="14" y1="14" x2="7" y2="7" opacity="0.5"/>
-            <circle cx="0" cy="0" r="2.5" fill="currentColor" stroke="none"/>
-          </g>
-          <!-- 5 outline stars outside the oval -->
-          <path d="M80 115 C81.4 103,81.4 103,94 108 C81.4 113,81.4 113,80 126 C78.6 113,78.6 113,66 108 C78.6 103,78.6 103,80 115 Z" stroke="currentColor" fill="none" stroke-width="1"/>
-          <g transform="translate(522,82)" stroke-linecap="round" stroke-width="0.9" opacity="0.6">
-            <line x1="0" y1="-7" x2="0" y2="7"/><line x1="-7" y1="0" x2="7" y2="0"/>
-          </g>
-          <path d="M543 400 C544.2 390,544.2 390,555 394 C544.2 398,544.2 398,543 408 C541.8 398,541.8 398,531 394 C541.8 390,541.8 390,543 400 Z" stroke="currentColor" fill="none" stroke-width="1"/>
-          <path d="M57 625 C58.2 615,58.2 615,69 619 C58.2 623,58.2 623,57 633 C55.8 623,55.8 623,45 619 C55.8 615,55.8 615,57 625 Z" stroke="currentColor" fill="none" stroke-width="1"/>
-          <g transform="translate(532,705)" stroke-linecap="round" stroke-width="0.9" opacity="0.6">
-            <line x1="0" y1="-7" x2="0" y2="7"/><line x1="-7" y1="0" x2="7" y2="0"/>
+
+          <!-- stars outside frame (static, gold) -->
+          <g opacity="0.95" stroke="currentColor" fill="none" stroke-linecap="round" stroke-width="1">
+            <!-- top left -->
+            <path d="M60 120 L60 150 M45 135 L75 135 M52 127 L68 143 M68 127 L52 143"/>
+            <!-- top right small -->
+            <path d="M540 110 L540 128 M531 119 L549 119"/>
+            <!-- middle right -->
+            <path d="M560 420 L560 446 M547 433 L573 433 M553 426 L567 440 M567 426 L553 440"/>
+            <!-- bottom left -->
+            <path d="M40 720 L40 742 M29 731 L51 731 M33 724 L47 738 M47 724 L33 738"/>
+            <!-- bottom right small -->
+            <path d="M560 740 L560 756 M552 748 L568 748"/>
           </g>
         </svg>
       </div>
-
     </div>
+
+
   </section>
 
   <!-- ── ABOUT ── -->
@@ -1545,5 +2239,80 @@
     }
   </script>
 
+
+  <script>
+  // ---------- Star field generator ----------
+  // Spread glowing stars in different "zones" of the hero so they feel intentional,
+  // not a uniform starfield.
+  const starLayer = document.getElementById('stars');
+
+  const STAR_SVG_4POINT = `
+    <svg viewBox="-10 -10 20 20" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 -10 C 1 -2, 1 -2, 10 0 C 1 2, 1 2, 0 10 C -1 2, -1 2, -10 0 C -1 -2, -1 -2, 0 -10 Z"
+            fill="currentColor"/>
+    </svg>`;
+  const STAR_SVG_PLUS = `
+    <svg viewBox="-10 -10 20 20" xmlns="http://www.w3.org/2000/svg">
+      <g stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
+        <line x1="0" y1="-9" x2="0" y2="9"/>
+        <line x1="-9" y1="0" x2="9" y2="0"/>
+      </g>
+    </svg>`;
+  const STAR_SVG_SMALL = `
+    <svg viewBox="-10 -10 20 20" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="0" cy="0" r="1.4" fill="currentColor"/>
+      <g stroke="currentColor" stroke-width="0.9" stroke-linecap="round" opacity="0.85">
+        <line x1="0" y1="-7" x2="0" y2="7"/>
+        <line x1="-7" y1="0" x2="7" y2="0"/>
+      </g>
+    </svg>`;
+
+  // Zones are % of hero area. Keep stars OUT of the left text column (x<50%, y 25–82%).
+  const zones = [
+    // top band (above the title)
+    { xMin: 2,  xMax: 22, yMin: 6,  yMax: 20, count: 2, sizeMin: 10, sizeMax: 18 },
+    { xMin: 30, xMax: 52, yMin: 6,  yMax: 18, count: 2, sizeMin: 10, sizeMax: 16 },
+    { xMin: 60, xMax: 78, yMin: 6,  yMax: 22, count: 2, sizeMin: 10, sizeMax: 18 },
+    { xMin: 82, xMax: 96, yMin: 10, yMax: 30, count: 3, sizeMin: 12, sizeMax: 22 },
+    // right side (around/beyond the illustration)
+    { xMin: 52, xMax: 62, yMin: 30, yMax: 48, count: 2, sizeMin: 10, sizeMax: 18 },
+    { xMin: 88, xMax: 98, yMin: 38, yMax: 66, count: 3, sizeMin: 12, sizeMax: 22 },
+    { xMin: 52, xMax: 60, yMin: 72, yMax: 88, count: 2, sizeMin: 10, sizeMax: 18 },
+    { xMin: 78, xMax: 96, yMin: 72, yMax: 92, count: 3, sizeMin: 12, sizeMax: 22 },
+  ];
+
+  function rand(min, max) { return Math.random() * (max - min) + min; }
+
+  zones.forEach(zone => {
+    for (let i = 0; i < zone.count; i++) {
+      const star = document.createElement('div');
+      star.className = 'star';
+      const size = rand(zone.sizeMin, zone.sizeMax);
+      const x = rand(zone.xMin, zone.xMax);
+      const y = rand(zone.yMin, zone.yMax);
+      const dur = rand(3.2, 6.5);
+      const delay = rand(0, 5);
+
+      star.style.left = x + '%';
+      star.style.top = y + '%';
+      star.style.width = size + 'px';
+      star.style.height = size + 'px';
+      star.style.setProperty('--dur', dur + 's');
+      star.style.setProperty('--delay', delay + 's');
+
+      // pick a glyph: bigger stars = 4-point, medium = plus, small = tiny
+      const r = Math.random();
+      if (size > 16) star.innerHTML = STAR_SVG_4POINT;
+      else if (size > 12) star.innerHTML = r > 0.4 ? STAR_SVG_4POINT : STAR_SVG_PLUS;
+      else star.innerHTML = r > 0.5 ? STAR_SVG_PLUS : STAR_SVG_SMALL;
+
+      // vary opacity slightly with a muted variant
+      if (Math.random() < 0.25) star.style.color = 'rgba(236, 229, 211, 0.9)'; // occasional white sparkle
+
+      starLayer.appendChild(star);
+    }
+  });
+
+</script>
 </body>
 </html>
