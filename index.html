@@ -78,11 +78,12 @@
       justify-content: space-between;
       align-items: center;
       padding: 20px 60px;
+      background: #0b0a0d;
       transition: background 0.3s;
     }
 
     nav.scrolled {
-      background: rgba(0, 0, 0, 0.9);
+      background: #1c1714;
       backdrop-filter: blur(14px);
     }
 
@@ -187,7 +188,7 @@
     }
 
     .work-tab:hover:not(.active) {
-      color: var(--cream);
+      color: var(--gold);
     }
 
     /* Panels */
@@ -295,7 +296,7 @@
     }
     .scroll-hint {
       display: inline-block;
-      margin-top: 36px;
+      margin-top: 12px;
       font-family: 'DM Sans', sans-serif;
       font-size: 11px;
       font-weight: 500;
@@ -467,6 +468,15 @@
     .work-section {
       background: var(--charcoal);
       padding: 80px 60px 100px;
+    }
+
+    .work-section-title {
+      font-family: 'Stacktwin', serif;
+      font-weight: 400;
+      font-size: clamp(48px, 7vw, 80px);
+      color: var(--cream);
+      text-align: center;
+      margin-bottom: 24px;
     }
 
     .home-tabs {
@@ -1883,15 +1893,9 @@
     </div>
   </section>
 
-  <!-- ── DIVIDER: About → Work ── -->
-  <div class="section-divider">
-    <div class="divider-line"></div>
-    <div class="divider-star-wrap"><svg width="96" height="96" viewBox="0 0 24 24" aria-hidden="true" style="display:block;flex-shrink:0"><path fill="currentColor" d="M11.629,10.859L11.991,0.250Q12.000,0.000,12.009,0.250L12.371,10.859L18.900,2.489Q19.053,2.292,18.913,2.499L12.971,11.295L23.172,8.361Q23.413,8.292,23.178,8.377L13.200,12.000L23.178,15.623Q23.413,15.708,23.172,15.639L12.971,12.705L18.913,21.501Q19.053,21.708,18.900,21.511L12.371,13.141L12.009,23.750Q12.000,24.000,11.991,23.750L11.629,13.141L5.100,21.511Q4.947,21.708,5.087,21.501L11.029,12.705L0.828,15.639Q0.587,15.708,0.822,15.623L10.800,12.000L0.822,8.377Q0.587,8.292,0.828,8.361L11.029,11.295L5.087,2.499Q4.947,2.292,5.100,2.489Z"/></svg></div>
-    <div class="divider-line"></div>
-  </div>
-
   <!-- ── CASE STUDIES ── -->
   <section class="work-section" id="work">
+    <h2 class="work-section-title">Selected Sorcery</h2>
     <div class="home-tabs">
       <button class="work-tab active" data-filter="all">All</button>
       <button class="work-tab" data-filter="mobile">Mobile</button>
